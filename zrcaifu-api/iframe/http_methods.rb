@@ -114,6 +114,8 @@ module Httpmethod
         abc+=1
       end
       return TRUE,str
+    else
+      raise "长度不一致"
     end
   end
 

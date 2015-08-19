@@ -1,4 +1,6 @@
-require_relative 'iframe/http_methods'
+require_relative "iframe/http_methods"
+require_relative 'iframe/resultdiy'
+require_relative "iframe/htmlclass"
 include Httpmethod
 require 'json'
 require 'jq/extend'
@@ -122,7 +124,11 @@ t0='[{
                                 "desc": "对融资人综合素质的评价"
                             }]'
 
-t0=JSON.parse(t0, :symbolize_names=>true)
-d0=JSON.parse(data, :symbolize_names=>true)
-puts r0=d0[:data][:loan_detail_json][0][:data][0][:rating]
-puts [:data, :loan_detail_json, 0, :data, 0,:rating]
+
+sql="select id, user_id , message_type , content, is_read ,title , create_time, icon_isok from user_messages where disable = 0 and user_id = '2898945' and create_time > date_sub(current_date(),INTERVAL 90 day) and (display_type = 'ALL' or display_type = 'MOBILE') order by case  message_type when 'SYSTEM' then 1  when 'INVEST' then 2 when 'REPAY' then 3 when 'CREDIT-ASSIGNMENT'  then 4 when 'FUNCTION-NOTIFICATION' then 5  when 'RECHARGE' then 6  when 'WITHDRAW' then 7 when 'ACTIVITY-NOTIFICATION' then 8 when 'MEMBER-SCORECARD-NOTIFICATION' then 9   end,create_time desc limit 10"
+conn=MyDB.new "rui_site"
+a=Resultdiy.new(conn.sqlquery(sql)).result_to_list
+a.each do |row|
+
+end
+
