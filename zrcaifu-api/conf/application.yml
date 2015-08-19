@@ -1,0 +1,32 @@
+# config/application.yml
+defaults: &defaults
+  DATABASE:
+    adapter: mysql2
+    host: 192.168.1.48
+    username: demo
+    password: demo
+    database: rui_site
+    database_admin: rui_admin
+    port: 10101
+    chart: utf8
+  apiurl: http://rpc.wangmin.test.zrcaifu.com
+
+
+# config/application.yml
+test: &test
+  DATABASE:
+    adapter: mysql2
+    host: localhost
+    username: demo
+    password: demo
+    database: rui_site
+    database_admin: rui_admin
+    port: 3306
+    chart: utf8
+  apiurl: http://rpc.wangmin.test.zrcaifu.com
+
+development:
+  <<: *defaults
+
+production:
+  <<: *defaults

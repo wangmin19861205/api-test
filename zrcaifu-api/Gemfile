@@ -1,0 +1,21 @@
+# A sample Gemfile
+source "https://rubygems.org"
+
+# gem "rails"
+gem 'sequel'
+gem 'mysql2'
+gem 'mysql'
+gem 'rest-client'
+gem 'settingslogic'
+gem 'test-unit'
+gem 'ruby-jq'
+
+#ruby-jq install
+#git clone https://github.com/stedolan/jq.git
+#cd jq
+#autoreconf -i
+#./configure --enable-shared
+#make
+#sudo make install
+#sudo ldconfig
+#gem install ruby-jq
