@@ -43,7 +43,8 @@ def  gitpull path
 end
 
 
-gitpull(listpath("/Users/wangmin/workspace/rui"))
 
+path='"/Users/wangmin/workspace/rui"'
+gitpull(listpath(path))
 
 
