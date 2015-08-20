@@ -29,7 +29,7 @@ class Testdetail_loan_summary<Test::Unit::TestCase
   end
 
   def test_right
-    @html.newTestName('项目简介-loanproposal_id')
+    @html.newTestName('项目简介-正常')
     data={"loanproposal_id"=>'5000832'}
     sql="select loan_summary_json from loandetails where loanproposal_id = '5000832' "
     path='.data.loan_summary_json[].title'

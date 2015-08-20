@@ -28,7 +28,7 @@ class Testdetail_reward<Test::Unit::TestCase
   end
 
   def test_right
-    @html.newTestName('项目可用抵现券-类型')
+    @html.newTestName('项目可用抵现券-推荐项目')
     data={"token"=>@token,"page"=>"1","loan_type"=>"RECOMMEND_PROJECT"}
     sql="select * from account_rewards where user_id ='2898945' and status = 'ACTIVE' and account_lender_pay_id is null "
     path='.data.data'

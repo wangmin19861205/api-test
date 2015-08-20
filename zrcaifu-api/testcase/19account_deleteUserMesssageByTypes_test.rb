@@ -29,7 +29,7 @@ class Testaccount_deleteUserMesssageByTypes<Test::Unit::TestCase
   end
 
   def test_right
-    @html.newTestName('类型删除消息-REPAY')
+    @html.newTestName('类型删除消息-还款')
     data1={"token"=>@token,"types"=>"REPAY"}
     sql1="select disable from user_messages WHERE user_id = '2898945' and (display_type = 'MOBILE' or display_type ='ALL') and message_type in ('REPAY')"
     path='.data.success'

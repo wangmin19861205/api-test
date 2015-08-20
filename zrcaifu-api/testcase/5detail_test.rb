@@ -16,7 +16,6 @@ class Testdetail<Test::Unit::TestCase
     data={"name"=>"13500000045","password"=>"123456"}
     @token=jsonlist httppost(url,data),'.data.token'
     url1="http://rpc.wangmin.test.zrcaifu.com/listpage"
-    @url="http://rpc.wangmin.test.zrcaifu.com/detail"
     reqbody=httpget(url1)
     middlepath='.data.middle_loans.loans[]'
     middleloans=jsonlist reqbody,middlepath
@@ -25,6 +24,7 @@ class Testdetail<Test::Unit::TestCase
       list.push(row["id"])
     end
     @id=list.sample
+    @url="http://rpc.wangmin.test.zrcaifu.com/detail"
   end
 
   def teardown

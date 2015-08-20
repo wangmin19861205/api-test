@@ -9,6 +9,7 @@ gem 'rest-client'
 gem 'settingslogic'
 gem 'test-unit'
 gem 'ruby-jq'
+gem 'git'
 
 #ruby-jq install
 #git clone https://github.com/stedolan/jq.git

@@ -26,7 +26,7 @@ exit Test::Unit::AutoRunner.run(true, test_dir)
 3.公共方法需添加对异常的处理
 4.复杂http请求：head与cookie,delete与put
 5.多格式的返回xml,text等
-6.所有验证中的数值转换,BigDecimal需转换为float
+6.所有验证中的数值转换,BigDecimal需转换为float --完成
 7.json解析,json中包含多个列表，列表中包含json，写个公共方法解析
 =end
 #ruby main.rb -t Testaccount_journals

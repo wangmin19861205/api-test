@@ -27,7 +27,7 @@ class Testregister<Test::Unit::TestCase
   def test_right
     @html.newTestName('用户注册-正常')
     data={"phone"=>"13500000099","auth_code"=>"13500000099","password"=>"13500000099","refer_phone"=>"13500000099"}
-    sql="select * from users where phone='13500000099'"
+    sql="select * from `sms_records` where `numbers` = '13500000099' order by id limit 1"
     path='.data.user'
     reqbody=httppost(@url,data)
     jsondata=jsonlist reqbody,path

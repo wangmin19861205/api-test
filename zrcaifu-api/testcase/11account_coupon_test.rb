@@ -28,7 +28,7 @@ class Testaccount_coupon<Test::Unit::TestCase
   end
 
   def test_right
-    @html.newTestName('我的加息券-ACTIVE')
+    @html.newTestName('我的加息券-可用')
     data1={"token"=>@token,"type"=>"ACTIVE","page"=>"1"}
     sql1="select * from account_interest_coupons where user_id = '2898945' and (status = 'ACTIVE' or status = 'CREATED') order by expired_time desc limit 20 offset 0   "
     path='.data.data'
@@ -41,7 +41,7 @@ class Testaccount_coupon<Test::Unit::TestCase
   end
 
   def test_right1
-    @html.newTestName('我的加息券-CREATED')
+    @html.newTestName('我的加息券-新建')
     data1={"token"=>@token,"type"=>"CREATED","page"=>"1"}
     sql1="select * from account_interest_coupons where user_id = '2898945' and (status = 'CREATED' or status = 'nil') order by expired_time desc limit 20 offset 0    "
     path='.data.data'
@@ -54,7 +54,7 @@ class Testaccount_coupon<Test::Unit::TestCase
   end
 
   def test_right2
-    @html.newTestName('我的加息券-USED')
+    @html.newTestName('我的加息券-已使用')
     data1={"token"=>@token,"type"=>"USED","page"=>"1"}
     sql1="select * from account_interest_coupons where user_id = '2898945' and (status = 'USED' or status = 'nil') order by expired_time desc limit 20 offset 0   "
     path='.data.data'
@@ -67,7 +67,7 @@ class Testaccount_coupon<Test::Unit::TestCase
   end
 
   def test_right3
-    @html.newTestName('我的加息券-EXPIRED')
+    @html.newTestName('我的加息券-已过期')
     data1={"token"=>@token,"type"=>"EXPIRED","page"=>"1"}
     sql1="select * from account_interest_coupons where user_id = '2898945' and (status = 'EXPIRED' or status = 'nil') order by expired_time desc limit 20 offset 0 "
     path='.data.data'
