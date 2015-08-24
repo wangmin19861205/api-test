@@ -36,7 +36,7 @@ class Testdetail_loan_summary<Test::Unit::TestCase
     reqbody=httppost(@url,data)
     jsondata=jsonlist reqbody,path
     sqldata=Resultdiy.new(@conn.sqlquery(sql)).result_to_list
-    test = '检查2个json中的title'
+    test = '检查json与sql中json的title是否相等'
     jsondata1=JSON.parse(sqldata[0][:loan_summary_json])
     result=(jsondata == (jsonlist jsondata1,'.[].title'))
     @html.add_to_report(result,test)

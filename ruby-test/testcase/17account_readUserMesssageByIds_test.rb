@@ -39,7 +39,7 @@ class Testaccount_readUserMesssageByIds<Test::Unit::TestCase
     @html.add_to_report((TRUE == jsondata1),test)
     sqldata1=Resultdiy.new(@conn.sqlquery(sql1)).result_to_list
     test = '检查关键字is_read=true'
-    @html.add_to_report(asslist(sqldata1,:is_read,true),test)
+    @html.add_to_report(asssqllist(sqldata1,:is_read,true),test)
   end
 
 

@@ -28,6 +28,10 @@ class MyDB
     @conn.run(sql)
   end
 
+  def delete sql
+    @conn[sql].delete
+  end
+
 
   def close
     @conn.disconnect

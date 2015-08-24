@@ -30,7 +30,6 @@ class Testlistpage_more<Test::Unit::TestCase
     reqbody=httppost(@url,data)
     jsondata=jsonlist reqbody,path
     sqldata=Resultdiy.new(@conn.sqlquery(sql)).result_to_list
-    puts sqldata
     test = '检查长度'
     @html.add_to_report(((asslength jsondata,sqldata)),test)
     test = '检查关键字loan_id'

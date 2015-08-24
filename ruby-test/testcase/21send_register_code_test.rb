@@ -26,12 +26,15 @@ class Testsend_register_code<Test::Unit::TestCase
 
   def test_right
     @html.newTestName('注册验证码-正常')
-    data={"phone"=>"13500000099"}
-    path='.data.success'
-    reqbody=httppost(@url,data)
-    jsondata=jsonlist reqbody,path
+    begin
+      data={"phone"=>"13500000098"}
+      path='.data.success'
+      reqbody=httppost(@url,data)
+      jsondata=jsonlist reqbody,path
+      result=(true.eql?jsondata)
+    rescue Exception
+    end
     test="检查json的success为TRUE"
-    result=(true.eql?jsondata)
     @html.add_to_report(result,test)
   end
 

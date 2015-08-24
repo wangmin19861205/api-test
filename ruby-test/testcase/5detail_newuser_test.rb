@@ -29,8 +29,21 @@ class Testdetail_newuser<Test::Unit::TestCase
   end
 
   def test_right
-    @html.newTestName('新手项目详情-正常')
+    @html.newTestName('新手项目详情-token正常')
     data={"token"=>@token}
+    sql="select * from loans where disabled = 0 and special_loan is null and special_user_id is null and status = 'INVEST' and loan_type = 'NEWUSER_PROJECT' order by invest_open_time asc limit 1"
+    path='.data.newuser_loan'
+    reqbody=httppost(@url,data)
+    jsondata=jsonlist reqbody,path
+    sqldata=Resultdiy.new(@conn.sqlquery(sql)).result_to_list
+    test = '检查关键字:新手项目id'
+    result=asskey(jsondata,sqldata,["id",:id])
+    @html.add_to_report(result,test)
+  end
+
+  def test_right1
+    @html.newTestName('新手项目详情-token为空')
+    data={"token"=>""}
     sql="select * from loans where disabled = 0 and special_loan is null and special_user_id is null and status = 'INVEST' and loan_type = 'NEWUSER_PROJECT' order by invest_open_time asc limit 1"
     path='.data.newuser_loan'
     reqbody=httppost(@url,data)

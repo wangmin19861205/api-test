@@ -10,6 +10,7 @@ gem 'settingslogic'
 gem 'test-unit'
 gem 'ruby-jq'
 gem 'git'
+gem 'minitest'
 
 #ruby-jq install
 #git clone https://github.com/stedolan/jq.git

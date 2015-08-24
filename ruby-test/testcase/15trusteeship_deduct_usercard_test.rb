@@ -31,7 +31,7 @@ class Testtrusteeship_deduct_usercard<Test::Unit::TestCase
     @html.newTestName('用户代扣卡信息-正常')
     data1={"token"=>@token}
     sql1="select id , payment, cardno ,name, bankname,support_deduct as is_quick_payment_card from account_cards where user_id = '2898945' and deleted = 0 and deleted_time is null order by id desc"
-    path='.data'
+    path='.card'
     reqbody=httppost(@url,data1)
     jsondata1=jsonlist reqbody,path
     sqldata1=Resultdiy.new(@conn.sqlquery(sql1)).result_to_list

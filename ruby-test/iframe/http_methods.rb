@@ -1,6 +1,8 @@
 require 'json'
 require 'rest-client'
 require 'jq/extend'
+require 'cgi'
+require 'uri'
 
 module Httpmethod
   def httpget (url,head={})
@@ -51,6 +53,7 @@ module Httpmethod
 
 
   def assall jsondata,sqldata
+    #接受一个hash或array的jsondata
     if jsondata.class == Hash
       jsondata=[].push(jsondata)
     elsif jsondata.class == Array
@@ -83,11 +86,11 @@ module Httpmethod
 
   def asslength jsondata,sqldata
     if jsondata.class == Hash and sqldata.length == 1
-      return TRUE,"长度#{jsondata.length},#{sqldata.length}"
+      return TRUE,"json=hash,sql长度为1"
     elsif jsondata.length == sqldata.length
-      return TRUE
+      return TRUE,"长度#{jsondata.length},#{sqldata.length}"
     else
-      return FALSE,"长度#{jsondata.length},#{sqldata.length}"
+      return FALSE,"长度不同"
     end
   end
 
@@ -120,7 +123,7 @@ module Httpmethod
   end
 
 
-  def asslist sqldata,diykey,assvalue
+  def asssqllist sqldata,diykey,assvalue
     sqldata.each do |row|
       row[diykey].class == BigDecimal ? row[diykey].to_f : row[diykey]
       if row[diykey] == assvalue
@@ -131,6 +134,23 @@ module Httpmethod
       end
     end
     return TRUE
+  end
+
+  def urlencode url
+    return CGI::escape url
+  end
+
+  def urldecode url
+    return CGI::unescape url
+  end
+
+
+  def utfencode str
+    return URI::escape str
+  end
+
+  def utfdecode str
+    return URI::unescape str
   end
 
 

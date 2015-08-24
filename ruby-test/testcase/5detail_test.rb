@@ -39,6 +39,7 @@ class Testdetail<Test::Unit::TestCase
   def test_right
     @html.newTestName('项目详情-中期正常')
     data={"token"=>@token,"id"=>@id}
+    puts @id
     sql="select * from loans where disabled = 0 and id = #{@id}"
     path='.data.loan'
     reqbody=httppost(@url,data)

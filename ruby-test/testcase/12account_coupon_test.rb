@@ -11,7 +11,7 @@ class Testaccount_coupon<Test::Unit::TestCase
     @conn=MyDB.new "rui_site"
     @test_environment = 'QA'
     @html = HTMLReport.new()
-    @report = @html.createReport1('account_coupon')
+    @report = @html.createReport1('Testaccount_coupon')
     url="http://rpc.wangmin.test.zrcaifu.com/login"
     data={"name"=>"13500000045","password"=>"123456"}
     @token=jsonlist httppost(url,data),'.data.token'
@@ -30,7 +30,12 @@ class Testaccount_coupon<Test::Unit::TestCase
   def test_right
     @html.newTestName('我的加息券-可用')
     data1={"token"=>@token,"type"=>"ACTIVE","page"=>"1"}
-    sql1="select * from account_interest_coupons where user_id = '2898945' and (status = 'ACTIVE' or status = 'CREATED') order by expired_time desc limit 20 offset 0   "
+    sql1="select * from account_interest_coupons
+   where user_id = '2898945' and (status = 'ACTIVE' or status = 'CREATED')
+   order by status desc,
+      CASE WHEN (status = 'ACTIVE' or status ='CREATED' ) THEN end_date end asc ,
+      CASE WHEN status = 'USED'  THEN used_time  end desc,
+      CASE WHEN status = 'EXPIRED' THEN expired_time end desc limit 20 offset 0 "
     path='.data.data'
     reqbody=httppost(@url,data1)
     jsondata1=jsonlist reqbody,path
@@ -43,7 +48,12 @@ class Testaccount_coupon<Test::Unit::TestCase
   def test_right1
     @html.newTestName('我的加息券-新建')
     data1={"token"=>@token,"type"=>"CREATED","page"=>"1"}
-    sql1="select * from account_interest_coupons where user_id = '2898945' and (status = 'CREATED' or status = 'nil') order by expired_time desc limit 20 offset 0    "
+    sql1="select * from account_interest_coupons
+   where user_id = '2898945' and (status = 'nil' or status = 'CREATED')
+   order by status desc,
+      CASE WHEN (status = 'ACTIVE' or status ='CREATED' ) THEN end_date end asc ,
+      CASE WHEN status = 'USED'  THEN used_time  end desc,
+      CASE WHEN status = 'EXPIRED' THEN expired_time end desc limit 20 offset 0  "
     path='.data.data'
     reqbody=httppost(@url,data1)
     jsondata1=jsonlist reqbody,path
@@ -56,7 +66,12 @@ class Testaccount_coupon<Test::Unit::TestCase
   def test_right2
     @html.newTestName('我的加息券-已使用')
     data1={"token"=>@token,"type"=>"USED","page"=>"1"}
-    sql1="select * from account_interest_coupons where user_id = '2898945' and (status = 'USED' or status = 'nil') order by expired_time desc limit 20 offset 0   "
+    sql1="select * from account_interest_coupons
+   where user_id = '2898945' and (status = 'nil' or status = 'USED')
+   order by status desc,
+      CASE WHEN (status = 'ACTIVE' or status ='CREATED' ) THEN end_date end asc ,
+      CASE WHEN status = 'USED'  THEN used_time  end desc,
+      CASE WHEN status = 'EXPIRED' THEN expired_time end desc limit 20 offset 0   "
     path='.data.data'
     reqbody=httppost(@url,data1)
     jsondata1=jsonlist reqbody,path
@@ -69,7 +84,12 @@ class Testaccount_coupon<Test::Unit::TestCase
   def test_right3
     @html.newTestName('我的加息券-已过期')
     data1={"token"=>@token,"type"=>"EXPIRED","page"=>"1"}
-    sql1="select * from account_interest_coupons where user_id = '2898945' and (status = 'EXPIRED' or status = 'nil') order by expired_time desc limit 20 offset 0 "
+    sql1="select * from account_interest_coupons
+   where user_id = '2898945' and (status = 'nil' or status = 'EXPIRED')
+   order by status desc,
+      CASE WHEN (status = 'ACTIVE' or status ='CREATED' ) THEN end_date end asc ,
+      CASE WHEN status = 'USED'  THEN used_time  end desc,
+      CASE WHEN status = 'EXPIRED' THEN expired_time end desc limit 20 offset 0   "
     path='.data.data'
     reqbody=httppost(@url,data1)
     jsondata1=jsonlist reqbody,path

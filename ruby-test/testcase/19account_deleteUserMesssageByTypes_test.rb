@@ -39,7 +39,7 @@ class Testaccount_deleteUserMesssageByTypes<Test::Unit::TestCase
     @html.add_to_report((true.eql?jsondata1),test)
     sqldata1=Resultdiy.new(@conn.sqlquery(sql1)).result_to_list
     test = '检查关键字disable=true'
-    @html.add_to_report(asslist(sqldata1,:disable,true),test)
+    @html.add_to_report(asssqllist(sqldata1,:disable,true),test)
   end
 
 

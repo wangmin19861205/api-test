@@ -1,5 +1,6 @@
-require 'jq/extend'
+require 'minitest/unit'
+require 'minitest/autorun'
+a=[1,2,3,4]
+b=[1,2,3,4]
 
-
-
-p a.jq('.bbc')
+puts diff(a,b)

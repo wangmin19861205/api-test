@@ -1,6 +1,7 @@
 require_relative "iframe/http_methods"
 require_relative 'iframe/resultdiy'
 require_relative "iframe/htmlclass"
+require_relative 'iframe/mysqldiy'
 include Httpmethod
 require 'json'
 require 'jq/extend'
@@ -127,8 +128,6 @@ t0='[{
 
 sql="select id, user_id , message_type , content, is_read ,title , create_time, icon_isok from user_messages where disable = 0 and user_id = '2898945' and create_time > date_sub(current_date(),INTERVAL 90 day) and (display_type = 'ALL' or display_type = 'MOBILE') order by case  message_type when 'SYSTEM' then 1  when 'INVEST' then 2 when 'REPAY' then 3 when 'CREDIT-ASSIGNMENT'  then 4 when 'FUNCTION-NOTIFICATION' then 5  when 'RECHARGE' then 6  when 'WITHDRAW' then 7 when 'ACTIVITY-NOTIFICATION' then 8 when 'MEMBER-SCORECARD-NOTIFICATION' then 9   end,create_time desc limit 10"
 conn=MyDB.new "rui_site"
-a=Resultdiy.new(conn.sqlquery(sql)).result_to_list
-a.each do |row|
+userid=(Resultdiy.new(conn.sqlquery("select id from users where secure_phone ='13500000098'")).result_to_list[0])[:id]
 
-end
-
+p userid

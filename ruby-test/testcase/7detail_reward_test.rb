@@ -40,4 +40,69 @@ class Testdetail_reward<Test::Unit::TestCase
     @html.add_to_report(result,test)
   end
 
+  def test_right1
+    @html.newTestName('项目可用抵现券-新手项目')
+    data={"token"=>@token,"page"=>"1","loan_type"=>"NEWUSER"}
+    sql="select * from account_rewards where user_id ='2898945' and status = 'ACTIVE' and account_lender_pay_id is null "
+    path='.data.data'
+    reqbody=httppost(@url,data)
+    jsondata=jsonlist reqbody,path
+    sqldata=Resultdiy.new(@conn.sqlquery(sql)).result_to_list
+    test = '检查关键字:reward_id'
+    result=asskey(jsondata,sqldata,["id",:id])
+    @html.add_to_report(result,test)
+  end
+
+  def test_right2
+    @html.newTestName('项目可用抵现券-VIP项目')
+    data={"token"=>@token,"page"=>"1","loan_type"=>"VIP"}
+    sql="select * from account_rewards where user_id ='2898945' and status = 'ACTIVE' and account_lender_pay_id is null "
+    path='.data.data'
+    reqbody=httppost(@url,data)
+    jsondata=jsonlist reqbody,path
+    sqldata=Resultdiy.new(@conn.sqlquery(sql)).result_to_list
+    test = '检查关键字:reward_id'
+    result=asskey(jsondata,sqldata,["id",:id])
+    @html.add_to_report(result,test)
+  end
+
+  def test_right3
+    @html.newTestName('项目可用抵现券-新手、推荐项目')
+    data={"token"=>@token,"page"=>"1","loan_type"=>"NEWUSER_AND_RECOMMEND"}
+    sql="select * from account_rewards where user_id ='2898945' and status = 'ACTIVE' and account_lender_pay_id is null "
+    path='.data.data'
+    reqbody=httppost(@url,data)
+    jsondata=jsonlist reqbody,path
+    sqldata=Resultdiy.new(@conn.sqlquery(sql)).result_to_list
+    test = '检查关键字:reward_id'
+    result=asskey(jsondata,sqldata,["id",:id])
+    @html.add_to_report(result,test)
+  end
+
+  def test_right4
+    @html.newTestName('项目可用抵现券-推荐、VIP项目')
+    data={"token"=>@token,"page"=>"1","loan_type"=>"RECOMMEND_AND_VIP"}
+    sql="select * from account_rewards where user_id ='2898945' and status = 'ACTIVE' and account_lender_pay_id is null "
+    path='.data.data'
+    reqbody=httppost(@url,data)
+    jsondata=jsonlist reqbody,path
+    sqldata=Resultdiy.new(@conn.sqlquery(sql)).result_to_list
+    test = '检查关键字:reward_id'
+    result=asskey(jsondata,sqldata,["id",:id])
+    @html.add_to_report(result,test)
+  end
+
+  def test_right5
+    @html.newTestName('项目可用抵现券-无限制')
+    data={"token"=>@token,"page"=>"1","loan_type"=>"NO_LIMIT"}
+    sql="select * from account_rewards where user_id ='2898945' and status = 'ACTIVE' and account_lender_pay_id is null "
+    path='.data.data'
+    reqbody=httppost(@url,data)
+    jsondata=jsonlist reqbody,path
+    sqldata=Resultdiy.new(@conn.sqlquery(sql)).result_to_list
+    test = '检查关键字:reward_id'
+    result=asskey(jsondata,sqldata,["id",:id])
+    @html.add_to_report(result,test)
+  end
+
 end
