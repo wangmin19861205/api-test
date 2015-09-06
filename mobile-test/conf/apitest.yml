@@ -1,4 +1,4 @@
-# config/application.yml
+# config/apitest.yml
 defaults: &defaults
   DATABASE:
     adapter: mysql2
@@ -9,10 +9,13 @@ defaults: &defaults
     database_admin: rui_admin
     port: 10101
     chart: utf8
-  apiurl: http://rpc.wangmin.test.zrcaifu.com
+  SSH:
+    host: 192.168.1.48
+    username: work
+    password: 1
+    port: 10100
 
 
-# config/application.yml
 test: &test
   DATABASE:
     adapter: mysql2
@@ -23,7 +26,11 @@ test: &test
     database_admin: rui_admin
     port: 3306
     chart: utf8
-  apiurl: http://rpc.wangmin.test.zrcaifu.com
+  SSH:
+    host: 192.168.1.48
+    username: work
+    password: 1
+    port: 10100
 
 development:
   <<: *defaults

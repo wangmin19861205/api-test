@@ -1,0 +1,28 @@
+# A sample Gemfile
+source "https://rubygems.org"
+
+# gem "rails"
+gem 'sequel'
+gem 'mysql2'
+gem 'mysql'
+gem 'rest-client'
+gem 'settingslogic'
+gem 'test-unit'
+gem 'ruby-jq'
+gem 'git'
+gem 'json'
+gem 'net-ssh'
+gem 'appium_lib'
+gem 'cucumber'
+gem 'cucumber-core'
+gem 'rspec-expectations'
+gem 'rspec'
+#安装ruby-jq
+#git clone https://github.com/stedolan/jq.git
+#cd jq
+#autoreconf -i
+#./configure --enable-shared
+#make
+#sudo make install
+#sudo ldconfig
+#gem install ruby-jq

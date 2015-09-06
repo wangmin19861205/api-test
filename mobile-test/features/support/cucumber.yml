@@ -1,0 +1,1 @@
+default: --format html --out report/report.html --format pretty capture_dir=report
