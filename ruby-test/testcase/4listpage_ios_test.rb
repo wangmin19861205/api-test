@@ -1,8 +1,3 @@
-require 'test/unit'
-require_relative "../iframe/http_methods"
-require_relative '../iframe/resultdiy'
-require_relative "../iframe/htmlclass"
-
 
 
 class Testlistpage_ios<Test::Unit::TestCase
@@ -30,7 +25,7 @@ class Testlistpage_ios<Test::Unit::TestCase
     vipsql="select * from loans where disabled = 0 and special_loan is null and loan_type = 'VIP_PROJECT' order by case status when 'INVEST' then 1 when 'REPAY' then 2 when 'FINISH' then 3 end asc ,case status when 'INVEST' then invest_open_time end asc , case when status <> 'INVEST' then invest_open_time end desc limit 10 offset 0"
     shortsql="select * from loans where disabled = 0 and special_loan is null and special_user_id is null and loan_type = 'RECOMMEND_PROJECT' and loan_period = 'SHORT' order by case status when 'INVEST' then 1 when 'REPAY' then 2 when 'FINISH' then 3 end asc ,case status when 'INVEST' then invest_open_time end asc , case when status <> 'INVEST' then invest_open_time end desc limit 10 offset 0"
     middlesql="select * from loans where disabled = 0 and special_loan is null and special_user_id is null and loan_type = 'RECOMMEND_PROJECT' and loan_period = 'MIDDLE' order by case status when 'INVEST' then 1 when 'REPAY' then 2 when 'FINISH' then 3 end asc ,case status when 'INVEST' then invest_open_time end asc , case when status <> 'INVEST' then invest_open_time end desc limit 10 offset 0"
-    longsql="select * from loans where disabled = 0 and special_loan is null and special_user_id is null and loan_type = 'RECOMMEND_PROJECT' and loan_period = 'LONG' order by case status when 'INVEST' then 1 when 'REPAY' then 2 when 'FINISH' then 3 end asc ,case status when 'INVEST' then invest_open_time end asc , case when status <> 'INVEST' then invest_open_time end desc limit 10 offset 0"
+    longsql="select * from loans where disabled = 0 and special_loan is null and loan_type = 'RECOMMEND_PROJECT' and loan_period = 'LONG' order by case status when 'INVEST' then 1 when 'REPAY' then 2 when 'FINISH' then 3 end asc ,case status when 'INVEST' then invest_open_time end asc , case when status <> 'INVEST' then invest_open_time end desc limit 10 offset 0"
     newpath='.data.newuser_loans.loans[]'
     vippath='.data.vip_loans.loans[]'
     shortpath='.data.short_loans.loans[]'
@@ -62,7 +57,6 @@ class Testlistpage_ios<Test::Unit::TestCase
     test = '检查关键字:长期项目id'
     result=asskey(longjsondata,longsqldata,["id",:id])
     @html.add_to_report(result,test)
-
   end
 
 

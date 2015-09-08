@@ -96,6 +96,7 @@ DEPENDENCIES
   rspec
   rspec-expectations
   ruby-jq
+  selenium-webdriver
   sequel
   settingslogic
   test-unit

@@ -1,14 +1,14 @@
 
 
 
-class Testtrusteeship_deduct_allbankinfos<Test::Unit::TestCase
+class Testlistpage_status<Test::Unit::TestCase
   include Httpmethod
   def setup
     @conn=MyDB.new "rui_site"
     @test_environment = 'QA'
     @html = HTMLReport.new()
-    @report = @html.createReport1('trusteeship_deduct_allbankinfos')
-    @url="http://rpc.wangmin.test.zrcaifu.com/trusteeship/deduct/allbankinfos"
+    @report = @html.createReport1('listpage_status')
+    @url="http://rpc.wangmin.test.zrcaifu.com/listpage/status"
   end
 
   def teardown
@@ -21,14 +21,27 @@ class Testtrusteeship_deduct_allbankinfos<Test::Unit::TestCase
   end
 
   def test_right
-    @html.newTestName('全部代扣充值银行-正常')
-    sql1="select * from umbpay_bankinfos where type = 'DEDUCT'"
+    @html.newTestName('可投项目类型-正常')
+    newusersql="select count(*)  as newuser_avail from loans where disabled = 0 and special_loan is null and special_user_id is null and status = 'INVEST' and loan_type = 'NEWUSER_PROJECT'"
+    shortsql="select count(*) as short_avail from loans where disabled = 0 and special_loan is null and special_user_id is null and status = 'INVEST' and loan_type = 'RECOMMEND_PROJECT' and loan_period = 'SHORT'"
+    middlesql="select count(*) as middle_avail from loans where disabled = 0 and special_loan is null and special_user_id is null and status = 'INVEST' and loan_type = 'RECOMMEND_PROJECT' and loan_period = 'MIDDLE'"
+    longsql="select count(*) as long_avail from loans where disabled = 0 and special_loan is null and special_user_id is null and status = 'INVEST' and loan_type = 'RECOMMEND_PROJECT' and loan_period = 'LONG'"
+    vipsql="select count(*) as vip_avail from loans where disabled = 0 and special_loan is null and special_user_id is null and status = 'INVEST' and loan_type = 'VIP_PROJECT'"
     path='.data'
     reqbody=httpget(@url)
-    jsondata1=jsonlist reqbody,path
-    sqldata1=Resultdiy.new(@conn.sqlquery(sql1)).result_to_list
-    test = '检查关键字:银行id'
-    result=asskey(jsondata1,sqldata1,["id",:id])
+    jsondata=jsonlist reqbody,path
+    newsqldata=Resultdiy.new(@conn.sqlquery(newusersql)).result_to_list
+    shortsqldata=Resultdiy.new(@conn.sqlquery(shortsql)).result_to_list
+    middlesqldata=Resultdiy.new(@conn.sqlquery(middlesql)).result_to_list
+    longsqldata=Resultdiy.new(@conn.sqlquery(longsql)).result_to_list
+    vipsqldata=Resultdiy.new(@conn.sqlquery(vipsql)).result_to_list
+    sqldata=newsqldata[0].merge(shortsqldata[0]).merge(middlesqldata[0]).merge(longsqldata[0]).merge(vipsqldata[0])
+    sqldata1=[]
+    sqldata.each_value do |value|
+      sqldata1.push(value > 0 ? true : false)
+    end
+    test = '检查项目可投状态--全部'
+    result= jsondata.values == sqldata1
     @html.add_to_report(result,test)
   end
 

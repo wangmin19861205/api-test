@@ -1,6 +1,3 @@
-require 'test/unit'
-require_relative "../iframe/http_methods"
-require_relative '../iframe/resultdiy'
 
 
 class Testlistpage_more<Test::Unit::TestCase
@@ -56,7 +53,7 @@ class Testlistpage_more<Test::Unit::TestCase
     @html.newTestName('加载更多-长期项目')
     data={"type"=>"long","page"=>"1"}
     path='.data.loans.loans[]'
-    sql="select * from loans where disabled = 0 and special_loan is null and special_user_id is null and loan_type = 'RECOMMEND_PROJECT' and loan_period = 'LONG' order by case status when 'INVEST' then 1 when 'REPAY' then 2 when 'FINISH' then 3 end asc ,case status when 'INVEST' then invest_open_time end asc , case when status <> 'INVEST' then invest_open_time end desc limit 10 offset 0"
+    sql="select * from loans where disabled = 0 and special_loan is null and loan_type = 'RECOMMEND_PROJECT' and loan_period = 'LONG' order by case status when 'INVEST' then 1 when 'REPAY' then 2 when 'FINISH' then 3 end asc ,case status when 'INVEST' then invest_open_time end asc , case when status <> 'INVEST' then invest_open_time end desc limit 10 offset 0"
     reqbody=httppost(@url,data)
     jsondata=jsonlist reqbody,path
     sqldata=Resultdiy.new(@conn.sqlquery(sql)).result_to_list

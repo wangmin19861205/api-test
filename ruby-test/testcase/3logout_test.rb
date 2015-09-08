@@ -1,8 +1,3 @@
-require 'test/unit'
-require_relative "../iframe/http_methods"
-require_relative '../iframe/resultdiy'
-require_relative "../iframe/htmlclass"
-
 
 
 class Testlogout<Test::Unit::TestCase
@@ -11,7 +6,7 @@ class Testlogout<Test::Unit::TestCase
     @conn=MyDB.new "rui_site"
     @test_environment = 'QA'
     @html = HTMLReport.new()
-    @report = @html.createReport1('userlogout')
+    @report = @html.createReport1('logout')
     url="http://rpc.wangmin.test.zrcaifu.com/login"
     data={"name"=>"13500000045","password"=>"123456"}
     @token=jsonlist httppost(url,data),'.data.token'

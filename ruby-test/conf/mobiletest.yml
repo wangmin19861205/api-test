@@ -1,4 +1,4 @@
-# config/apitest.yml
+# config/mobiletest.yml
 defaults: &defaults
   DATABASE:
     adapter: mysql2
@@ -17,7 +17,14 @@ defaults: &defaults
   URL:
     site: http://www.wangmin.test.zrcaifu.com/
     admin: http://admin.wangmin.test.zrcaifu.com/
-  BROWSER: chrome
+  MOBILE:
+    platformName: Android
+    deviceName: HWHol-T
+    appActivity: .ui.MainActivity
+    appPackage: com.zrcaifu
+
+
+
 
 
 test: &test

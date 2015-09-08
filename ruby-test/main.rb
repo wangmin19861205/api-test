@@ -1,9 +1,20 @@
-base_dir = File.expand_path(File.join(File.dirname(__FILE__)))
-lib_dir  = File.join(base_dir, "iframe")
-test_dir = File.join(base_dir, "testcase")
-
+base_dir = File.dirname(__FILE__)               #工作目录
+lib_dir  = File.join(base_dir, "iframe")        #lib包目录
+test_dir = File.join(base_dir, "testcase")      #case目录
+#将lib包目录添加至系统变量中
 $LOAD_PATH.unshift(lib_dir)
+#导入unit与gem包
 require 'test/unit'
+require 'bundler/setup'
+Bundler.require(:default)
+#将lib包下的文件全部导入
+Dir.foreach(lib_dir) do |filename|
+  if filename != "." and filename != ".." and filename != "gitpull.rb" and filename != "myappium.rb"
+    filename = File.join(lib_dir,"#{filename}")
+    require_relative "#{filename}"
+  end
+end
+
 
 Test::Unit.at_start do
   inifile=File.open("results/result.html", 'w+')

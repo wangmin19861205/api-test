@@ -1,7 +1,4 @@
-require 'test/unit'
-require_relative "../iframe/http_methods"
-require_relative '../iframe/resultdiy'
-require_relative "../iframe/htmlclass"
+
 
 
 
@@ -33,10 +30,9 @@ class Testoverview<Test::Unit::TestCase
     sql="select balance_total,receivable_interest,receivable_principal,accumulate_interest,available_reward,available_money,frozen_money_withdraw from `accounts` where user_id ='2898945'"
     path='.data'
     reqbody=httppost(@url,data)
-    jsondata=jsonlist reqbody,path
     sqldata=Resultdiy.new(@conn.sqlquery(sql)).result_to_list
-    test = '检查json与数据库中的所有值相等'
-    result=assall(jsondata,sqldata)
+    test = '检查json与数据库data交集key的值对比'
+    result=assreqbody_sqlkey reqbody,sqldata,path
     @html.add_to_report(result,test)
   end
 
@@ -49,6 +45,5 @@ class Testoverview<Test::Unit::TestCase
     test = '检查json中的code=20000'
     @html.add_to_report(20000.eql?(jsondata),test)
   end
-
 
 end

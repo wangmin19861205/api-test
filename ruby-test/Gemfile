@@ -10,9 +10,11 @@ gem 'settingslogic'
 gem 'test-unit'
 gem 'ruby-jq'
 gem 'git'
-gem 'minitest'
+gem 'json'
+gem 'net-ssh'
+gem 'appium_lib'
 
-#ruby-jq install
+#安装ruby-jq
 #git clone https://github.com/stedolan/jq.git
 #cd jq
 #autoreconf -i

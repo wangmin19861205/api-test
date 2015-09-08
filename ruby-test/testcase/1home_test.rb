@@ -1,8 +1,4 @@
-require 'test/unit'
-require_relative "../iframe/http_methods"
-require_relative '../iframe/resultdiy'
-require_relative "../iframe/htmlclass"
-
+require_relative '../iframe/htmlclass'
 
 
 class Testhome<Test::Unit::TestCase
@@ -46,8 +42,10 @@ class Testhome<Test::Unit::TestCase
     newpath='.data.new_user_loan'
     #需要用来对比数据的sql
     newsql="select * from loans where disabled = 0 and special_loan is null and special_user_id is null and status = 'INVEST' and loan_type = 'NEWUSER_PROJECT' order by invest_open_time asc limit 1"
-    readysql="select * from loans where disabled = 0 and status='INVEST' and special_loan is null and special_user_id is null and loan_type <> 'NEWUSER_PROJECT' and invest_open_time < now() order by case loan_period when 'SHORT' then 1 when 'MIDDLE' then 2 when 'LONG' then 3 else 4 end asc , invest_open_time asc"
-    opensql="select * from loans where disabled = 0 and status='INVEST' and special_loan is null and special_user_id is null and loan_type <> 'NEWUSER_PROJECT' and invest_open_time > now() order by case loan_period when 'SHORT' then 1 when 'MIDDLE' then 2 when 'LONG' then 3 else 4 end asc , invest_open_time asc"
+    opensql="select * from loans where disabled = 0 and status='INVEST' and special_loan is null and special_user_id is null and loan_type = 'RECOMMEND_PROJECT' and invest_open_time < now() order by case loan_period when 'SHORT' then 1 when 'MIDDLE' then 2 when 'LONG' then 3 else 4 end asc , invest_open_time asc"
+    readysql="select * from loans where disabled = 0 and status='INVEST' and special_loan is null and special_user_id is null and loan_type = 'RECOMMEND_PROJECT' and invest_open_time > now() order by case loan_period when 'SHORT' then 1 when 'MIDDLE' then 2 when 'LONG' then 3 else 4 end asc , invest_open_time asc"
+    vipopensql="select * from loans where disabled = 0 and status='INVEST' and special_loan is null and special_user_id is null and loan_type = 'VIP_PROJECT' and invest_open_time < now() order by case loan_period when 'SHORT' then 1 when 'MIDDLE' then 2 when 'LONG' then 3 else 4 end asc , invest_open_time asc"
+    vipreadysql="select * from loans where disabled = 0 and status='INVEST' and special_loan is null and special_user_id is null and loan_type = 'VIP_PROJECT' and invest_open_time > now() order by case loan_period when 'SHORT' then 1 when 'MIDDLE' then 2 when 'LONG' then 3 else 4 end asc , invest_open_time asc"
     #发起HTTP请求
     reqbody=httppost(@url,data)
     #解析返回的json数据
@@ -57,7 +55,9 @@ class Testhome<Test::Unit::TestCase
     newsqldata=Resultdiy.new(@conn.sqlquery(newsql)).result_to_list
     readysqldata=Resultdiy.new(@conn.sqlquery(readysql)).result_to_list
     opensqldata=Resultdiy.new(@conn.sqlquery(opensql)).result_to_list
-    sqldata=readysqldata+opensqldata+newsqldata
+    vipreadysqldata=Resultdiy.new(@conn.sqlquery(vipreadysql)).result_to_list
+    vipopensqldata=Resultdiy.new(@conn.sqlquery(vipopensql)).result_to_list
+    sqldata=opensqldata+readysqldata+vipopensqldata+vipreadysqldata+newsqldata
     alljsondata=jsondata.push(newjsondata)
     #定义检查点的名字test，插入到html报告中
     test="检查关键字loan_id"
@@ -73,13 +73,17 @@ class Testhome<Test::Unit::TestCase
     data={"token"=>"#{@token}"}
     path='.data.loans'
     newpath='.data.new_user_loan'
-    readysql="select * from loans where disabled = 0 and status='INVEST' and special_loan is null and special_user_id is null and loan_type <> 'NEWUSER_PROJECT' and invest_open_time < now() order by case loan_period when 'SHORT' then 1 when 'MIDDLE' then 2 when 'LONG' then 3 else 4 end asc , invest_open_time asc"
-    opensql="select * from loans where disabled = 0 and status='INVEST' and special_loan is null and special_user_id is null and loan_type <> 'NEWUSER_PROJECT' and invest_open_time > now() order by case loan_period when 'SHORT' then 1 when 'MIDDLE' then 2 when 'LONG' then 3 else 4 end asc , invest_open_time asc"
+    opensql="select * from loans where disabled = 0 and status='INVEST' and special_loan is null and special_user_id is null and loan_type = 'RECOMMEND_PROJECT' and invest_open_time < now() order by case loan_period when 'SHORT' then 1 when 'MIDDLE' then 2 when 'LONG' then 3 else 4 end asc , invest_open_time asc"
+    readysql="select * from loans where disabled = 0 and status='INVEST' and special_loan is null and special_user_id is null and loan_type = 'RECOMMEND_PROJECT' and invest_open_time > now() order by case loan_period when 'SHORT' then 1 when 'MIDDLE' then 2 when 'LONG' then 3 else 4 end asc , invest_open_time asc"
+    vipopensql="select * from loans where disabled = 0 and status='INVEST' and special_loan is null and special_user_id is null and loan_type = 'VIP_PROJECT' and invest_open_time < now() order by case loan_period when 'SHORT' then 1 when 'MIDDLE' then 2 when 'LONG' then 3 else 4 end asc , invest_open_time asc"
+    vipreadysql="select * from loans where disabled = 0 and status='INVEST' and special_loan is null and special_user_id is null and loan_type = 'VIP_PROJECT' and invest_open_time > now() order by case loan_period when 'SHORT' then 1 when 'MIDDLE' then 2 when 'LONG' then 3 else 4 end asc , invest_open_time asc"
     reqbody=httppost(@url,data)
     jsondata=jsonlist reqbody,path
     readysqldata=Resultdiy.new(@conn.sqlquery(readysql)).result_to_list
     opensqldata=Resultdiy.new(@conn.sqlquery(opensql)).result_to_list
-    sqldata=readysqldata+opensqldata
+    vipreadysqldata=Resultdiy.new(@conn.sqlquery(vipreadysql)).result_to_list
+    vipopensqldata=Resultdiy.new(@conn.sqlquery(vipopensql)).result_to_list
+    sqldata=opensqldata+readysqldata+vipopensqldata+vipreadysqldata
     test="检查json的new_user_loan为空"
     @html.add_to_report((nil.eql?(jsonlist reqbody,newpath)),test)
     test="检查关键字loan_id"

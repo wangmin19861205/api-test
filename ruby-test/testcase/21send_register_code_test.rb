@@ -1,8 +1,3 @@
-require 'test/unit'
-require_relative "../iframe/http_methods"
-require_relative '../iframe/resultdiy'
-require_relative "../iframe/htmlclass"
-
 
 
 class Testsend_register_code<Test::Unit::TestCase
@@ -13,6 +8,7 @@ class Testsend_register_code<Test::Unit::TestCase
     @html = HTMLReport.new()
     @report = @html.createReport1('send_register_code')
     @url="http://rpc.wangmin.test.zrcaifu.com/send_register_code"
+    MySSH.sshconn('echo "FLUSHALL" | redis-cli')
   end
 
   def teardown
@@ -28,7 +24,7 @@ class Testsend_register_code<Test::Unit::TestCase
     @html.newTestName('注册验证码-正常')
     begin
       data={"phone"=>"13500000098"}
-      path='.data.success'
+      path='.data.data.success'
       reqbody=httppost(@url,data)
       jsondata=jsonlist reqbody,path
       result=(true.eql?jsondata)

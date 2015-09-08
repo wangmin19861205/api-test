@@ -1,8 +1,3 @@
-require 'test/unit'
-require_relative "../iframe/http_methods"
-require_relative '../iframe/resultdiy'
-require_relative "../iframe/htmlclass"
-
 
 
 class Testaccount_investlist<Test::Unit::TestCase
@@ -33,13 +28,16 @@ class Testaccount_investlist<Test::Unit::TestCase
     sql1="select invests.* ,  sum(case invest_receives.done when 1 then  invest_receives.amount_interest else 0 end) as invest_received_amount ,
    sum(case invest_receives.done when 0 then invest_receives.amount_interest else 0 end) as invest_unreceived_amount
   from invests, invest_receives where invests.user_id = '2898945' and invests.id = invest_receives.invest_id and case loan_repay_status when 'ALL' then 1 else 0 end = 0
-  group by invests.id order by create_time desc limit 20 offset 0  "
+  group by invests.id order by create_time desc limit 20 offset 0"
     path='.data.data[]'
     reqbody=httppost(@url,data1)
     jsondata1=jsonlist reqbody,path
     sqldata1=Resultdiy.new(@conn.sqlquery(sql1)).result_to_list
     test = '检查关键字invest_id'
-    result=asskey(jsondata1,sqldata1,["id",:id])
+    result=asskeylist(jsondata1,sqldata1,["id","annualized_rate","amount","invest_received_amount","invest_unreceived_amount"])
+    @html.add_to_report(result,test)
+    test = '检查关键字amount_interest'
+    result=asskey(jsondata1,sqldata1,["amount_interest",:interest])
     @html.add_to_report(result,test)
   end
 
@@ -54,9 +52,11 @@ class Testaccount_investlist<Test::Unit::TestCase
     jsondata1=jsonlist reqbody,path
     sqldata1=Resultdiy.new(@conn.sqlquery(sql1)).result_to_list
     test = '检查关键字invest_id'
-    result=asskey(jsondata1,sqldata1,["id",:id])
+    result=asskeylist(jsondata1,sqldata1,["id","annualized_rate","amount","invest_received_amount","invest_unreceived_amount"])
+    @html.add_to_report(result,test)
+    test = '检查关键字amount_interest'
+    result=asskey(jsondata1,sqldata1,["amount_interest",:interest])
     @html.add_to_report(result,test)
   end
-
 
 end

@@ -1,8 +1,4 @@
-require 'test/unit'
-require_relative "../iframe/http_methods"
-require_relative '../iframe/resultdiy'
-require_relative "../iframe/htmlclass"
-
+require_relative '../iframe/http_methods'
 
 
 class Testaccount_journals<Test::Unit::TestCase

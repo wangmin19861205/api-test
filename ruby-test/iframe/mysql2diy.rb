@@ -14,6 +14,7 @@ class Mysqldiy
         :encoding=>@setting.DATABASE.chart)
     puts @setting.database
   end
+
   def sqlquery sql
     results=@conn.query(sql)
     arr=results.each(:as => :array) do |row|

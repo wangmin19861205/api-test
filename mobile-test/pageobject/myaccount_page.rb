@@ -16,8 +16,6 @@ class Myaccount < PageObject
     return text1,text2,text3,text4,text5
   end
 
- 
-
 end
 
 

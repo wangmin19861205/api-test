@@ -1,5 +1,5 @@
 base_dir = File.dirname(File.dirname(File.dirname(__FILE__)))             #工作目录
-lib_dir  = File.join(base_dir, "iframe")        #lib包目录
+lib_dir  = File.join(File.dirname(File.dirname(File.dirname(File.dirname(__FILE__)))), "/ruby-test/iframe")        #lib包目录
 pageobject = File.join(base_dir, "pageobject")   #pageobject包目录
 #test_dir = File.join(base_dir, "uitestcase")      #case目录
 
@@ -32,6 +32,10 @@ end
 
 After do |scenario|
   @driver.driver_quit
+  if scenario.failed?
+    subject = "[Project X] #{scenario.exception.message}"
+    $stderr.puts subject
+    end
 end
 
 

@@ -1,7 +1,3 @@
-require 'test/unit'
-require_relative "../iframe/http_methods"
-require_relative '../iframe/resultdiy'
-require_relative "../iframe/htmlclass"
 
 
 
@@ -17,13 +13,9 @@ class Testdetail<Test::Unit::TestCase
     @token=jsonlist httppost(url,data),'.data.token'
     url1="http://rpc.wangmin.test.zrcaifu.com/listpage"
     reqbody=httpget(url1)
-    middlepath='.data.middle_loans.loans[]'
-    middleloans=jsonlist reqbody,middlepath
-    list=[]
-    middleloans.each do |row|
-      list.push(row["id"])
-    end
-    @id=list.sample
+    path='.data[].loans[].id'
+    loansid=jsonlist reqbody,path
+    @id=loansid.sample
     @url="http://rpc.wangmin.test.zrcaifu.com/detail"
   end
 
@@ -37,16 +29,14 @@ class Testdetail<Test::Unit::TestCase
   end
 
   def test_right
-    @html.newTestName('项目详情-中期正常')
+    @html.newTestName('项目详情-ID随机')
     data={"token"=>@token,"id"=>@id}
-    puts @id
-    sql="select * from loans where disabled = 0 and id = #{@id}"
+    sql="select id,title,annualized_rate,annualized_rate0,annualized_rate1,annualized_rate1,days_of_loan,min_invest_amount,uninvest_amount,loanproposal_id from loans  where disabled = 0 and id = #{@id}"
     path='.data.loan'
     reqbody=httppost(@url,data)
-    jsondata=jsonlist reqbody,path
     sqldata=Resultdiy.new(@conn.sqlquery(sql)).result_to_list
-    test = '检查关键字:项目uninvest_amount'
-    result=asskey(jsondata,sqldata,["uninvest_amount",:uninvest_amount])
+    test = '检查json与数据库data交集key的值对比'
+    result=assreqbody_sqlkey(reqbody,sqldata,path)
     @html.add_to_report(result,test)
   end
 

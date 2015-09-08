@@ -20,6 +20,10 @@ class Home < PageObject
     @driver.find_until(To_myset_button).click
   end
 
+  def in_message
+    @driver.find_until(To_Message_button).click
+  end
+
   def loancard
     text1=@driver.find_untils(Annualized_rate).map do |item|
       item.text

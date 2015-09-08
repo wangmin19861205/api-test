@@ -1,7 +1,3 @@
-require 'test/unit'
-require_relative "../iframe/http_methods"
-require_relative '../iframe/resultdiy'
-require_relative "../iframe/htmlclass"
 
 
 
@@ -12,7 +8,8 @@ class Testregister<Test::Unit::TestCase
     @test_environment = 'QA'
     @html = HTMLReport.new()
     @report = @html.createReport1('register')
-    result=(Resultdiy.new(@conn.sqlquery("select * from users where secure_phone ='13500000018'")).result_to_list)
+    MySSH.sshconn('echo "FLUSHALL" | redis-cli')
+    result=(Resultdiy.new(@conn.sqlquery("select * from users where secure_phone ='13500000098'")).result_to_list)
     if result[0]
       userid=result[0][:id]
       sql1="delete from accounts where user_id ='#{userid}'"
@@ -28,7 +25,6 @@ class Testregister<Test::Unit::TestCase
     sql="select content from sms_records where numbers = '13500000098' order by id desc limit 1"
     codetext=(Resultdiy.new(@conn.sqlquery(sql)).result_to_list[0])[:content]
     @auth_code=/您的验证码是: (.*)/.match(codetext).to_a[1]
-    puts @auth_code+"111111111111111"
     @url="http://rpc.wangmin.test.zrcaifu.com/register"
   end
 
@@ -47,7 +43,6 @@ class Testregister<Test::Unit::TestCase
     path='.data.user.secure_phone'
     begin
       reqbody=httppost(@url,data)
-      puts reqbody
       jsondata=jsonlist reqbody,path
       result="13500000098".eql?jsondata
     rescue Exception

@@ -11,7 +11,6 @@ class PageObject
     @driver.server_url
   end
 
-
   #可以添加更多页面共用方法
 end
 

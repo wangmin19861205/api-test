@@ -13,8 +13,6 @@ Given /验证我的资产:/ do |table|
   expect(assdata).to eq(data)
 end
 
-Given /等待(.*)秒/ do |no|
-  sleep(no.to_i)
-end
+
 
 

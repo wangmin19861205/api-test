@@ -1,5 +1,8 @@
-class HTMLReport
+require_relative 'timediy'
 
+
+class HTMLReport
+  include Timediy
   # Initialize the report class
   def initialize()
     @overallResult = 'PASS'
@@ -91,16 +94,8 @@ class HTMLReport
 
   def createReport1(header)
     @reportName = "result.html"
-    #报告产生的日期
-    def get_date
-      Time.now.strftime("%y.%m.%d")
-    end
-    def get_time
-      Time.now.strftime("%H.%M.%S")
-    end
-
-    d = self.get_date
-    t = self.get_time
+    d = getnowdatesimple
+    t = getnowtimesimple
     strTime = "#{d}-#{t}.html"
     strNiceTime = "#{d} @ #{t}"
 
@@ -151,7 +146,7 @@ class HTMLReport
   end
 
   def addtoReport(step, result, description)
-    #根据结构，插入HTML报告模板
+    #定义检查点html的结构
     @reportContent2 = @reportContent2 + '<tr><td class="step">' + step + '</td>'
     if result == 'PASS'
       @reportContent2 = @reportContent2 + '<td class="result_pass" bgcolor="green" align="center">' + result + '</td>'
@@ -166,7 +161,7 @@ class HTMLReport
   end
 
   def add_to_report(result ,test)
-    #针对测试检查点，输出单个点报告
+    #针对测试检查点，输出单个检查点的html报告
     if result.class == Array
       result[0] == true ? self.addtoReport(test, 'PASS', result[1]) : self.addtoReport(test, 'FAIL', result[1])
     else
@@ -174,16 +169,6 @@ class HTMLReport
     end
   end
 
-  #格式化时间
-  def format_test_time(seconds)
-    if seconds < 60
-      "0 min, #{"%.02f" % seconds} sec"
-    else
-      minutes = (seconds/60).to_i
-      seconds = seconds - (minutes*60)
-      "#{minutes} min, #{"%.02f" % seconds} sec"
-    end
-  end
 
   def finishReport(reportName, env)
     #完善报告
@@ -195,7 +180,7 @@ class HTMLReport
     strFile.puts('<td align="center" colspan=3>' + '<b><font color="green">' + "%.02f" % percent_pass + '% Passed, ' + '<font color="red">' + "%.02f" % percent_fail + '% Failed' + '</b></td></tr>')
     #填写测试时间
     seconds = (Time.now - @start_time)
-    test_time = self.format_test_time(seconds)
+    test_time = format_test_time(seconds)
     strFile.puts('</tr>
       <th width=15% bgcolor="#E0FFFF">Run time:</th>
       <td width=20% align="center">' + test_time  + '</td>
@@ -203,11 +188,15 @@ class HTMLReport
       <td align="center">' + env + '</td>
       </tr>
       </tbody></table>')
-    strFile.puts(@reportContent2+'     </tbody>
+    strFile.puts(@reportContent2+'</tbody>
           </table>
           </center>
-          </td>')
-
+          </td>
+          </tr>
+          </tbody>
+          </table>
+          </center>
+          </body>')
     strFile.close
   end
 end

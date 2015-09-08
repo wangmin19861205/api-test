@@ -1,5 +1,3 @@
-require 'json'
-require 'rest-client'
 require 'jq/extend'
 require 'cgi'
 require 'uri'
@@ -54,13 +52,16 @@ module Httpmethod
 
   def assall jsondata,sqldata
     #接受一个hash或array的jsondata
+    #如果=hash   对比hash中的每个value(只判断value与顺序)
+    #如果=araay  遍历列表再对比每个hash中的每个value
+    #sqldata一般为数据库取出的结果array
+    #返回true，flase ，信息str
     if jsondata.class == Hash
       jsondata=[].push(jsondata)
     elsif jsondata.class == Array
     else
       raise "既不是hash,也不是array"
     end
-    puts jsondata,sqldata
     if  asslength jsondata,sqldata
       abc=0
       str=''
@@ -70,9 +71,9 @@ module Httpmethod
         lengths=0
         while lengths<assvalue.length
           if assvalue[lengths] == assvalue0[lengths]
-            str+="第#{lengths}组pass,#{assvalue[lengths]}与#{assvalue0[lengths]}对比成功"
+            str+="第#{lengths}组对比成功,#{assvalue[lengths]}与#{assvalue0[lengths]}  <br>"
           else
-            return FALSE,str+="第#{lengths}组pass,#{assvalue[lengths]}与#{assvalue0[lengths]}对比失败"
+            return FALSE,str+="第#{lengths}组对比失败,#{assvalue[lengths]}与#{assvalue0[lengths]}  <br>"
           end
           lengths+=1
         end
@@ -85,15 +86,29 @@ module Httpmethod
   end
 
   def asslength jsondata,sqldata
+    # 接受一个hash或array的jsondata
+    # 判断jsondata与sqldata的长度
+    # 返回true，fasle
     if jsondata.class == Hash and sqldata.length == 1
-      return TRUE,"json=hash,sql长度为1"
-    elsif jsondata.length == sqldata.length
-      return TRUE,"长度#{jsondata.length},#{sqldata.length}"
+      #puts "json=hash,sql长度为1"
+      return TRUE
+    elsif jsondata.class == Array and jsondata.length == sqldata.length
+      #puts "长度#{jsondata.length},#{sqldata.length}"
+      return TRUE
     else
-      return FALSE,"长度不同"
+      return FALSE
     end
   end
 
+
+
+  #将接口返回的json与sqldata进行指定key值的对比
+  #接受一个hash或array的json
+  #如果=hash   对比jsondata中的key=diykey[0]的值与sqldata中的hash中的key=diykey[1]的值
+  #如果=araay  遍历列表jsondata与sqldata，取出hash后对比两者的key的值
+  #sqldata一般为数据库取出的结果列表array
+  #diykey=[a,b],a,b为自定义的key值
+  #返回true，flase ，信息str
   def asskey jsondata,sqldata,diykey
     if jsondata.class == Hash
       jsondata=[].push(jsondata)
@@ -101,35 +116,94 @@ module Httpmethod
     else
       raise "既不是hash,也不是array"
     end
-    if  asslength jsondata,sqldata
-      puts '长度相同'
+    if asslength jsondata,sqldata and jsondata.empty?
+      return TRUE,"json与sql的数据均为空"
+    elsif  asslength jsondata,sqldata
       str=''
       abc=0
       while abc<jsondata.length
-        assvalue1=jsondata[abc][diykey[0]]
-        assvalue2=(sqldata[abc][diykey[1]].class == BigDecimal ? sqldata[abc][diykey[1]].to_f : sqldata[abc][diykey[1]])
-        if assvalue1 == assvalue2
-          puts "第#{abc}组pass,#{assvalue1},#{assvalue2}"
-          str+="第#{abc}组pass,#{assvalue1},#{assvalue2}\n"
-        else
-          return FALSE,str+="第#{abc}组failed,#{assvalue1},#{assvalue2}\n"
+          assvalue1=jsondata[abc][diykey[0]]
+          assvalue2=(sqldata[abc][diykey[1]].class == BigDecimal ? sqldata[abc][diykey[1]].to_f : sqldata[abc][diykey[1]])
+          if assvalue1 == assvalue2
+            str+="第#{abc}组pass,#{assvalue1},#{assvalue2} <br>"
+          else
+            return FALSE,str+="第#{abc}组failed,#{assvalue1},#{assvalue2} <br>"
+          end
+        abc+=1
+      end
+      return TRUE,str
+    else
+      return FALSE,"长度不一致"
+    end
+  end
+
+
+
+  # diykey=列表
+  # json与sqldata遍历diykey中的每个值
+  # json取key,sqldata取key.to_sym
+  def asskeylist jsondata,sqldata,diykey
+    if jsondata.class == Hash
+      jsondata=[].push(jsondata)
+    elsif jsondata.class == Array
+    else
+      raise "既不是hash,也不是array"
+    end
+    if asslength jsondata,sqldata and jsondata.empty?
+      return TRUE,"json与sql的数据均为空"
+    elsif  asslength jsondata,sqldata
+      str=''
+      abc=0
+      while abc<jsondata.length
+        diykey.each do |key|
+          assvalue1=jsondata[abc][key]
+          assvalue2=(sqldata[abc][key.to_sym].class == BigDecimal ? sqldata[abc][key.to_sym].to_f : sqldata[abc][key.to_sym])
+          if assvalue1 == assvalue2
+            str+="第#{abc}组KEY对比通过:#{key}--#{assvalue1},#{assvalue2} <br>"
+          else
+            return FALSE,str+="第#{abc}组KEY对比失败:#{key}--#{assvalue1},#{assvalue2} <br>"
+          end
         end
         abc+=1
       end
       return TRUE,str
     else
-      raise "长度不一致"
+      return FALSE,"长度不一致"
+    end
+  end
+
+  #将reqbody与数据库取出的data列表对比
+  #reqbody解析路劲为path，解析后为json
+  #sqldata长度为1，key值与json的key相同
+  #从sqldata[0]取出hash遍历key值与reqbody的path路径的json进行key值对比
+  def assreqbody_sqlkey reqbody,sqldata,path
+    str=''
+    if sqldata[0].class == Hash
+      sqldata[0].each_pair do  |key,value|
+        jsonvalue=jsonlist reqbody,path+'.'+key.to_s
+        value = value.class == BigDecimal ? value.to_f : value
+        if value == jsonvalue
+          str+="#{key}对比通过,#{jsonvalue},#{value}  <br>"
+        else
+          return false,str+="#{key}对比失败,#{jsonvalue},#{value}  <br>"
+        end
+      end
+      return true,str
+    else
+      return false
     end
   end
 
 
+  #验证数据库取出来的data列表中的某个KEY等于预期的值
+  #只支持验证同一个预期值
   def asssqllist sqldata,diykey,assvalue
     sqldata.each do |row|
       row[diykey].class == BigDecimal ? row[diykey].to_f : row[diykey]
       if row[diykey] == assvalue
-        puts "asslist        #{row[diykey]},,,#{assvalue}pass"
+        #puts "asslist        #{row[diykey]},,,#{assvalue}pass"
       else
-        puts "asslist        #{row[diykey]},,,#{assvalue}不相等"
+        #puts "asslist        #{row[diykey]},,,#{assvalue}不相等"
         return FALSE
       end
     end
@@ -153,7 +227,7 @@ module Httpmethod
     return URI::unescape str
   end
 
-
+end
 =begin   共用方法
   def httpcoon (meth,url,data={},head={})
     begin
@@ -163,6 +237,5 @@ module Httpmethod
     end
   end
 =end
-end
 
 

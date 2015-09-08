@@ -1,7 +1,3 @@
-require 'test/unit'
-require_relative "../iframe/http_methods"
-require_relative '../iframe/resultdiy'
-require_relative "../iframe/htmlclass"
 
 
 
@@ -48,6 +44,7 @@ class Testdetail_coupon<Test::Unit::TestCase
     reqbody=httppost(@url,data)
     jsondata=jsonlist reqbody,path
     sqldata=Resultdiy.new(@conn.sqlquery(sql)).result_to_list
+    #未完成
     test = '检查关键字:reward_id'
     result=asskey(jsondata,sqldata,["id",:id])
     @html.add_to_report(result,test)

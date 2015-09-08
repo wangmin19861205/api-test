@@ -36,3 +36,5 @@ Newloan_min_money={id: 'com.zrcaifu:id/news_money'}
 Newloan_progess={id: 'com.zrcaifu:id/pro_progress_text'}
 
 Message={xpath: "//*[@resource-id='android:id/content']/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.TextView"}
+
+To_Message_button={id: 'com.zrcaifu:id/title_mail_box'}
