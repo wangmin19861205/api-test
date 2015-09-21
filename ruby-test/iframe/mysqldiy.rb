@@ -40,6 +40,13 @@ end
 
 
 
+=begin
+db=MyDB.new("rui_site")
+db.sqlquery("select * from users where id = '2899100'").all
+#db.update("update users set secure_email= 'wwww' where id = '2899100'")
+#db.delete("delete from users where id = '2899100'")
+=end
+
 
 
 

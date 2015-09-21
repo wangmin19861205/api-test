@@ -1,14 +1,9 @@
-class ABC
-  def initialize
-    @a=1
+module WWW
+  class Test2
+    class << self
+      def add
+        a=1+2
+      end
+    end
   end
 end
-
-
-class BBC<ABC
-  def abc
-    puts @a
-  end
-end
-
-a=BBC.new.abc

@@ -4,7 +4,7 @@ require 'cucumber'
 Given /用户进入首页/ do
   mobile=Home.new(@driver)
   data=mobile.in_home
-  expect("中瑞财富").to eq(data)
+  expect(data).to eq("中瑞财富")
 end
 
 Given /首页(.*)项目卡片等于:/ do |loantype,table|
@@ -19,13 +19,13 @@ Given /首页(.*)项目卡片等于:/ do |loantype,table|
   elsif loantype == ''
     data=mobile.loancard
   end
-  expect(assdata).to eq(data)
+  expect(data).to eq(assdata)
 end
 
 Given /验证消息数量:(.*)/ do |no|
   mobile=Home.new(@driver)
   data=mobile.message
-  expect(no).to eq(data)
+  expect(data).to eq(no)
 end
 
 Given /进入全部项目页/ do

@@ -6,6 +6,7 @@ $LOAD_PATH.unshift(lib_dir)
 #导入unit与gem包
 require 'test/unit'
 require 'bundler/setup'
+require 'watir-webdriver'
 Bundler.require(:default)
 #将lib包下的文件全部导入
 Dir.foreach(lib_dir) do |filename|
@@ -27,7 +28,17 @@ Test::Unit.at_start do
   inifile.close
   $stderr.puts "初始化result"
 end
+
+
+Test::Unit.at_exit do
+  driver=Watir::Browser.new :chrome
+  driver.window.maximize
+  driver.goto "file://#{File.realpath(File.dirname(__FILE__))}/results/result.html"
+end
+
+
 exit Test::Unit::AutoRunner.run(true, test_dir)
+
 
 
 =begin

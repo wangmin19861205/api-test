@@ -58,7 +58,7 @@ class Testlistpage_more<Test::Unit::TestCase
     jsondata=jsonlist reqbody,path
     sqldata=Resultdiy.new(@conn.sqlquery(sql)).result_to_list
     test = '检查长度'
-    @html.add_to_report(((asslength jsondata,sqldata)),test)
+    @html.add_to_report((( asslength jsondata,sqldata)),test)
     test1 = '检查关键字loan_id'
     result=asskey(jsondata,sqldata,["id",:id])
     @html.add_to_report(result,test1)

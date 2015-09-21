@@ -27,10 +27,10 @@ class Testaccount_message_list<Test::Unit::TestCase
   def test_right
     @html.newTestName('获取消息概览-正常')
     data={"token"=>@token}
-    rechargecountsql="select count(id) as conut, message_type  from user_messages where disable = 0 and user_id = '2898945' and create_time > date_sub(current_date(),INTERVAL 90 day) and (display_type = 'ALL' or display_type = 'MOBILE')  and is_read = 0  and message_type in ('WITHDRAW','RECHARGE')"
-    rechargemessagesql1="select id, user_id , message_type , content, is_read ,title , create_time, icon_isok from user_messages where disable = 0 and user_id = '2898945' and create_time > date_sub(current_date(),INTERVAL 90 day) and (display_type = 'ALL' or display_type = 'MOBILE')  and message_type in ('WITHDRAW','RECHARGE') order by create_time desc limit 1"
-    investcountsql="select count(id) as conut, message_type  from user_messages where disable = 0 and user_id = '2898945' and create_time > date_sub(current_date(),INTERVAL 90 day) and (display_type = 'ALL' or display_type = 'MOBILE')  and is_read = 0  and message_type = 'INVEST'"
-    investmessagesql1="select id, user_id , message_type , content, is_read ,title , create_time, icon_isok from user_messages where disable = 0 and user_id = '2898945' and create_time > date_sub(current_date(),INTERVAL 90 day) and (display_type = 'ALL' or display_type = 'MOBILE')  and message_type ='INVEST' order by create_time desc limit 1"
+    rechargecountsql="select count(id) as conut, message_type  from user_messages where disable = 0 and user_id = '2898945' and create_time > date_sub(current_date(),INTERVAL 90 day) and (display_type = 'ALL' or display_type = 'APP')  and is_read = 0  and message_type in ('WITHDRAW','RECHARGE')"
+    rechargemessagesql1="select id, user_id , message_type , content, is_read ,title , create_time, icon_isok from user_messages where disable = 0 and user_id = '2898945' and create_time > date_sub(current_date(),INTERVAL 90 day) and (display_type = 'ALL' or display_type = 'APP')  and message_type in ('WITHDRAW','RECHARGE') order by create_time desc limit 1"
+    investcountsql="select count(id) as conut, message_type  from user_messages where disable = 0 and user_id = '2898945' and create_time > date_sub(current_date(),INTERVAL 90 day) and (display_type = 'ALL' or display_type = 'APP')  and is_read = 0  and message_type = 'INVEST'"
+    investmessagesql1="select id, user_id , message_type , content, is_read ,title , create_time, icon_isok from user_messages where disable = 0 and user_id = '2898945' and create_time > date_sub(current_date(),INTERVAL 90 day) and (display_type = 'ALL' or display_type = 'APP')  and message_type ='INVEST' order by create_time desc limit 1"
     path='.data[1].new_message_count'
     path1='.data[1].newest_message'
     reqbody=httppost(@url,data)

@@ -43,7 +43,7 @@ Min_input_money={id: 'com.zrcaifu:id/can_invest_min_amount'}
 
 Max_input_money={id: 'com.zrcaifu:id/can_invest_max_amount'}
 
-
+Invite_friend_text={id: 'com.zrcaifu:id/invite_friend_invest_new_loan'}
 
 
 

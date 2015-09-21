@@ -3,6 +3,8 @@ To_home_button={xpath: '//android.widget.Button[contains(@index,1)]'}
 
 Home_title={id: 'com.zrcaifu:id/title_text'}
 
+To_index_button={id: 'com.zrcaifu:id/bottom_bar_index'}
+
 To_allproject_button={id: 'com.zrcaifu:id/bottom_bar_all'}
 
 To_account_button={id: 'com.zrcaifu:id/bottom_bar_mine'}

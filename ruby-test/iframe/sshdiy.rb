@@ -11,7 +11,7 @@ class MySSH
       password=@setting.password
       port=@setting.port
       Net::SSH.start(host,username,:password => password,:port=> port) do |ssh|
-        puts ssh.exec!(sh)
+        puts "清除redis--#{ssh.exec!(sh)}"
       end
     end
   end

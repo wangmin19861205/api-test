@@ -1,14 +1,18 @@
 require 'time'
 
 module Timediy
+
+  #"2015-09-08 23:23:28"
   def getnowtimeall
     Time.new.strftime("%F %H:%M:%S")
   end
 
+  #"23:23:50"
   def getnowtimesimple
     Time.new.strftime('%T')
   end
 
+  #"2015-09-08"
   def getnowdatesimple
     Time.new.strftime("%F")
   end
@@ -24,4 +28,6 @@ module Timediy
     end
   end
 end
+
+
 

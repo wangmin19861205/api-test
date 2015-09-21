@@ -13,6 +13,7 @@ gem 'git'
 gem 'json'
 gem 'net-ssh'
 gem 'appium_lib'
+gem 'watir-webdriver'
 
 #安装ruby-jq
 #git clone https://github.com/stedolan/jq.git
