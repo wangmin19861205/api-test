@@ -78,6 +78,8 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.1)
+    watir-webdriver (0.8.0)
+      selenium-webdriver (>= 2.46.2)
     websocket (1.2.2)
 
 PLATFORMS
@@ -100,6 +102,7 @@ DEPENDENCIES
   sequel
   settingslogic
   test-unit
+  watir-webdriver
 
 BUNDLED WITH
    1.10.6

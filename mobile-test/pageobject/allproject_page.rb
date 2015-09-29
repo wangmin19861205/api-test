@@ -1,5 +1,6 @@
 require_relative '../pageobject/pageobject'
-require_relative '../pageelement/allproject_page'
+require_relative '../pageelement/2allproject_page'
+
 
 
 class Allproject < PageObject
@@ -52,7 +53,7 @@ class Allproject < PageObject
     text8=@driver.find_untils(Project_payment_type).map do |item|
       item.text
     end
-    return text1,text2,text3,text4,text5,text6,text7,text8
+    return text1,text2,text3,text4,text6,text7,text8
   end
 
   def newloandetail
@@ -64,5 +65,15 @@ class Allproject < PageObject
     text6=@driver.find_until(Newproject_invest_money0).text
     return text1,text2,text3,text4,text5,text6
   end
+
+  def get_invitefriend_text
+    return @driver.find_until(Invite_friend_text).text
+  end
+
+  def get_invest_button
+    return @driver.find_until(Invest_button).text
+  end
+
+
 
 end

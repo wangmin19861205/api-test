@@ -10,8 +10,10 @@ class Testoverview<Test::Unit::TestCase
     @html = HTMLReport.new()
     @report = @html.createReport1('overview')
     url="http://rpc.wangmin.test.zrcaifu.com/login"
-    data={"name"=>"13500000045","password"=>"123456"}
-    @token=jsonlist httppost(url,data),'.data.token'
+    data={"name"=>"13500000069","password"=>"123456"}
+    reqbody= httppost(url,data)
+    @token=jsonlist reqbody,'.token'
+    @user_id=jsonlist reqbody,'.user.id'
     @url="http://rpc.wangmin.test.zrcaifu.com/account/overview"
   end
 
@@ -25,25 +27,75 @@ class Testoverview<Test::Unit::TestCase
   end
 
   def test_right
-    @html.newTestName('用户概览-正常')
-    data={"token"=>@token}
-    sql="select balance_total,receivable_interest,receivable_principal,accumulate_interest,available_reward,available_money,frozen_money_withdraw from `accounts` where user_id ='2898945'"
-    path='.data'
-    reqbody=httppost(@url,data)
-    sqldata=Resultdiy.new(@conn.sqlquery(sql)).result_to_list
-    test = '检查json与数据库data交集key的值对比'
-    result=assreqbody_sqlkey reqbody,sqldata,path
-    @html.add_to_report(result,test)
+    begin
+      @html.newTestName('用户概览-正常')
+      data={"token"=>@token}
+      sql="select balance_total,receivable_interest,receivable_principal,accumulate_interest,available_reward,available_money,frozen_money_withdraw from `accounts` where user_id ='#{@user_id}'"
+      path='.account'
+      reqbody=httppost(@url,data)
+      sqldata=Resultdiy.new(@conn.sqlquery(sql)).result_to_list
+      result=ass_with_sqlkey reqbody,sqldata,path
+    rescue Exception=>e
+      result=[false,e.message]
+    ensure
+      test = '检查json与数据库data交集key的值对比'
+      @html.add_to_report(result,test)
+    end
   end
 
+
   def test_wrong
-    @html.newTestName('用户概览-错误token')
-    data={"token"=>"rui-session:5d28737b-ce8c1-43d0-b20c-799b54ffe12f"}
-    path='.data.error.code'
-    reqbody=httppost(@url,data)
-    jsondata=jsonlist reqbody,path
-    test = '检查json中的code=20000'
-    @html.add_to_report(20000.eql?(jsondata),test)
+    begin
+      @html.newTestName('用户概览-错误token')
+      data={"token"=>"rui-session:5d28737b-ce8c1-43d0-b20c-799b54ffe12f"}
+      path='.error.msg'
+      reqbody=httppost(@url,data)
+      jsondata=jsonlist reqbody,path
+      result=  "token 失效".eql?(jsondata)
+    rescue Exception=>e
+      result=[false,e.message]
+    ensure
+      test = '检查json中的error：token 失效'
+      @html.add_to_report(result,test)
+    end
   end
+
+
+
+  #外完成
+  def test_wrong1
+    begin
+      @html.newTestName('用户概览-参数为空')
+      data={}
+      path='.error.msg'
+      reqbody=httppost(@url,data)
+      jsondata=jsonlist reqbody,path
+      result="token 失效".eql?(jsondata)
+    rescue Exception=>e
+      result=[false,e.message]
+    ensure
+      test = '检查json中的error：token 失效'
+      @html.add_to_report(result,test)
+    end
+  end
+
+
+  #外完成
+  def test_wrong2
+    begin
+      @html.newTestName('用户概览-参数值为空')
+      data={"token"=>""}
+      path='.error.msg'
+      reqbody=httppost(@url,data)
+      jsondata=jsonlist reqbody,path
+      result="token 失效".eql?(jsondata)
+    rescue Exception=>e
+      result=[false,e.message]
+    ensure
+      test = '检查json中的error：token 失效'
+      @html.add_to_report(result,test)
+    end
+  end
+
 
 end

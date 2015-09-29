@@ -1,4 +1,4 @@
-require_relative '../conf/settings'
+require_relative '../config/settings'
 require 'net/ssh'
 
 

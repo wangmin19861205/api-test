@@ -1,5 +1,5 @@
 require_relative '../pageobject/pageobject'
-require_relative '../pageelement/myaccount_page'
+require_relative '../pageelement/5myaccount_page'
 
 
 class Myaccount < PageObject
@@ -14,6 +14,34 @@ class Myaccount < PageObject
     text4=@driver.find_until(Available_money).text
     text5=@driver.find_until(Available_reward).text
     return text1,text2,text3,text4,text5
+  end
+
+  def in_withdraw
+    @driver.find_until(Withdraw_button).click
+  end
+
+  def in_recharge
+    @driver.find_until(Recharge_button).click
+  end
+
+  def in_investlist
+    @driver.find_until(Invest_list).click
+  end
+
+  def in_journals
+    @driver.find_until(Journals_list).click
+  end
+
+  def in_mybankcard
+    @driver.find_until(Bank_card).click
+  end
+
+  def in_myreward
+    @driver.find_until(My_reward).click
+  end
+
+  def in_invitefriend
+    @driver.find_until(Invite_friend).click
   end
 
 end

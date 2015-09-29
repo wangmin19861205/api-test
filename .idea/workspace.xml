@@ -2,98 +2,102 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="265c7799-89ed-46d4-9121-350da22a9579" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mobile-test/features/4.feature" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mobile-test/features/step_definitions/4_step.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mobile-test/features/step_definitions/5_step.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mobile-test/features/allproject.feature" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mobile-test/features/support/hooks.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mobile-test/pageelement/login_page.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mobile-test/pageobject/login_page.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mobile-test/test1.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mobile-test/test2.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mobile-test/features/support/world.rb" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mobile-test/iframe/digestdiy.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mobile-test/iframe/gitpull.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mobile-test/iframe/htmlclass.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mobile-test/iframe/http_methods.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mobile-test/iframe/mobilediy.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mobile-test/iframe/myappium.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mobile-test/iframe/mysql2diy.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mobile-test/iframe/mysqldiy.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mobile-test/iframe/resultdiy.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mobile-test/iframe/sshdiy.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mobile-test/iframe/timediy.rb" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/features/1.feature" afterPath="$PROJECT_DIR$/mobile-test/features/1.feature" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/1.xml" afterPath="$PROJECT_DIR$/mobile-test/1.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/conf/config.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/conf/settings.rb" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/testcase/10account_journals_test.rb" afterPath="$PROJECT_DIR$/ruby-test/testcase/10account_journals_test.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/testcase/10account_withdraw_status_test.rb" afterPath="$PROJECT_DIR$/ruby-test/testcase/10account_withdraw_status_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/features/10mybankcard.feature" afterPath="$PROJECT_DIR$/mobile-test/features/10mybankcard.feature" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/testcase/11account_reward_test.rb" afterPath="$PROJECT_DIR$/ruby-test/testcase/11account_reward_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/features/11myreward.feature" afterPath="$PROJECT_DIR$/mobile-test/features/11myreward.feature" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/pageelement/11myreward.rb" afterPath="$PROJECT_DIR$/mobile-test/pageelement/11myreward.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/pageelement/11myreward_coupon.rb" afterPath="$PROJECT_DIR$/mobile-test/pageelement/11myreward_coupon.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/pageelement/11myreward_reward.rb" afterPath="$PROJECT_DIR$/mobile-test/pageelement/11myreward_reward.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/testcase/12account_coupon_test.rb" afterPath="$PROJECT_DIR$/ruby-test/testcase/12account_coupon_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/features/12invitefriend.feature" afterPath="$PROJECT_DIR$/mobile-test/features/12invitefriend.feature" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/testcase/13trusteeship_deduct_allbankinfos_test.rb" afterPath="$PROJECT_DIR$/ruby-test/testcase/13trusteeship_deduct_allbankinfos_test.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/testcase/14trusteeship_deduct_cardbankinfo_test.rb" afterPath="$PROJECT_DIR$/ruby-test/testcase/14trusteeship_deduct_cardbankinfo_test.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/testcase/15trusteeship_deduct_usercard_test.rb" afterPath="$PROJECT_DIR$/ruby-test/testcase/15trusteeship_deduct_usercard_test.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/testcase/16account_message_category_test.rb" afterPath="$PROJECT_DIR$/ruby-test/testcase/16account_message_category_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/testcase/16account_message_info_test.rb" afterPath="$PROJECT_DIR$/ruby-test/testcase/16account_message_info_test.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/testcase/16account_message_list_test.rb" afterPath="$PROJECT_DIR$/ruby-test/testcase/16account_message_list_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/testcase/16account_message_unreadcount_test.rb" afterPath="$PROJECT_DIR$/ruby-test/testcase/16account_message_unreadcount_test.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/testcase/17account_readUserMesssageByIds_test.rb" afterPath="$PROJECT_DIR$/ruby-test/testcase/17account_readUserMesssageByIds_test.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/testcase/17account_readUserMesssageByTypes_test.rb" afterPath="$PROJECT_DIR$/ruby-test/testcase/17account_readUserMesssageByTypes_test.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/testcase/19account_deleteUserMesssageByIds_test.rb" afterPath="$PROJECT_DIR$/ruby-test/testcase/19account_deleteUserMesssageByIds_test.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/testcase/19account_deleteUserMesssageByTypes_test.rb" afterPath="$PROJECT_DIR$/ruby-test/testcase/19account_deleteUserMesssageByTypes_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/features/step_definitions/1_step.rb" afterPath="$PROJECT_DIR$/mobile-test/features/step_definitions/1_step.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/features/1home_loan.feature" afterPath="$PROJECT_DIR$/mobile-test/features/1home_loan.feature" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/features/1home_message.feature" afterPath="$PROJECT_DIR$/mobile-test/features/1home_message.feature" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/pageelement/1home_page.rb" afterPath="$PROJECT_DIR$/mobile-test/pageelement/1home_page.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/testcase/1home_test.rb" afterPath="$PROJECT_DIR$/ruby-test/testcase/1home_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/features/2.feature" afterPath="$PROJECT_DIR$/mobile-test/features/2.feature" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/testcase/21register_test.rb" afterPath="$PROJECT_DIR$/ruby-test/testcase/21register_test.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/testcase/21send_register_code_test.rb" afterPath="$PROJECT_DIR$/ruby-test/testcase/21send_register_code_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/features/step_definitions/2_step.rb" afterPath="$PROJECT_DIR$/mobile-test/features/step_definitions/2_step.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/features/2allproject.feature" afterPath="$PROJECT_DIR$/mobile-test/features/2allproject.feature" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/pageelement/2allproject_page.rb" afterPath="$PROJECT_DIR$/mobile-test/pageelement/2allproject_page.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/testcase/2login_test.rb" afterPath="$PROJECT_DIR$/ruby-test/testcase/2login_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/features/3.feature" afterPath="$PROJECT_DIR$/mobile-test/features/3.feature" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/features/step_definitions/3_step.rb" afterPath="$PROJECT_DIR$/mobile-test/features/step_definitions/3_step.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/features/3login.feature" afterPath="$PROJECT_DIR$/mobile-test/features/3login.feature" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/pageelement/3login_page.rb" afterPath="$PROJECT_DIR$/mobile-test/pageelement/3login_page.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/testcase/3logout_test.rb" afterPath="$PROJECT_DIR$/ruby-test/testcase/3logout_test.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/testcase/4listpage_ios_test.rb" afterPath="$PROJECT_DIR$/ruby-test/testcase/4listpage_ios_test.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/testcase/4listpage_more_test.rb" afterPath="$PROJECT_DIR$/ruby-test/testcase/4listpage_more_test.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/testcase/4listpage_status_test.rb" afterPath="$PROJECT_DIR$/ruby-test/testcase/4listpage_status_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/features/4register.feature" afterPath="$PROJECT_DIR$/mobile-test/features/4register.feature" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/pageelement/4register_page.rb" afterPath="$PROJECT_DIR$/mobile-test/pageelement/4register_page.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/testcase/5detail_newuser_test.rb" afterPath="$PROJECT_DIR$/ruby-test/testcase/5detail_newuser_test.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/testcase/5detail_test.rb" afterPath="$PROJECT_DIR$/ruby-test/testcase/5detail_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/features/5myaccount.feature" afterPath="$PROJECT_DIR$/mobile-test/features/5myaccount.feature" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/pageelement/5myaccount_page.rb" afterPath="$PROJECT_DIR$/mobile-test/pageelement/5myaccount_page.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/testcase/6detail_loan_detail_test.rb" afterPath="$PROJECT_DIR$/ruby-test/testcase/6detail_loan_detail_test.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/testcase/6detail_loan_summary_test.rb" afterPath="$PROJECT_DIR$/ruby-test/testcase/6detail_loan_summary_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/testcase/7detail_coupon_test.rb" afterPath="$PROJECT_DIR$/ruby-test/testcase/7detail_coupon_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/testcase/7detail_reward_test.rb" afterPath="$PROJECT_DIR$/ruby-test/testcase/7detail_reward_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/features/6withdraw.feature" afterPath="$PROJECT_DIR$/mobile-test/features/6withdraw.feature" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/testcase/7invest_confirm_test.rb" afterPath="$PROJECT_DIR$/ruby-test/testcase/7invest_confirm_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/testcase/7invest_create_test.rb" afterPath="$PROJECT_DIR$/ruby-test/testcase/7invest_create_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/testcase/7invest_user_coupons_test.rb" afterPath="$PROJECT_DIR$/ruby-test/testcase/7invest_user_coupons_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/testcase/7invest_user_rewards_test.rb" afterPath="$PROJECT_DIR$/ruby-test/testcase/7invest_user_rewards_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/features/7recharge.feature" afterPath="$PROJECT_DIR$/mobile-test/features/7recharge.feature" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/features/8investlist.feature" afterPath="$PROJECT_DIR$/mobile-test/features/8investlist.feature" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/pageelement/8investlist.rb" afterPath="$PROJECT_DIR$/mobile-test/pageelement/8investlist.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/testcase/8overview_test.rb" afterPath="$PROJECT_DIR$/ruby-test/testcase/8overview_test.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/testcase/9account_investlist_test.rb" afterPath="$PROJECT_DIR$/ruby-test/testcase/9account_investlist_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/features/9journals.feature" afterPath="$PROJECT_DIR$/mobile-test/features/9journals.feature" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/pageelement/9journals.rb" afterPath="$PROJECT_DIR$/mobile-test/pageelement/9journals.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/Gemfile.lock" afterPath="$PROJECT_DIR$/mobile-test/Gemfile.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/Gemfile.lock" afterPath="$PROJECT_DIR$/ruby-test/Gemfile.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/Gemfile" afterPath="$PROJECT_DIR$/mobile-test/Gemfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/Gemfile" afterPath="$PROJECT_DIR$/ruby-test/Gemfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/pageelement/allproject_page.rb" afterPath="$PROJECT_DIR$/mobile-test/pageelement/allproject_page.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/pageobject/allproject_page.rb" afterPath="$PROJECT_DIR$/mobile-test/pageobject/allproject_page.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/features/step_definitions/allproject_step.rb" afterPath="$PROJECT_DIR$/mobile-test/features/step_definitions/allproject_step.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/api-test.iml" afterPath="$PROJECT_DIR$/.idea/api-test.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/iframe/digestdiy.rb" afterPath="$PROJECT_DIR$/ruby-test/iframe/digestdiy.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/features/step_definitions/common_step.rb" afterPath="$PROJECT_DIR$/mobile-test/features/step_definitions/common_step.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/features/support/env.rb" afterPath="$PROJECT_DIR$/mobile-test/features/support/env.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/iframe/gitpull.rb" afterPath="$PROJECT_DIR$/ruby-test/iframe/gitpull.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/pageelement/home_page.rb" afterPath="$PROJECT_DIR$/mobile-test/pageelement/home_page.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/pageobject/home_page.rb" afterPath="$PROJECT_DIR$/mobile-test/pageobject/home_page.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/iframe/htmlclass.rb" afterPath="$PROJECT_DIR$/ruby-test/iframe/htmlclass.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/iframe/http_methods.rb" afterPath="$PROJECT_DIR$/ruby-test/iframe/http_methods.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/features/step_definitions/home_step.rb" afterPath="$PROJECT_DIR$/mobile-test/features/step_definitions/home_step.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/pageobject/investlist_page.rb" afterPath="$PROJECT_DIR$/mobile-test/pageobject/investlist_page.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/features/step_definitions/investlist_step.rb" afterPath="$PROJECT_DIR$/mobile-test/features/step_definitions/investlist_step.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/pageobject/journals_page.rb" afterPath="$PROJECT_DIR$/mobile-test/pageobject/journals_page.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/features/step_definitions/journals_step.rb" afterPath="$PROJECT_DIR$/mobile-test/features/step_definitions/journals_step.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shell-test/login/login-test.sh" afterPath="$PROJECT_DIR$/shell-test/login/login-test.sh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/pageobject/login_page.rb" afterPath="$PROJECT_DIR$/mobile-test/pageobject/login_page.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/features/step_definitions/login_step.rb" afterPath="$PROJECT_DIR$/mobile-test/features/step_definitions/login_step.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/main.rb" afterPath="$PROJECT_DIR$/mobile-test/main.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/main.rb" afterPath="$PROJECT_DIR$/ruby-test/main.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/iframe/mobilediy.rb" afterPath="$PROJECT_DIR$/ruby-test/iframe/mobilediy.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/conf/mobiletest.yml" afterPath="$PROJECT_DIR$/ruby-test/conf/mobiletest.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/iframe/mobilediy.rb" afterPath="$PROJECT_DIR$/libs/iframe/mobilediy.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/pageobject/myaccount_page.rb" afterPath="$PROJECT_DIR$/mobile-test/pageobject/myaccount_page.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/iframe/myappium.rb" afterPath="$PROJECT_DIR$/ruby-test/iframe/myappium.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/iframe/mysql2diy.rb" afterPath="$PROJECT_DIR$/ruby-test/iframe/mysql2diy.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/iframe/mysqldiy.rb" afterPath="$PROJECT_DIR$/ruby-test/iframe/mysqldiy.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/pageobject/pageobject.rb" afterPath="$PROJECT_DIR$/mobile-test/pageobject/pageobject.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/features/step_definitions/myaccount_step.rb" afterPath="$PROJECT_DIR$/mobile-test/features/step_definitions/myaccount_step.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/iframe/mysql2diy.rb" afterPath="$PROJECT_DIR$/libs/iframe/mysql2diy.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/iframe/mysqldiy.rb" afterPath="$PROJECT_DIR$/libs/iframe/mysqldiy.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/pageobject/register_page.rb" afterPath="$PROJECT_DIR$/mobile-test/pageobject/register_page.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/features/step_definitions/register_step.rb" afterPath="$PROJECT_DIR$/mobile-test/features/step_definitions/register_step.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/report/report.html" afterPath="$PROJECT_DIR$/mobile-test/report/report.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/results/result.html" afterPath="$PROJECT_DIR$/ruby-test/results/result.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/iframe/resultdiy.rb" afterPath="$PROJECT_DIR$/ruby-test/iframe/resultdiy.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/conf/settings.rb" afterPath="$PROJECT_DIR$/ruby-test/conf/settings.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/iframe/sshdiy.rb" afterPath="$PROJECT_DIR$/ruby-test/iframe/sshdiy.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/test.rb" afterPath="$PROJECT_DIR$/mobile-test/test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/test.rb" afterPath="$PROJECT_DIR$/ruby-test/test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/features/support/screenshots.rb" afterPath="$PROJECT_DIR$/mobile-test/features/support/screenshots.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/iframe/session.rb" afterPath="$PROJECT_DIR$/libs/iframe/session.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/features/set.feature" afterPath="$PROJECT_DIR$/mobile-test/features/set.feature" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/iframe/sshdiy.rb" afterPath="$PROJECT_DIR$/libs/iframe/sshdiy.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/test1.rb" afterPath="$PROJECT_DIR$/ruby-test/test1.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-test/test1.rb" afterPath="$PROJECT_DIR$/web-test/test1.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/test2.rb" afterPath="$PROJECT_DIR$/mobile-test/test2.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/test2.rb" afterPath="$PROJECT_DIR$/ruby-test/test2.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby-test/iframe/timediy.rb" afterPath="$PROJECT_DIR$/ruby-test/iframe/timediy.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/iframe/webautodiy.rb" afterPath="$PROJECT_DIR$/libs/iframe/webautodiy.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-test/.idea/workspace.xml" afterPath="$PROJECT_DIR$/web-test/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mobile-test/features/support/world.rb" afterPath="$PROJECT_DIR$/mobile-test/features/support/world.rb" />
     </list>
     <ignored path="api-test.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -107,29 +111,31 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/api-test@test1__1_.coverage" NAME="test1 (1) Coverage Results" MODIFIED="1440597821811" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ruby-test" MODULE_NAME="api-test" />
-    <SUITE FILE_PATH="coverage/api-test@Run_test__home_test___api_test.coverage" NAME="Run test 'home_test': api-test Coverage Results" MODIFIED="1441226629127" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ruby-test/uitestcase" MODULE_NAME="api-test" />
     <SUITE FILE_PATH="coverage/api-test@main__1_.coverage" NAME="main (1) Coverage Results" MODIFIED="1441297494993" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ruby-test" MODULE_NAME="api-test" />
+    <SUITE FILE_PATH="coverage/api-test@test2__1_.coverage" NAME="test2 (1) Coverage Results" MODIFIED="1443161459679" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ruby-test" MODULE_NAME="api-test" />
     <SUITE FILE_PATH="coverage/api-test@settings.coverage" NAME="settings Coverage Results" MODIFIED="1441167765920" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ruby-test/conf" MODULE_NAME="api-test" />
     <SUITE FILE_PATH="coverage/api-test@digestdiy.coverage" NAME="digestdiy Coverage Results" MODIFIED="1441702631889" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ruby-test/iframe" MODULE_NAME="api-test" />
     <SUITE FILE_PATH="coverage/api-test@mobilediy.coverage" NAME="mobilediy Coverage Results" MODIFIED="1441167987730" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ruby-test/iframe" MODULE_NAME="api-test" />
-    <SUITE FILE_PATH="coverage/api-test@http_methods.coverage" NAME="http_methods Coverage Results" MODIFIED="1440993809345" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ruby-test/iframe" MODULE_NAME="api-test" />
-    <SUITE FILE_PATH="coverage/api-test@test__1_.coverage" NAME="test (1) Coverage Results" MODIFIED="1441698704704" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ruby-test" MODULE_NAME="api-test" />
-    <SUITE FILE_PATH="coverage/api-test@test.coverage" NAME="test Coverage Results" MODIFIED="1441609760634" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/mobile-test" MODULE_NAME="api-test" />
     <SUITE FILE_PATH="coverage/api-test@gitpull.coverage" NAME="gitpull Coverage Results" MODIFIED="1440985471158" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ruby-test/iframe" MODULE_NAME="api-test" />
     <SUITE FILE_PATH="coverage/api-test@hooks.coverage" NAME="hooks Coverage Results" MODIFIED="1441711139236" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/mobile-test/features/support" MODULE_NAME="api-test" />
+    <SUITE FILE_PATH="coverage/api-test@mysqldiy.coverage" NAME="mysqldiy Coverage Results" MODIFIED="1442372744759" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ruby-test/iframe" MODULE_NAME="api-test" />
     <SUITE FILE_PATH="coverage/api-test@auto_main__1_.coverage" NAME="auto_main (1) Coverage Results" MODIFIED="1441297280675" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/mobile-test" MODULE_NAME="api-test" />
-    <SUITE FILE_PATH="coverage/api-test@test2.coverage" NAME="test2 Coverage Results" MODIFIED="1441166719098" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ruby-test" MODULE_NAME="api-test" />
     <SUITE FILE_PATH="coverage/api-test@home_page1.coverage" NAME="home_page Coverage Results" MODIFIED="1441222910272" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ruby-test/pageobject" MODULE_NAME="api-test" />
-    <SUITE FILE_PATH="coverage/api-test@timediy.coverage" NAME="timediy Coverage Results" MODIFIED="1441721441811" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ruby-test/iframe" MODULE_NAME="api-test" />
-    <SUITE FILE_PATH="coverage/api-test@auto_main.coverage" NAME="auto_main Coverage Results" MODIFIED="1441227279839" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ruby-test" MODULE_NAME="api-test" />
+    <SUITE FILE_PATH="coverage/api-test@timediy.coverage" NAME="timediy Coverage Results" MODIFIED="1441725848961" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ruby-test/iframe" MODULE_NAME="api-test" />
     <SUITE FILE_PATH="coverage/api-test@myappium__1_.coverage" NAME="myappium (1) Coverage Results" MODIFIED="1441617101450" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/mobile-test/iframe" MODULE_NAME="api-test" />
-    <SUITE FILE_PATH="coverage/api-test@test1.coverage" NAME="test1 Coverage Results" MODIFIED="1441619160444" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/mobile-test" MODULE_NAME="api-test" />
-    <SUITE FILE_PATH="coverage/api-test@myappium.coverage" NAME="myappium Coverage Results" MODIFIED="1441299748712" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ruby-test/iframe" MODULE_NAME="api-test" />
     <SUITE FILE_PATH="coverage/api-test@Run_test__home_test___api_test__1_.coverage" NAME="Run test 'home_test': api-test (1) Coverage Results" MODIFIED="1441365407488" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/mobile-test/uitestcase" MODULE_NAME="api-test" />
+    <SUITE FILE_PATH="coverage/api-test@myappium.coverage" NAME="myappium Coverage Results" MODIFIED="1442460343305" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ruby-test/iframe" MODULE_NAME="api-test" />
+    <SUITE FILE_PATH="coverage/api-test@test1__1_.coverage" NAME="test1 (1) Coverage Results" MODIFIED="1440597821811" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ruby-test" MODULE_NAME="api-test" />
+    <SUITE FILE_PATH="coverage/api-test@Run_test__home_test___api_test.coverage" NAME="Run test 'home_test': api-test Coverage Results" MODIFIED="1441226629127" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ruby-test/uitestcase" MODULE_NAME="api-test" />
+    <SUITE FILE_PATH="coverage/api-test@http_methods.coverage" NAME="http_methods Coverage Results" MODIFIED="1440993809345" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ruby-test/iframe" MODULE_NAME="api-test" />
+    <SUITE FILE_PATH="coverage/api-test@test__1_.coverage" NAME="test (1) Coverage Results" MODIFIED="1443189653120" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web-test" MODULE_NAME="api-test" />
+    <SUITE FILE_PATH="coverage/api-test@test.coverage" NAME="test Coverage Results" MODIFIED="1441725433252" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/mobile-test" MODULE_NAME="api-test" />
+    <SUITE FILE_PATH="coverage/api-test@test2.coverage" NAME="test2 Coverage Results" MODIFIED="1442396367707" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/mobile-test" MODULE_NAME="api-test" />
+    <SUITE FILE_PATH="coverage/api-test@auto_main.coverage" NAME="auto_main Coverage Results" MODIFIED="1441227279839" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ruby-test" MODULE_NAME="api-test" />
+    <SUITE FILE_PATH="coverage/api-test@test1.coverage" NAME="test1 Coverage Results" MODIFIED="1442805184704" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ruby-test" MODULE_NAME="api-test" />
     <SUITE FILE_PATH="coverage/api-test@gitpull__1_.coverage" NAME="gitpull (1) Coverage Results" MODIFIED="1440744222796" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ruby-test/iframe" MODULE_NAME="api-test" />
-    <SUITE FILE_PATH="coverage/api-test@1_step.coverage" NAME="1_step Coverage Results" MODIFIED="1441441776775" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/mobile-test/features/step_definitions" MODULE_NAME="api-test" />
     <SUITE FILE_PATH="coverage/api-test@world.coverage" NAME="world Coverage Results" MODIFIED="1441609705636" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/mobile-test/features/support" MODULE_NAME="api-test" />
+    <SUITE FILE_PATH="coverage/api-test@1_step.coverage" NAME="1_step Coverage Results" MODIFIED="1441441776775" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/mobile-test/features/step_definitions" MODULE_NAME="api-test" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -140,88 +146,38 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="allproject.feature" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mobile-test/features/allproject.feature">
+      <file leaf-file-name="common_step.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mobile-test/features/step_definitions/common_step.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="18" column="11" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
+              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="10" selection-end-column="3" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="digestdiy.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ruby-test/iframe/digestdiy.rb">
+      <file leaf-file-name="world.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mobile-test/features/support/world.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+              <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="gitpull.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ruby-test/iframe/gitpull.rb">
+      <file leaf-file-name="5detail_newuser_test.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ruby-test/testcase/5detail_newuser_test.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+              <caret line="78" column="16" selection-start-line="78" selection-start-column="16" selection-end-line="78" selection-end-column="16" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="timediy.rb" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ruby-test/iframe/timediy.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7122302">
-              <caret line="25" column="3" selection-start-line="25" selection-start-column="3" selection-end-line="25" selection-end-column="3" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="allproject_page.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mobile-test/pageobject/allproject_page.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="64" column="46" selection-start-line="64" selection-start-column="46" selection-end-line="64" selection-end-column="46" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="2_step.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mobile-test/features/step_definitions/2_step.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="43" column="21" selection-start-line="43" selection-start-column="21" selection-end-line="43" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="5_step.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mobile-test/features/step_definitions/5_step.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="2.feature" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mobile-test/features/2.feature">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="3.feature" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mobile-test/features/3.feature">
+      <file leaf-file-name="7invest_create_test.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ruby-test/testcase/7invest_create_test.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -230,8 +186,58 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="4.feature" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mobile-test/features/4.feature">
+      <file leaf-file-name="7invest_confirm_test.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ruby-test/testcase/7invest_confirm_test.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="89" column="23" selection-start-line="89" selection-start-column="23" selection-end-line="89" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="4listpage_more_test.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ruby-test/testcase/4listpage_more_test.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="26" column="392" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="392" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login-test.sh" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/shell-test/login/login-test.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="1home_test.rb" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ruby-test/testcase/1home_test.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.56782335">
+              <caret line="69" column="19" selection-start-line="69" selection-start-column="19" selection-end-line="69" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="1home_page.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mobile-test/pageelement/1home_page.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="54" selection-start-line="0" selection-start-column="46" selection-end-line="0" selection-end-column="54" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="10account_journals_test.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ruby-test/testcase/10account_journals_test.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -248,57 +254,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/mobile-test/auto_main.rb" />
-        <option value="$APPLICATION_HOME_DIR$/rb/testing/patch/testunit/test/unit/ui/teamcity/testrunner.rb" />
-        <option value="$PROJECT_DIR$/ruby-test/iframe/myappium.rb" />
-        <option value="$PROJECT_DIR$/ruby-test/iframe/mobilediy.rb" />
-        <option value="$PROJECT_DIR$/mobile-test/uitestcase/home_test.rb" />
-        <option value="$PROJECT_DIR$/mobile-test/conf/cucumber.yml" />
-        <option value="$PROJECT_DIR$/mobile-test/cucumber.yml" />
-        <option value="$PROJECT_DIR$/mobile-test/pageelement/myaccount_page.rb" />
-        <option value="$PROJECT_DIR$/mobile-test/1.html" />
-        <option value="$PROJECT_DIR$/mobile-test/Gemfile" />
-        <option value="$PROJECT_DIR$/mobile-test/pageelement/login_page.rb" />
-        <option value="$PROJECT_DIR$/mobile-test/pageobject/login_page.rb" />
-        <option value="$PROJECT_DIR$/mobile-test/pageobject/myaccount_page.rb" />
-        <option value="$PROJECT_DIR$/mobile-test/features/step_definitions/5.rb" />
-        <option value="$PROJECT_DIR$/mobile-test/features/step_definitions/4_step.rb" />
-        <option value="$PROJECT_DIR$/mobile-test/features/3.feature" />
-        <option value="$PROJECT_DIR$/mobile-test/features/step_definitions/5_step.rb" />
-        <option value="$PROJECT_DIR$/mobile-test/features/4.feature" />
-        <option value="$PROJECT_DIR$/mobile-test/pageelement/home_page.rb" />
-        <option value="$PROJECT_DIR$/mobile-test/pageobject/home_page.rb" />
-        <option value="$PROJECT_DIR$/mobile-test/1.xml" />
-        <option value="$PROJECT_DIR$/mobile-test/test2.rb" />
-        <option value="$PROJECT_DIR$/mobile-test/test.rb" />
-        <option value="$PROJECT_DIR$/mobile-test/test1.rb" />
-        <option value="$PROJECT_DIR$/mobile-test/features/step_definitions/3_step.rb" />
-        <option value="$PROJECT_DIR$/mobile-test/features/step_definitions/1_step.rb" />
-        <option value="$PROJECT_DIR$/mobile-test/features/1.feature" />
-        <option value="$PROJECT_DIR$/mobile-test/iframe/myappium.rb" />
+        <option value="$PROJECT_DIR$/ruby-test/testcase/16account_message_category_test.rb" />
+        <option value="$PROJECT_DIR$/ruby-test/testcase/16account_message_list_test.rb" />
         <option value="$PROJECT_DIR$/ruby-test/testcase/19account_deleteUserMesssageByIds_test.rb" />
-        <option value="$PROJECT_DIR$/ruby-test/testcase/19account_deleteUserMesssageByTypes_test.rb" />
         <option value="$PROJECT_DIR$/ruby-test/testcase/17account_readUserMesssageByIds_test.rb" />
-        <option value="$PROJECT_DIR$/ruby-test/iframe/mysqldiy.rb" />
-        <option value="$PROJECT_DIR$/ruby-test/iframe/resultdiy.rb" />
-        <option value="$PROJECT_DIR$/ruby-test/test.rb" />
-        <option value="$PROJECT_DIR$/ruby-test/testcase/9account_investlist_test.rb" />
+        <option value="$PROJECT_DIR$/ruby-test/testcase/19account_deleteUserMesssageByTypes_test.rb" />
+        <option value="$PROJECT_DIR$/ruby-test/testcase/17account_readUserMesssageByTypes_test.rb" />
+        <option value="$PROJECT_DIR$/ruby-test/testcase/16account_message_info_test.rb" />
+        <option value="$PROJECT_DIR$/ruby-test/testcase/7invest_user_rewards_test.rb" />
+        <option value="$PROJECT_DIR$/ruby-test/testcase/7invest_user_coupons_test.rb" />
         <option value="$PROJECT_DIR$/ruby-test/iframe/http_methods.rb" />
-        <option value="$PROJECT_DIR$/ruby-test/testcase/10account_withdraw_status_test.rb" />
-        <option value="$PROJECT_DIR$/ruby-test/testcase/1home_test.rb" />
-        <option value="$PROJECT_DIR$/mobile-test/features/5.feature" />
-        <option value="$PROJECT_DIR$/mobile-test/pageelement/allproject_page.rb" />
-        <option value="$PROJECT_DIR$/mobile-test/features/support/hooks.rb" />
-        <option value="$PROJECT_DIR$/mobile-test/features/support/env.rb" />
+        <option value="$PROJECT_DIR$/ruby-test/test2.rb" />
+        <option value="$PROJECT_DIR$/web-test/conf/mobiletest.yml" />
+        <option value="$PROJECT_DIR$/web-test/conf/webapp.yml" />
+        <option value="$PROJECT_DIR$/ruby-test/iframe/webdiy.rb" />
+        <option value="$PROJECT_DIR$/ruby-test/conf/webapp.yml" />
+        <option value="$PROJECT_DIR$/ruby-test/testcase/7invest_create_test.rb" />
+        <option value="$PROJECT_DIR$/shell-test/login/login-test.sh" />
+        <option value="$PROJECT_DIR$/mobile-test/features/10mybankcard.feature" />
+        <option value="$PROJECT_DIR$/ruby-test/conf/settings.rb" />
+        <option value="$PROJECT_DIR$/ruby-test/testcase/7invest_confirm_test.rb" />
+        <option value="$PROJECT_DIR$/mobile-test/features/1home_message.feature" />
+        <option value="$PROJECT_DIR$/web-test/pageelement/1home_page.rb" />
+        <option value="$PROJECT_DIR$/web-test/conf/settings.rb" />
+        <option value="$PROJECT_DIR$/web-test/features/step_definitions/home_step.rb" />
+        <option value="$PROJECT_DIR$/ruby-test/iframe/webautodiy.rb" />
+        <option value="$PROJECT_DIR$/iframe/sshdiy.rb" />
         <option value="$PROJECT_DIR$/mobile-test/features/support/world.rb" />
-        <option value="$PROJECT_DIR$/mobile-test/pageobject/pageobject.rb" />
-        <option value="$PROJECT_DIR$/mobile-test/features/2.feature" />
-        <option value="$PROJECT_DIR$/mobile-test/pageobject/allproject_page.rb" />
-        <option value="$PROJECT_DIR$/mobile-test/features/allproject.feature" />
-        <option value="$PROJECT_DIR$/mobile-test/features/step_definitions/2_step.rb" />
-        <option value="$PROJECT_DIR$/ruby-test/iframe/digestdiy.rb" />
-        <option value="$PROJECT_DIR$/ruby-test/iframe/gitpull.rb" />
-        <option value="$PROJECT_DIR$/ruby-test/iframe/timediy.rb" />
+        <option value="$PROJECT_DIR$/web-test/features/support/world.rb" />
+        <option value="$PROJECT_DIR$/iframe/mobilediy.rb" />
+        <option value="$PROJECT_DIR$/iframe/mysql2diy.rb" />
+        <option value="$PROJECT_DIR$/iframe/mysqldiy.rb" />
+        <option value="$PROJECT_DIR$/web-test/iframe/digestdiy.rb" />
+        <option value="$PROJECT_DIR$/libs/conf/dbtest.yml" />
+        <option value="$PROJECT_DIR$/libs/conf/settings.rb" />
+        <option value="$PROJECT_DIR$/libs/iframe/mobilediy.rb" />
+        <option value="$PROJECT_DIR$/libs/iframe/webautodiy.rb" />
+        <option value="$PROJECT_DIR$/web-test/test.rb" />
+        <option value="$PROJECT_DIR$/mobile-test/features/1home_loan.feature" />
+        <option value="$PROJECT_DIR$/libs/conf/config.yml" />
+        <option value="$PROJECT_DIR$/ruby-test/main.rb" />
+        <option value="$PROJECT_DIR$/mobile-test/main.rb" />
+        <option value="$PROJECT_DIR$/mobile-test/features/support/env.rb" />
+        <option value="$PROJECT_DIR$/web-test/pageobject/pageobject.rb" />
+        <option value="$PROJECT_DIR$/web-test/pageobject/home_page.rb" />
+        <option value="$PROJECT_DIR$/web-test/features/1home_loan.feature" />
+        <option value="$PROJECT_DIR$/web-test/features/support/env.rb" />
+        <option value="$PROJECT_DIR$/web-test/features/support/screenshots.rb" />
+        <option value="$PROJECT_DIR$/libs/iframe/session.rb" />
+        <option value="$PROJECT_DIR$/ruby-test/testcase/5detail_newuser_test.rb" />
+        <option value="$PROJECT_DIR$/ruby-test/testcase/10account_journals_test.rb" />
+        <option value="$PROJECT_DIR$/ruby-test/testcase/1home_test.rb" />
       </list>
     </option>
   </component>
@@ -353,7 +359,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -361,6 +366,10 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="api-test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -370,6 +379,38 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="api-test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="api-test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="api-test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shell-test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="api-test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="api-test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shell-test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="login" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -397,18 +438,23 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="mobile-test" />
+              <option name="myItemId" value="ruby-test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="testcase" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../cucumber_auto" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../android_auto" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="FullScreen" value="false" />
@@ -416,18 +462,19 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/mobile-test" />
-      <recent name="$PROJECT_DIR$/mobile-test/pageelement" />
-      <recent name="$PROJECT_DIR$/mobile-test/pageobject" />
-      <recent name="$PROJECT_DIR$/mobile-test/features/step_definitions" />
-      <recent name="$PROJECT_DIR$/mobile-test/features/support" />
+      <recent name="$PROJECT_DIR$/libs" />
+      <recent name="$PROJECT_DIR$/libs/iframe" />
+      <recent name="$PROJECT_DIR$/libs/conf" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/web-test/pageobject" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/libs" />
       <recent name="$PROJECT_DIR$/mobile-test/features" />
     </key>
   </component>
-  <component name="RunManager" selected="Ruby.timediy">
-    <configuration default="false" name="test1" type="RubyRunConfigurationType" factoryName="Ruby" temporary="true">
+  <component name="RunManager" selected="Ruby.test (1)">
+    <configuration default="false" name="test" type="RubyRunConfigurationType" factoryName="Ruby" temporary="true">
       <module name="api-test" />
       <RUBY_RUN_CONFIG NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
       <RUBY_RUN_CONFIG NAME="WORK DIR" VALUE="$MODULE_DIR$/mobile-test" />
@@ -443,11 +490,11 @@
         </COVERAGE_PATTERN>
       </EXTENSION>
       <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
-      <RUBY_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$MODULE_DIR$/mobile-test/test1.rb" />
+      <RUBY_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$MODULE_DIR$/mobile-test/test.rb" />
       <RUBY_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="" />
       <method />
     </configuration>
-    <configuration default="false" name="test (1)" type="RubyRunConfigurationType" factoryName="Ruby" temporary="true">
+    <configuration default="false" name="test1" type="RubyRunConfigurationType" factoryName="Ruby" temporary="true">
       <module name="api-test" />
       <RUBY_RUN_CONFIG NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
       <RUBY_RUN_CONFIG NAME="WORK DIR" VALUE="$MODULE_DIR$/ruby-test" />
@@ -463,11 +510,11 @@
         </COVERAGE_PATTERN>
       </EXTENSION>
       <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
-      <RUBY_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$MODULE_DIR$/ruby-test/test.rb" />
+      <RUBY_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$MODULE_DIR$/ruby-test/test1.rb" />
       <RUBY_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="" />
       <method />
     </configuration>
-    <configuration default="false" name="digestdiy" type="RubyRunConfigurationType" factoryName="Ruby" temporary="true">
+    <configuration default="false" name="mysqldiy" type="RubyRunConfigurationType" factoryName="Ruby" temporary="true">
       <module name="api-test" />
       <RUBY_RUN_CONFIG NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
       <RUBY_RUN_CONFIG NAME="WORK DIR" VALUE="$MODULE_DIR$/ruby-test/iframe" />
@@ -483,14 +530,14 @@
         </COVERAGE_PATTERN>
       </EXTENSION>
       <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
-      <RUBY_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$MODULE_DIR$/ruby-test/iframe/digestdiy.rb" />
+      <RUBY_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$MODULE_DIR$/ruby-test/iframe/mysqldiy.rb" />
       <RUBY_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="" />
       <method />
     </configuration>
-    <configuration default="false" name="hooks" type="RubyRunConfigurationType" factoryName="Ruby" temporary="true">
+    <configuration default="false" name="test2 (1)" type="RubyRunConfigurationType" factoryName="Ruby" temporary="true">
       <module name="api-test" />
       <RUBY_RUN_CONFIG NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
-      <RUBY_RUN_CONFIG NAME="WORK DIR" VALUE="$MODULE_DIR$/mobile-test/features/support" />
+      <RUBY_RUN_CONFIG NAME="WORK DIR" VALUE="$MODULE_DIR$/ruby-test" />
       <RUBY_RUN_CONFIG NAME="SHOULD_USE_SDK" VALUE="false" />
       <RUBY_RUN_CONFIG NAME="ALTERN_SDK_NAME" VALUE="" />
       <RUBY_RUN_CONFIG NAME="myPassParentEnvs" VALUE="true" />
@@ -503,14 +550,14 @@
         </COVERAGE_PATTERN>
       </EXTENSION>
       <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
-      <RUBY_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$MODULE_DIR$/mobile-test/features/support/hooks.rb" />
+      <RUBY_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$MODULE_DIR$/ruby-test/test2.rb" />
       <RUBY_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="" />
       <method />
     </configuration>
-    <configuration default="false" name="timediy" type="RubyRunConfigurationType" factoryName="Ruby" temporary="true">
+    <configuration default="false" name="test (1)" type="RubyRunConfigurationType" factoryName="Ruby" temporary="true">
       <module name="api-test" />
       <RUBY_RUN_CONFIG NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
-      <RUBY_RUN_CONFIG NAME="WORK DIR" VALUE="$MODULE_DIR$/ruby-test/iframe" />
+      <RUBY_RUN_CONFIG NAME="WORK DIR" VALUE="$MODULE_DIR$/web-test" />
       <RUBY_RUN_CONFIG NAME="SHOULD_USE_SDK" VALUE="false" />
       <RUBY_RUN_CONFIG NAME="ALTERN_SDK_NAME" VALUE="" />
       <RUBY_RUN_CONFIG NAME="myPassParentEnvs" VALUE="true" />
@@ -523,7 +570,7 @@
         </COVERAGE_PATTERN>
       </EXTENSION>
       <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
-      <RUBY_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$MODULE_DIR$/ruby-test/iframe/timediy.rb" />
+      <RUBY_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$MODULE_DIR$/web-test/test.rb" />
       <RUBY_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="" />
       <method />
     </configuration>
@@ -655,19 +702,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Ruby.test1" />
-      <item index="1" class="java.lang.String" itemvalue="Ruby.test (1)" />
-      <item index="2" class="java.lang.String" itemvalue="Ruby.digestdiy" />
-      <item index="3" class="java.lang.String" itemvalue="Ruby.hooks" />
-      <item index="4" class="java.lang.String" itemvalue="Ruby.timediy" />
+      <item index="0" class="java.lang.String" itemvalue="Ruby.test" />
+      <item index="1" class="java.lang.String" itemvalue="Ruby.test1" />
+      <item index="2" class="java.lang.String" itemvalue="Ruby.mysqldiy" />
+      <item index="3" class="java.lang.String" itemvalue="Ruby.test2 (1)" />
+      <item index="4" class="java.lang.String" itemvalue="Ruby.test (1)" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Ruby.timediy" />
-        <item index="1" class="java.lang.String" itemvalue="Ruby.hooks" />
-        <item index="2" class="java.lang.String" itemvalue="Ruby.digestdiy" />
-        <item index="3" class="java.lang.String" itemvalue="Ruby.test (1)" />
-        <item index="4" class="java.lang.String" itemvalue="Ruby.test1" />
+        <item index="0" class="java.lang.String" itemvalue="Ruby.test (1)" />
+        <item index="1" class="java.lang.String" itemvalue="Ruby.test2 (1)" />
+        <item index="2" class="java.lang.String" itemvalue="Ruby.mysqldiy" />
+        <item index="3" class="java.lang.String" itemvalue="Ruby.test1" />
+        <item index="4" class="java.lang.String" itemvalue="Ruby.test" />
       </list>
     </recent_temporary>
   </component>
@@ -686,49 +733,28 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="705" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32779455" sideWeight="0.496875" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24609375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32779455" sideWeight="0.496875" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24609375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32779455" sideWeight="0.503125" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32779455" sideWeight="0.496875" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32930514" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32779455" sideWeight="0.496875" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
-    <layout-to-restore>
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32779455" sideWeight="0.496875" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32779455" sideWeight="0.503125" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32930514" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24609375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32779455" sideWeight="0.496875" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -743,28 +769,54 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="4" />
+      <option name="time" value="5" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ruby-test/testcase/4listpage_ios_test.rb">
+    <entry file="file://$PROJECT_DIR$/libs/iframe/htmlclass.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="48" column="52" selection-start-line="48" selection-start-column="52" selection-end-line="48" selection-end-column="52" />
-          <folding />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ruby-test/testcase/4listpage_more_test.rb">
+    <entry file="file://$PROJECT_DIR$/libs/iframe/http_methods.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="32" column="46" selection-start-line="32" selection-start-column="46" selection-end-line="32" selection-end-column="46" />
-          <folding />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ruby-test/testcase/4listpage_status_test.rb">
+    <entry file="file://$PROJECT_DIR$/libs/iframe/mobilediy.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="21" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libs/iframe/myappium.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libs/iframe/mysql2diy.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libs/iframe/mysqldiy.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libs/iframe/resultdiy.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -772,15 +824,229 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ruby-test/testcase/5detail_newuser_test.rb">
+    <entry file="file://$PROJECT_DIR$/libs/iframe/sshdiy.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="44" column="12" selection-start-line="44" selection-start-column="12" selection-end-line="44" selection-end-column="33" />
+          <caret line="7" column="31" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libs/iframe/timediy.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-test/test.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="24" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ruby-test/testcase/5detail_test.rb">
+    <entry file="file://$PROJECT_DIR$/mobile-test/features/5myaccount.feature">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobile-test/features/6withdraw.feature">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobile-test/features/7recharge.feature">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobile-test/features/9journals.feature">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobile-test/features/11myreward.feature">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobile-test/features/12invitefriend.feature">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobile-test/features/2allproject.feature">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.31654677">
+          <caret line="47" column="12" selection-start-line="47" selection-start-column="12" selection-end-line="47" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobile-test/features/1home_message.feature">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobile-test/features/3login.feature">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobile-test/features/4register.feature">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-test/features/support/hooks.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-test/features/support/world.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.21342926">
+          <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libs/iframe/webautodiy.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2877698">
+          <caret line="8" column="28" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobile-test/main.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7122302">
+          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ruby-test/main.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="35" column="46" selection-start-line="35" selection-start-column="46" selection-end-line="35" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobile-test/features/1home_loan.feature">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.107913665">
+          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-test/pageelement/1home_page.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.07194245">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-test/features/1home_loan.feature">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.107913665">
+          <caret line="3" column="14" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-test/pageobject/pageobject.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.035971224">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-test/pageobject/home_page.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.39568347">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobile-test/features/support/screenshots.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.68345326">
+          <caret line="40" column="44" selection-start-line="40" selection-start-column="23" selection-end-line="40" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-test/features/support/env.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.60431653">
+          <caret line="32" column="17" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-test/features/support/screenshots.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4964029">
+          <caret line="40" column="36" selection-start-line="40" selection-start-column="36" selection-end-line="40" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libs/iframe/session.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="30" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ruby-test/testcase/16account_message_info_test.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ruby-test/testcase/16account_message_category_test.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobile-test/pageobject/home_page.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobile-test/features/step_definitions/home_step.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="26" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobile-test/pageelement/2allproject_page.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -788,7 +1054,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ruby-test/testcase/6detail_loan_detail_test.rb">
+    <entry file="file://$PROJECT_DIR$/mobile-test/test.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobile-test/features/support/env.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="39" column="21" selection-start-line="39" selection-start-column="21" selection-end-line="39" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobile-test/features/step_definitions/common_step.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="10" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mobile-test/features/support/world.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ruby-test/testcase/7invest_create_test.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -796,42 +1093,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ruby-test/testcase/6detail_loan_summary_test.rb">
+    <entry file="file://$PROJECT_DIR$/ruby-test/testcase/7invest_confirm_test.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ruby-test/testcase/7detail_coupon_test.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ruby-test/testcase/7detail_reward_test.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ruby-test/testcase/8overview_test.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ruby-test/testcase/9account_investlist_test.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="61" column="3" selection-start-line="61" selection-start-column="3" selection-end-line="61" selection-end-column="3" />
+          <caret line="89" column="23" selection-start-line="89" selection-start-column="23" selection-end-line="89" selection-end-column="23" />
           <folding />
         </state>
       </provider>
@@ -844,231 +1109,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ruby-test/testcase/10account_withdraw_status_test.rb">
+    <entry file="file://$PROJECT_DIR$/mobile-test/pageelement/1home_page.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="32" column="27" selection-start-line="32" selection-start-column="27" selection-end-line="32" selection-end-column="27" />
+          <caret line="0" column="54" selection-start-line="0" selection-start-column="46" selection-end-line="0" selection-end-column="54" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ruby-test/testcase/11account_reward_test.rb">
+    <entry file="file://$PROJECT_DIR$/ruby-test/testcase/4listpage_more_test.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="26" column="392" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="392" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ruby-test/testcase/12account_coupon_test.rb">
+    <entry file="file://$PROJECT_DIR$/ruby-test/testcase/5detail_newuser_test.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="78" column="16" selection-start-line="78" selection-start-column="16" selection-end-line="78" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ruby-test/testcase/14trusteeship_deduct_cardbankinfo_test.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ruby-test/testcase/13trusteeship_deduct_allbankinfos_test.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ruby-test/testcase/15trusteeship_deduct_usercard_test.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ruby-test/testcase/16account_message_category_test.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="126" column="36" selection-start-line="126" selection-start-column="36" selection-end-line="126" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ruby-test/testcase/16account_message_list_test.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ruby-test/testcase/16account_message_unreadcount_test.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ruby-test/testcase/17account_readUserMesssageByIds_test.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.47949526">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ruby-test/testcase/17account_readUserMesssageByTypes_test.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.73974764">
-          <caret line="36" column="28" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ruby-test/testcase/19account_deleteUserMesssageByIds_test.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.73974764">
-          <caret line="36" column="28" selection-start-line="36" selection-start-column="28" selection-end-line="36" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ruby-test/testcase/19account_deleteUserMesssageByTypes_test.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.47949526">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ruby-test/testcase/21register_test.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6451104">
-          <caret line="45" column="36" selection-start-line="45" selection-start-column="36" selection-end-line="45" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ruby-test/testcase/21send_register_code_test.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49684542">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mobile-test/pageelement/allproject_page.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mobile-test/main.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mobile-test/features/support/world.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mobile-test/features/support/hooks.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mobile-test/features/support/env.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mobile-test/features/1.feature">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="16" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mobile-test/features/step_definitions/1_step.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="9" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mobile-test/features/step_definitions/3_step.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mobile-test/features/step_definitions/4_step.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mobile-test/pageelement/home_page.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mobile-test/pageobject/home_page.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mobile-test/pageobject/login_page.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mobile-test/pageobject/myaccount_page.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mobile-test/pageobject/pageobject.rb">
+    <entry file="file://$PROJECT_DIR$/shell-test/login/login-test.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
@@ -1076,82 +1141,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mobile-test/features/2.feature">
+    <entry file="file://$PROJECT_DIR$/ruby-test/testcase/1home_test.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mobile-test/features/3.feature">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mobile-test/features/4.feature">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mobile-test/pageobject/allproject_page.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="64" column="46" selection-start-line="64" selection-start-column="46" selection-end-line="64" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mobile-test/features/step_definitions/5_step.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mobile-test/features/step_definitions/2_step.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="43" column="21" selection-start-line="43" selection-start-column="21" selection-end-line="43" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mobile-test/features/allproject.feature">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="11" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ruby-test/iframe/digestdiy.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ruby-test/iframe/gitpull.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ruby-test/iframe/timediy.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7122302">
-          <caret line="25" column="3" selection-start-line="25" selection-start-column="3" selection-end-line="25" selection-end-column="3" />
+        <state vertical-scroll-proportion="0.56782335">
+          <caret line="69" column="19" selection-start-line="69" selection-start-column="19" selection-end-line="69" selection-end-column="19" />
           <folding />
         </state>
       </provider>

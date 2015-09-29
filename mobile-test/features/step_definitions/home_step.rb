@@ -1,10 +1,13 @@
-require_relative '../../pageobject/home_page'
-require 'cucumber'
+
+Given /用户打开首页/ do
+  mobile=Home.new(@driver)
+  data=mobile.in_homepage
+  expect(data).to eq("中瑞财富")
+end
 
 Given /用户进入首页/ do
   mobile=Home.new(@driver)
   data=mobile.in_home
-  expect(data).to eq("中瑞财富")
 end
 
 Given /首页(.*)项目卡片等于:/ do |loantype,table|

@@ -1,34 +1,35 @@
 require_relative '../pageobject/pageobject'
-require_relative '../pageelement/8investlist'
+require_relative '../pageelement/9journals'
 
 
-class Investlist < PageObject
+class Journals < PageObject
   def pagetitle
-    @driver.find_until(Investlist_Page_title).text
+    @driver.find_until(Journals_Page_title).text
   end
 
-  def switch_repay
-    @driver.find_untils(Category_taps)[1].click
+  def switch_all_tab
+    @driver.find_untils(Journals_AllCategory_taps)[0].click
   end
 
-  def switch_no_repay
-    @driver.find_untils(Category_taps)[0].click
+  def switch_doing_tab
+    @driver.find_untils(Journals_doing_taps)[1].click
   end
 
-  def invest_projects
-    text1=@driver.find_untils(Repay_dayss).map do |item|
+  def switch_type_tab
+    @driver.find_untils(Journals_type_taps)[2].click
+  end
+
+  def journals_record
+    text1=@driver.find_untils(Journals_name).map do |item|
       item.text
     end
-    text3=@driver.find_untils(Invest_ammouts).map do |item|
+    text2=@driver.find_untils(Journals_amounts).map do |item|
       item.text
     end
-    text4=@driver.find_untils(Invest_received_amounts).map do |item|
+    text3=@driver.find_untils(Journals_status).map do |item|
       item.text
     end
-    text2=@driver.find_untils(Invest_unreceived_amounts).map do |item|
-      item.text
-    end
-    return text1,text2,text3,text4
+    return text1,text2,text3
   end
 
 

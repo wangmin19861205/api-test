@@ -1,10 +1,10 @@
 require 'appium_lib'
-require_relative '../conf/settings'
+require_relative '../config/settings'
 
 
 class Mobile
   def initialize
-    @setting=SettingsMOBILE.new.MOBILE
+    @setting=Settings.new.MOBILE
     platformName=@setting.platformName
     deviceName=@setting.deviceName
     appActivity=@setting.appActivity

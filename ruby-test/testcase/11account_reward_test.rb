@@ -9,8 +9,10 @@ class Testaccount_reward<Test::Unit::TestCase
     @html = HTMLReport.new()
     @report = @html.createReport1('account_reward')
     url="http://rpc.wangmin.test.zrcaifu.com/login"
-    data={"name"=>"13500000045","password"=>"123456"}
-    @token=jsonlist httppost(url,data),'.data.token'
+    data={"name"=>"13500000069","password"=>"123456"}
+    reqbody= httppost(url,data)
+    @token=jsonlist reqbody,'.token'
+    @user_id=jsonlist reqbody,'.user.id'
     @url="http://rpc.wangmin.test.zrcaifu.com/account/reward"
   end
 
@@ -26,8 +28,8 @@ class Testaccount_reward<Test::Unit::TestCase
   def test_right
     @html.newTestName('我的抵现券-可用')
     data1={"token"=>@token,"type"=>"ACTIVE","page"=>"1"}
-    sql1="select * from account_rewards where user_id = '2898945' and ( status = 'ACTIVE' or status = 'CREATED') order by status desc , end_date asc limit 20 offset 0   "
-    path='.data.data'
+    sql1="select * from account_rewards where user_id = '#{@user_id}' and ( status = 'ACTIVE' or status = 'CREATED') order by status desc , end_date asc limit 20 offset 0   "
+    path='.data'
     reqbody=httppost(@url,data1)
     jsondata1=jsonlist reqbody,path
     sqldata1=Resultdiy.new(@conn.sqlquery(sql1)).result_to_list
@@ -39,8 +41,8 @@ class Testaccount_reward<Test::Unit::TestCase
   def test_right1
     @html.newTestName('我的抵现券-新建')
     data1={"token"=>@token,"type"=>"CREATED","page"=>"1"}
-    sql1="select * from account_rewards where user_id = '2898945' and ( status = 'CREATED' or status = 'nil') order by status desc , end_date asc limit 20 offset 0   "
-    path='.data.data'
+    sql1="select * from account_rewards where user_id = '#{@user_id}' and ( status = 'CREATED' or status = 'nil') order by status desc , end_date asc limit 20 offset 0   "
+    path='.data'
     reqbody=httppost(@url,data1)
     jsondata1=jsonlist reqbody,path
     sqldata1=Resultdiy.new(@conn.sqlquery(sql1)).result_to_list
@@ -52,8 +54,8 @@ class Testaccount_reward<Test::Unit::TestCase
   def test_right2
     @html.newTestName('我的抵现券-已使用')
     data1={"token"=>@token,"type"=>"USED","page"=>"1"}
-    sql1="select * from account_rewards where user_id = '2898945' and ( status = 'USED' or status = 'nil') order by status desc , end_date asc limit 20 offset 0   "
-    path='.data.data'
+    sql1="select * from account_rewards where user_id = '#{@user_id}' and ( status = 'USED' or status = 'nil') order by status desc , end_date asc limit 20 offset 0   "
+    path='.data'
     reqbody=httppost(@url,data1)
     jsondata1=jsonlist reqbody,path
     sqldata1=Resultdiy.new(@conn.sqlquery(sql1)).result_to_list
@@ -65,13 +67,42 @@ class Testaccount_reward<Test::Unit::TestCase
   def test_right3
     @html.newTestName('我的抵现券-已过期')
     data1={"token"=>@token,"type"=>"EXPIRED","page"=>"1"}
-    sql1="select * from account_rewards where user_id = '2898945' and ( status = 'EXPIRED' or status = 'nil') order by status desc , end_date asc limit 20 offset 0  "
-    path='.data.data'
+    sql1="select * from account_rewards
+   where user_id = '#{@user_id}' and ( status = 'EXPIRED' or status = 'nil')
+   order by status desc,
+      CASE WHEN (status = 'ACTIVE' or status ='CREATED' ) THEN end_date end asc ,
+      CASE WHEN status = 'USED'  THEN used_time  end desc,
+      CASE WHEN status = 'EXPIRED' THEN expired_time end desc limit 20 offset 0   "
+    path='.data'
     reqbody=httppost(@url,data1)
     jsondata1=jsonlist reqbody,path
     sqldata1=Resultdiy.new(@conn.sqlquery(sql1)).result_to_list
     test = '检查关键字reward_id'
     result=asskey(jsondata1,sqldata1,["id",:id])
+    @html.add_to_report(result,test)
+  end
+
+  #未完成
+  def test_wrong
+    @html.newTestName('我的抵现券-参数为空')
+    data1={}
+    path='.error.msg'
+    reqbody=httppost(@url,data1)
+    jsondata1=jsonlist reqbody,path
+    test = '检查error=token 失效'
+    result= "token 失效".eql?jsondata1
+    @html.add_to_report(result,test)
+  end
+
+  #未完成
+  def test_wrong1
+    @html.newTestName('我的抵现券-参数值为空')
+    data1={"token"=>"","type"=>"","page"=>""}
+    path='.error.msg'
+    reqbody=httppost(@url,data1)
+    jsondata1=jsonlist reqbody,path
+    test = '检查error=token 失效'
+    result= "token 失效".eql?jsondata1
     @html.add_to_report(result,test)
   end
 

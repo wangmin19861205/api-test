@@ -1,13 +1,13 @@
 
 
-class Testsend_register_code<Test::Unit::TestCase
+class Testregister_send_phone_code<Test::Unit::TestCase
   include Httpmethod
   def setup
     @conn=MyDB.new "rui_site"
     @test_environment = 'QA'
     @html = HTMLReport.new()
-    @report = @html.createReport1('send_register_code')
-    @url="http://rpc.wangmin.test.zrcaifu.com/send_register_code"
+    @report = @html.createReport1('register-send-phone-code')
+    @url="http://rpc.wangmin.test.zrcaifu.com/register-send-phone-code"
     MySSH.sshconn('echo "FLUSHALL" | redis-cli')
   end
 
@@ -21,17 +21,55 @@ class Testsend_register_code<Test::Unit::TestCase
   end
 
   def test_right
-    @html.newTestName('注册验证码-正常')
     begin
-      data={"phone"=>"13500000098"}
-      path='.data.data.success'
+      @html.newTestName('注册验证码-正常')
+      data={"phone"=>"13500000098","token"=>""}
+      path='.error'
       reqbody=httppost(@url,data)
       jsondata=jsonlist reqbody,path
-      result=(true.eql?jsondata)
-    rescue Exception
+      result=(nil.eql?jsondata)
+    rescue Exception=>e
+      result=[false,e.message]
+    ensure
+      test="检查json的error为null"
+      @html.add_to_report(result,test)
     end
-    test="检查json的success为TRUE"
-    @html.add_to_report(result,test)
+  end
+
+
+  #未完成
+  def test_wrong
+    begin
+      @html.newTestName('注册验证码-参数为空')
+      data={}
+      path='.error.msg'
+      reqbody=httppost(@url,data)
+      jsondata=jsonlist reqbody,path
+      result=("手机号码不合法".eql?jsondata)
+    rescue Exception=>e
+      result=[false,e.message]
+    ensure
+      test="检查json的error为手机号码不合法"
+      @html.add_to_report(result,test)
+    end
+  end
+
+
+  #未完成
+  def test_wrong1
+    begin
+      @html.newTestName('注册验证码-参数值为空')
+      data={"phone"=>"","token"=>""}
+      path='.error.msg'
+      reqbody=httppost(@url,data)
+      jsondata=jsonlist reqbody,path
+      result=("手机号码不合法".eql?jsondata)
+    rescue Exception=>e
+      result=[false,e.message]
+    ensure
+      test="检查json的error为手机号码不合法"
+      @html.add_to_report(result,test)
+    end
   end
 
 

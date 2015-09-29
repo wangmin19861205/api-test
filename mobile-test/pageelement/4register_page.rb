@@ -1,7 +1,6 @@
+Register_Page_title={id: 'com.zrcaifu:id/login_page_title'}
 
-Page_title={id: 'com.zrcaifu:id/login_page_title'}
-
-Cancel_button={id: 'com.zrcaifu:id/login_page_cancel'}
+Register_Page_Cancel_button={id: 'com.zrcaifu:id/login_page_cancel'}
 
 Username_text={id: 'com.zrcaifu:id/register_activity_phone_num'}
 

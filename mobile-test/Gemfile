@@ -18,6 +18,7 @@ gem 'cucumber-core'
 gem 'rspec-expectations'
 gem 'rspec'
 gem 'selenium-webdriver'
+gem 'watir-webdriver'
 #安装ruby-jq
 #git clone https://github.com/stedolan/jq.git
 #cd jq

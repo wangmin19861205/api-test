@@ -21,10 +21,12 @@ class Testregister<Test::Unit::TestCase
     end
     url="http://rpc.wangmin.test.zrcaifu.com/send_register_code"
     data={"phone"=>"13500000098"}
-    httppost(url,data)
+    path=".token"
+    reqbody=httppost(url,data)
+    @token=jsonlist reqbody,path
     sql="select content from sms_records where numbers = '13500000098' order by id desc limit 1"
     codetext=(Resultdiy.new(@conn.sqlquery(sql)).result_to_list[0])[:content]
-    @auth_code=/您的验证码是: (.*)/.match(codetext).to_a[1]
+    @code=/您的验证码是: (.*)/.match(codetext).to_a[1]
     @url="http://rpc.wangmin.test.zrcaifu.com/register"
   end
 
@@ -38,18 +40,58 @@ class Testregister<Test::Unit::TestCase
   end
 
   def test_right
-    @html.newTestName('用户注册-正常')
-    data={"phone"=>"13500000098","auth_code"=>"#{@auth_code}","password"=>"123456","refer_phone"=>""}
-    path='.data.user.secure_phone'
     begin
+      @html.newTestName('用户注册-正常')
+      data={"phone"=>"13500000098","token"=>"#{@token}","code"=>"#{@code}","password"=>"123456","refer_phone"=>""}
+      path='.data.user.secure_phone'
       reqbody=httppost(@url,data)
       jsondata=jsonlist reqbody,path
       result="13500000098".eql?jsondata
-    rescue Exception
+    rescue Exception=>e
+      result=[false,e.message]
+    ensure
+      test="检查json中的secure_phone=13500000098"
+      @html.add_to_report(result,test)
     end
-    test="检查json中的secure_phone=13500000098"
-    @html.add_to_report(result,test)
   end
+
+
+  #未完成
+  def test_wrong
+    begin
+      @html.newTestName('用户注册-参数为空')
+      data={}
+      path='.data.user.secure_phone'
+      reqbody=httppost(@url,data)
+      jsondata=jsonlist reqbody,path
+      result="13500000098".eql?jsondata
+    rescue Exception=>e
+      result=[false,e.message]
+    ensure
+      test="检查json中的secure_phone=13500000098"
+      @html.add_to_report(result,test)
+    end
+  end
+
+
+  #未完成
+  def test_wrong1
+    begin
+      @html.newTestName('用户注册-参数值为空')
+      data={"phone"=>"","auth_code"=>"","password"=>"","refer_phone"=>""}
+      path='.data.user.secure_phone'
+      reqbody=httppost(@url,data)
+      jsondata=jsonlist reqbody,path
+      result="13500000098".eql?jsondata
+    rescue Exception=>e
+      result=[false,e.message]
+    ensure
+      test="检查json中的secure_phone=13500000098"
+      @html.add_to_report(result,test)
+    end
+  end
+
+
 
 
 end

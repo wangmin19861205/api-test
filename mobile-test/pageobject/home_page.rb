@@ -1,11 +1,15 @@
 require_relative '../pageobject/pageobject'
-require_relative '../pageelement/home_page'
+require_relative '../pageelement/1home_page'
 
 
 class Home < PageObject
+  def in_homepage
+    @driver.find_until(To_home_link).click
+    return @driver.find_until(Home_title).text
+  end
+
   def in_home
     @driver.find_until(To_home_button).click
-    return @driver.find_until(Home_title).text
   end
 
   def in_account
@@ -49,8 +53,7 @@ class Home < PageObject
   end
 
   def message
-    text=@driver.find_until(Message).text
-    return text
+    @driver.find_until(Message).text
   end
 
 end

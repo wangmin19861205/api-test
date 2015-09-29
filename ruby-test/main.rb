@@ -1,5 +1,5 @@
 base_dir = File.dirname(__FILE__)               #工作目录
-lib_dir  = File.join(base_dir, "iframe")        #lib包目录
+lib_dir  = File.join(File.dirname(base_dir), "libs/iframe")        #lib包目录
 test_dir = File.join(base_dir, "testcase")      #case目录
 #将lib包目录添加至系统变量中
 $LOAD_PATH.unshift(lib_dir)
@@ -33,7 +33,7 @@ end
 Test::Unit.at_exit do
   driver=Watir::Browser.new :chrome
   driver.window.maximize
-  driver.goto "file://#{File.realpath(File.dirname(__FILE__))}/results/result.html"
+  driver.goto "file://#{File.realpath(base_dir)}/results/result.html"
 end
 
 

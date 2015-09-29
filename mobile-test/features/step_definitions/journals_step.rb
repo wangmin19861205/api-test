@@ -1,24 +1,29 @@
 
-Given /验证投资记录页面title/ do
-  mobile=Investlist.new(@driver)
+Given /验证交易明细页面title/ do
+  mobile=Journals.new(@driver)
   data=mobile.pagetitle
-  expect(data).to eq("投资记录")
+  expect(data).to eq("交易明细")
 end
 
-Given /切换到未还款项目tab/ do
-  mobile=Investlist.new(@driver)
-  mobile.switch_no_repay
+Given /切换到全部交易明细tab/ do
+  mobile=Journals.new(@driver)
+  mobile.switch_all_tab
 end
 
-Given /切换到还款项目tab/ do
-  mobile=Investlist.new(@driver)
-  mobile.switch_repay
+Given /切换到处理中的交易明细tab/ do
+  mobile=Journals.new(@driver)
+  mobile.switch_doing_tab
 end
 
-Given /验证投资记录项目数据:/ do |table|
-  mobile=Investlist.new(@driver)
-  assdata=table.raw
-  data=mobile.invest_projects
+
+Given /验证交易明细的记录数据:/ do |table|
+  mobile=Journals.new(@driver)
+  assdata=[]
+  table.raw.each do |item|
+    item.delete('')
+    assdata.push item
+  end
+  data=mobile.journals_record
   expect(data).to eq(assdata)
 end
 

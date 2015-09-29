@@ -1,18 +1,18 @@
 
 
-class Testinvest_confirm<Test::Unit::TestCase
+class Testinvest_create<Test::Unit::TestCase
   include Httpmethod
   def setup
     @conn=MyDB.new "rui_site"
     @test_environment = 'QA'
     @html = HTMLReport.new()
-    @report = @html.createReport1('invest_confirm')
+    @report = @html.createReport1('invest_create')
     url="http://rpc.wangmin.test.zrcaifu.com/login"
     data={"name"=>"13500000069","password"=>"123456"}
     reqbody= httppost(url,data)
     @token=jsonlist reqbody,'.token'
     @user_id=jsonlist reqbody,'.user.id'
-    @url="http://rpc.wangmin.test.zrcaifu.com/invest/confirm"
+    @url="http://rpc.wangmin.test.zrcaifu.com/invest/create"
   end
 
   def teardown
@@ -26,8 +26,8 @@ class Testinvest_confirm<Test::Unit::TestCase
 
   def test_right
     begin
-      @html.newTestName('投资确认-正常')
-      data={"token"=>@token,"loan_id"=>"700000835"}
+      @html.newTestName('创建投资-正常')
+      data={"token"=>@token,"loan_id"=>"700000835","amount"=>"2000","reward_id"=>"","copopn_id"=>""}
       rewards_sql="select count(*) as rewards  from account_rewards
                                 where user_id = '#{@user_id}' and status = 'ACTIVE'
                                 and begin_date <= current_date() and end_date >= current_date()

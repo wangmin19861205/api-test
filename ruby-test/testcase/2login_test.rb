@@ -21,9 +21,9 @@ class Testlogin<Test::Unit::TestCase
 
   def test_right
     @html.newTestName('用户登录-正常')
-    data={"name"=>"13500000045","password"=>"123456"}
-    sql="select * from users where id = '2898945'"
-    path='.data.user'
+    data={"name"=>"13500000069","password"=>"123456"}
+    sql="select * from users where id = '2899124'"
+    path='.user'
     reqbody=httppost(@url,data)
     jsondata=jsonlist reqbody,path
     sqldata=Resultdiy.new(@conn.sqlquery(sql)).result_to_list
@@ -31,35 +31,108 @@ class Testlogin<Test::Unit::TestCase
     result=asskey jsondata,sqldata,["id",:id]
     @html.add_to_report(result,test)
     test1 = '检查json中的error为空'
-    @html.add_to_report((nil.equal?(jsonlist reqbody,'.data.error')),test1)
+    @html.add_to_report((nil.equal?(jsonlist reqbody,'.error')),test1)
     test2 = '检查json中的token不为空'
-    @html.add_to_report((jsonlist reqbody,'.data.token') != nil,test2)
+    @html.add_to_report((jsonlist reqbody,'.token') != nil,test2)
   end
 
   def test_wrong
     @html.newTestName('用户登录-密码错误')
-    data={"name"=>"13500000045","password"=>"123451"}
-    path='.data.error.code'
+    data={"name"=>"13500000069","password"=>"123451"}
+    path='.error.msg'
     begin
       reqbody=httppost(@url,data)
       jsondata=jsonlist reqbody,path
-      result=10101.equal?jsondata
+      result = "密码错误".eql?jsondata
     rescue Exception=>e
         result=[false,e.message]
     ensure
-      test = '检查json中的error为10101'
+      test = '检查json中的error为密码错误'
       @html.add_to_report(result,test)
     end
   end
 
   def test_wrong1
-    @html.newTestName('用户登录-用户不存在')
-    data={"name"=>"1350000004","password"=>"123456"}
-    path='.data.error.code'
-    reqbody=httppost(@url,data)
-    jsondata=jsonlist reqbody,path
-    test = '检查json中的error为10100'
-    @html.add_to_report((10100.equal?jsondata),test)
-  end
+    begin
+      @html.newTestName('用户登录-用户名错误')
+      data={"name"=>"135000000411","password"=>"123456"}
+      path='.error.msg'
+      reqbody=httppost(@url,data)
+      jsondata=jsonlist reqbody,path
+      result= "用户名错误".eql?jsondata
+    rescue Exception=>e
+      result=[false,e.message]
+    ensure
+      test = '检查json中的error为用户名错误'
+      @html.add_to_report(result,test)
+    end
+    end
+
+  def test_wrong2
+    begin
+      @html.newTestName('用户登录-用户名为空')
+      data={"name"=>"","password"=>""}
+      path='.msg'
+      reqbody=httppost(@url,data)
+      jsondata=jsonlist reqbody,path
+      result= "用户名未填写".eql?jsondata
+    rescue Exception=>e
+      result=[false,e.message]
+    ensure
+      test = '检查json中的msg为:用户名未填写'
+      @html.add_to_report(result,test)
+    end
+    end
+
+#未完成
+  def test_wrong3
+    begin
+      @html.newTestName('用户登录-密码为空')
+      data={"name"=>"13500000069","password"=>""}
+      path='.msg'
+      reqbody=httppost(@url,data)
+      jsondata=jsonlist reqbody,path
+      result = "密码未填写".eql?jsondata
+    rescue Exception=>e
+      result=[false,e.message]
+    ensure
+      test = '检查json中的msg为:密码未填写'
+      @html.add_to_report(result,test)
+    end
+    end
+
+#未完成
+  def test_wrong4
+    begin
+      @html.newTestName('用户登录-参数为空')
+      data={}
+      path='.msg'
+      reqbody=httppost(@url,data)
+      jsondata=jsonlist reqbody,path
+      result=  "用户名未填写".eql?jsondata
+    rescue Exception=>e
+      result=[false,e.message]
+    ensure
+      test = '检查json中的msg为:用户名未填写'
+      @html.add_to_report(result,test)
+    end
+    end
+
+#未完成
+  def test_wrong5
+    begin
+      @html.newTestName('用户登录-参数值为空')
+      data={"name"=>"","password"=>""}
+      path='.msg'
+      reqbody=httppost(@url,data)
+      jsondata=jsonlist reqbody,path
+      result= "用户名未填写".eql?jsondata
+    rescue Exception=>e
+      result=[false,e.message]
+    ensure
+      test = '检查json中的msg为:用户名未填写'
+      @html.add_to_report(result,test)
+    end
+    end
 
 end

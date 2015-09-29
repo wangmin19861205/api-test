@@ -1,5 +1,5 @@
 require 'mysql2'
-require_relative '../conf/settings'
+require_relative '../config/settings'
 
 
 class Mysqldiy

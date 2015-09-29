@@ -17,6 +17,7 @@ defaults: &defaults
   URL:
     site: http://www.wangmin.test.zrcaifu.com/
     admin: http://admin.wangmin.test.zrcaifu.com/
+    browser: chrome
   MOBILE:
     platformName: Android
     deviceName: HWHol-T

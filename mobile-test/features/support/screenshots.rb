@@ -2,18 +2,19 @@
 # browser testing. Just run cucumber with --format html --out report.html
 #
 # The code below will work on OS X or Windows (with IE Watir only).
-# Adding support for other platforms should be easy - as long as there is a 
+# Adding support for other platforms should be easy - as long as there is a
 # ruby library or command line tool to take pictures.
 #
+
 module Screenshots
 
-  def embed_screenshot_webdriver(id)
-    @browser.screenshot.save "#{Insight.capture_dir}#{id}.png"
+  def embed_screenshot_appium(id)
+    @driver.screenshot  "#{ENV["reportpath"]}#{id}.png"
     embed("#{id}.png", "image/png")
   end
 
   def embed_screenshot_osx(id)
-    `screencapture -t png #{Insight.capture_dir}#{id}.png`
+    `screencapture -t png #{ENV["reportpath"]}#{id}.png`
     embed("#{id}.png", "image/png")
   end
   # http://wtr.rubyforge.org/rdoc/classes/Watir/ScreenCapture.html
@@ -22,7 +23,7 @@ module Screenshots
     require 'watir/screen_capture'
     include Watir::ScreenCapture
     def embed_screenshot_ie(id)
-      screen_capture("#{Insight.capture_dir}#{id}.jpg", true)
+      screen_capture("#{ENV["reportpath"]}#{id}.jpg", true)
       embed("#{id}.jpg", "image/jpeg")
     end
   end
@@ -33,19 +34,13 @@ module Screenshots
 end
 World(Screenshots)
 
+
+include Timediy
 After do |scenario|
   if(scenario.failed?)
-    name="screenshot-#{Time.new.to_i}"
-    if Insight.browser_name=='safari' || Insight.browser_name=='chrome' || Insight.browser_name=='firefox'
-      embed_screenshot_osx(name)
-    elsif Insight.browser_name=='ie'
-      if Cucumber::WINDOWS
-        embed_screenshot_ie(name)
-      end
-    else
-      embed_screenshot_unknown(name)
+    name="screenshot-#{Timediy.getnowtimeall}"
+    embed_screenshot_appium(name)
     end
-  end
 end
 
 # Other variants:

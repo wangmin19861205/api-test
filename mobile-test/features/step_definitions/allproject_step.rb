@@ -1,5 +1,3 @@
-require_relative '../../pageobject/allproject_page'
-require 'cucumber'
 
 Given /验证全部项目页面title/ do
   mobile=Allproject.new(@driver)
