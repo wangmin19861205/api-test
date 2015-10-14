@@ -6,12 +6,13 @@ class Testdetail_loan_summary<Test::Unit::TestCase
     @conn=MyDB.new "rui_site"
     @test_environment = 'QA'
     @html = HTMLReport.new()
-    @report = @html.createReport1('detail_loan_summary')
-    url1="http://rpc.wangmin.test.zrcaifu.com/home"
-    data={"token"=>""}
-    reqbody=httppost(url1,data)
-    path='.loans[].id'
-    loansid=jsonlist reqbody,path
+    @report = @html.createReport1('detail_loan_introduction')
+    projectdatas=Resultdiy.new(@conn.sqlquery("select * from loans where disabled = 0 and status='INVEST' and special_loan is null and special_user_id is null and loan_type = 'RECOMMEND_PROJECT' and invest_open_time < now() order by case loan_period when 'SHORT' then 1 when 'MIDDLE' then 2 when 'LONG' then 3 else 4 end asc , invest_open_time asc")).result_to_list
+    loansid=[]
+    projectdatas.each do |data|
+      loansid.push(data[:id])
+    end
+    puts loansid
     @id=loansid.sample
     @url="http://rpc.wangmin.test.zrcaifu.com/loan/detail/introduction"
   end

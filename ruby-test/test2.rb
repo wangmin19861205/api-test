@@ -1,9 +1,22 @@
-require_relative "iframe/http_methods"
-require_relative 'iframe/resultdiy'
-require_relative "iframe/htmlclass"
-require_relative 'iframe/mysqldiy'
-require_relative 'iframe/resultdiy'
-include Httpmethod
+require '../libs/iframe/mysqldiy'
 
 
-p httppost("http://www.wangmin.test.zrcaifu.com/account/membership/checkin",{"rui-session"=>""})
+conn=MyDB.new("rui_site")
+list=["700000891","700000890","700000889"]
+a=0
+str=''
+while a<list.length
+  list.each do |i|
+    if a+1 == list.length
+      str=str+i
+    else
+      str=str+i+','
+    end
+    a=a+1
+  end
+  end
+str="("+str+")"
+p str
+
+
+conn.update("update loans set status='repay' where id in #{str}")

@@ -21,8 +21,9 @@ class Testlogin<Test::Unit::TestCase
 
   def test_right
     @html.newTestName('用户登录-正常')
-    data={"name"=>"13500000069","password"=>"123456"}
-    sql="select * from users where id = '2899124'"
+    user_phone="13500000069"
+    data={"name"=>"#{user_phone}","password"=>"123456"}
+    sql="select * from users where secure_phone = '#{user_phone}'"
     path='.user'
     reqbody=httppost(@url,data)
     jsondata=jsonlist reqbody,path
@@ -38,7 +39,8 @@ class Testlogin<Test::Unit::TestCase
 
   def test_wrong
     @html.newTestName('用户登录-密码错误')
-    data={"name"=>"13500000069","password"=>"123451"}
+    user_phone="13500000069"
+    data={"name"=>"#{user_phone}","password"=>"1231456"}
     path='.error.msg'
     begin
       reqbody=httppost(@url,data)
@@ -55,7 +57,8 @@ class Testlogin<Test::Unit::TestCase
   def test_wrong1
     begin
       @html.newTestName('用户登录-用户名错误')
-      data={"name"=>"135000000411","password"=>"123456"}
+      user_phone="1350000006911"
+      data={"name"=>"#{user_phone}","password"=>"123456"}
       path='.error.msg'
       reqbody=httppost(@url,data)
       jsondata=jsonlist reqbody,path

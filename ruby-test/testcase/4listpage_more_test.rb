@@ -24,7 +24,7 @@ class Testlistpage_more<Test::Unit::TestCase
       @html.newTestName('加载更多-短期项目')
       data={"type"=>"short","page"=>"1"}
       path='.loans[]'
-      sql="select * from loans where disabled = 0 and special_loan is null and special_user_id is null and loan_type = 'RECOMMEND_PROJECT' and loan_period = 'SHORT' order by case status when 'INVEST' then 1 when 'REPAY' then 2 when 'FINISH' then 3 end asc ,case status when 'INVEST' then invest_open_time end asc , case when status <> 'INVEST' then invest_open_time end desc limit 10 offset 0"
+      sql="select * from loans where disabled = 0 and special_loan is null and loan_type = 'RECOMMEND_PROJECT' and loan_period = 'SHORT' order by case status when 'INVEST' then 1 when 'REPAY' then 2 when 'FINISH' then 3 end asc ,case status when 'INVEST' then invest_open_time end asc , case when status <> 'INVEST' then invest_open_time end desc limit 10 offset 0"
       reqbody=httppost(@url,data)
       jsondata=jsonlist reqbody,path
       sqldata=Resultdiy.new(@conn.sqlquery(sql)).result_to_list
@@ -42,7 +42,7 @@ class Testlistpage_more<Test::Unit::TestCase
       @html.newTestName('加载更多-中期项目')
       data={"type"=>"middle","page"=>"1"}
       path='.loans[]'
-      sql="select * from loans where disabled = 0 and special_loan is null and special_user_id is null and loan_type = 'RECOMMEND_PROJECT' and loan_period = 'MIDDLE' order by case status when 'INVEST' then 1 when 'REPAY' then 2 when 'FINISH' then 3 end asc ,case status when 'INVEST' then invest_open_time end asc , case when status <> 'INVEST' then invest_open_time end desc limit 10 offset 0"
+      sql="select * from loans where disabled = 0 and special_loan is null and loan_type = 'RECOMMEND_PROJECT' and loan_period = 'MIDDLE' order by case status when 'INVEST' then 1 when 'REPAY' then 2 when 'FINISH' then 3 end asc ,case status when 'INVEST' then invest_open_time end asc , case when status <> 'INVEST' then invest_open_time end desc limit 10 offset 0"
       reqbody=httppost(@url,data)
       jsondata=jsonlist reqbody,path
       sqldata=Resultdiy.new(@conn.sqlquery(sql)).result_to_list
@@ -51,6 +51,25 @@ class Testlistpage_more<Test::Unit::TestCase
       result=[false,e.message]
     ensure
       test1 = '检查关键字loan_id'
+      @html.add_to_report(result,test1)
+    end
+  end
+
+
+  def test_right_special
+    begin
+      @html.newTestName('加载更多-中期项目-指定用户')
+      data={"type"=>"middle","page"=>"1"}
+      path='.loans[]'
+      sql="select special_user_id from loans where disabled = 0 and special_loan is null and loan_type = 'RECOMMEND_PROJECT' and loan_period = 'MIDDLE' order by case status when 'INVEST' then 1 when 'REPAY' then 2 when 'FINISH' then 3 end asc ,case status when 'INVEST' then invest_open_time end asc , case when status <> 'INVEST' then invest_open_time end desc limit 10 offset 0"
+      reqbody=httppost(@url,data)
+      jsondata=jsonlist reqbody,path
+      sqldata=Resultdiy.new(@conn.sqlquery(sql)).result_to_list
+      result=asskey(jsondata,sqldata,["special_user_id",:special_user_id])
+    rescue Exception=>e
+      result=[false,e.message]
+    ensure
+      test1 = '检查关键字special_user_id'
       @html.add_to_report(result,test1)
     end
   end
@@ -78,7 +97,7 @@ class Testlistpage_more<Test::Unit::TestCase
       @html.newTestName('加载更多-新手项目')
       data={"type"=>"newuser","page"=>"1"}
       path='.loans[]'
-      sql="select * from loans where disabled = 0 and special_loan is null and special_user_id is null and loan_type = 'NEWUSER_PROJECT' order by  case status when 'INVEST' then 1 when 'REPAY' then 2 when 'FINISH' then 3 end asc ,case status when 'INVEST' then invest_open_time end asc , case when status <> 'INVEST' then invest_open_time end desc limit 1"
+      sql="select * from loans where disabled = 0 and special_loan is null and loan_type = 'NEWUSER_PROJECT' order by  case status when 'INVEST' then 1 when 'REPAY' then 2 when 'FINISH' then 3 end asc ,case status when 'INVEST' then invest_open_time end asc , case when status <> 'INVEST' then invest_open_time end desc limit 1 offset 0"
       reqbody=httppost(@url,data)
       jsondata=jsonlist reqbody,path
       sqldata=Resultdiy.new(@conn.sqlquery(sql)).result_to_list
@@ -96,7 +115,7 @@ class Testlistpage_more<Test::Unit::TestCase
       @html.newTestName('加载更多-VIP项目')
       data={"type"=>"vip","page"=>"1"}
       path='.loans[]'
-      sql="select * from loans where disabled = 0 and special_loan is null and loan_type = 'VIP_PROJECT' order by case status when 'INVEST' then 1 when 'REPAY' then 2 when 'FINISH' then 3 end asc ,case status when 'INVEST' then invest_open_time end asc , case when status <> 'INVEST' then invest_open_time end desc limit 10 offset 0"
+      sql="select * from loans where disabled = 0 and special_loan is null and loan_type = 'VIP_PROJECT' order by case status when 'INVEST' then 1 when 'REPAY' then 2 when 'FINISH' then 3 end asc ,case status when 'INVEST' then invest_open_time end asc , case when status <> 'INVEST' then invest_open_time end desc limit 1 offset 0"
       reqbody=httppost(@url,data)
       jsondata=jsonlist reqbody,path
       sqldata=Resultdiy.new(@conn.sqlquery(sql)).result_to_list

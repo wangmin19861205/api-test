@@ -19,14 +19,14 @@ class Testregister<Test::Unit::TestCase
       @conn.update(sql2)
       @conn.update(sql3)
     end
-    url="http://rpc.wangmin.test.zrcaifu.com/send_register_code"
-    data={"phone"=>"13500000098"}
+    url="http://rpc.wangmin.test.zrcaifu.com/register-send-phone-code"
+    data={"phone"=>"13500000098","token"=>""}
     path=".token"
     reqbody=httppost(url,data)
     @token=jsonlist reqbody,path
     sql="select content from sms_records where numbers = '13500000098' order by id desc limit 1"
     codetext=(Resultdiy.new(@conn.sqlquery(sql)).result_to_list[0])[:content]
-    @code=/您的验证码是: (.*)/.match(codetext).to_a[1]
+    @code=/您的手机注册验证码为：(.*)，验证码10分钟内有效/.match(codetext).to_a[1]
     @url="http://rpc.wangmin.test.zrcaifu.com/register"
   end
 
@@ -43,7 +43,7 @@ class Testregister<Test::Unit::TestCase
     begin
       @html.newTestName('用户注册-正常')
       data={"phone"=>"13500000098","token"=>"#{@token}","code"=>"#{@code}","password"=>"123456","refer_phone"=>""}
-      path='.data.user.secure_phone'
+      path='.user.secure_phone'
       reqbody=httppost(@url,data)
       jsondata=jsonlist reqbody,path
       result="13500000098".eql?jsondata
@@ -78,7 +78,7 @@ class Testregister<Test::Unit::TestCase
   def test_wrong1
     begin
       @html.newTestName('用户注册-参数值为空')
-      data={"phone"=>"","auth_code"=>"","password"=>"","refer_phone"=>""}
+      data={"phone"=>"","token"=>"#{@token}","code"=>"","password"=>"","refer_phone"=>""}
       path='.data.user.secure_phone'
       reqbody=httppost(@url,data)
       jsondata=jsonlist reqbody,path

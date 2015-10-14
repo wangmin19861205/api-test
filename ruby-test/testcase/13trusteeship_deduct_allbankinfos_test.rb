@@ -28,7 +28,7 @@ class Testtrusteeship_deduct_allbankinfos<Test::Unit::TestCase
     jsondata1=jsonlist reqbody,path
     sqldata1=Resultdiy.new(@conn.sqlquery(sql1)).result_to_list
     test = '检查关键字:银行id'
-    result=asskey(jsondata1,sqldata1,["id",:id])
+    result=asskeylist(jsondata1,sqldata1,["id","bankname"])
     @html.add_to_report(result,test)
   end
 

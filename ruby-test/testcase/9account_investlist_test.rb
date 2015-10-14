@@ -28,10 +28,17 @@ class Testaccount_investlist<Test::Unit::TestCase
     begin
       @html.newTestName('投资记录-未还款')
       data1={"token"=>@token,"repay_type"=>"0","page"=>"1"}
-      sql1="select invests.* ,  sum(case invest_receives.done when 1 then  invest_receives.amount_interest else 0 end) as invest_received_amount ,
-     sum(case invest_receives.done when 0 then invest_receives.amount_interest else 0 end) as invest_unreceived_amount
-    from invests, invest_receives where invests.user_id = '#{@user_id}' and invests.id = invest_receives.invest_id and case loan_repay_status when 'ALL' then 1 else 0 end = 0
-    group by invests.id order by create_time desc limit 20 offset 0"
+      sql1="select * from
+       (select invests.* ,
+               invests.interest as amount_interest,
+               sum(case invest_receives.done when 1 then invest_receives.amount_interest else 0 end) as invest_received_amount ,
+               invests.interest - sum(case invest_receives.done when 1 then invest_receives.amount_interest else 0 end) as invest_unreceived_amount
+        from invests, invest_receives, loans
+        where invests.user_id = '#{@user_id}'
+          and invests.loan_id = loans.id and invests.id = invest_receives.invest_id
+          and case invests.loan_repay_status when 'ALL' then 1 else 0 end = 0
+        group by invests.id order by invests.create_time desc)
+     as t limit 20 offset 0  "
       path='.data'
       reqbody=httppost(@url,data1)
       jsondata1=jsonlist reqbody,path
@@ -55,7 +62,17 @@ class Testaccount_investlist<Test::Unit::TestCase
     begin
       @html.newTestName('投资记录-已还款')
       data1={"token"=>@token,"repay_type"=>"1","page"=>"1"}
-      sql1="select invests.* , invests.interest as amount_interest, sum(case invest_receives.done when 1 then  invest_receives.amount_interest else 0 end) as invest_received_amount , invests.interest - sum(case invest_receives.done when 1 then  invest_receives.amount_interest else 0 end) as invest_unreceived_amount from invests, invest_receives where invests.user_id = '#{@user_id}' and invests.id = invest_receives.invest_id and case loan_repay_status when 'ALL' then 1 else 0 end = 1 group by invests.id order by invests.create_time desc limit 20 offset 0"
+      sql1="select * from
+       (select invests.* ,
+               invests.interest as amount_interest,
+               sum(case invest_receives.done when 1 then invest_receives.amount_interest else 0 end) as invest_received_amount ,
+               invests.interest - sum(case invest_receives.done when 1 then invest_receives.amount_interest else 0 end) as invest_unreceived_amount
+        from invests, invest_receives, loans
+        where invests.user_id = '#{@user_id}'
+          and invests.loan_id = loans.id and invests.id = invest_receives.invest_id
+          and case invests.loan_repay_status when 'ALL' then 1 else 0 end = 1
+        group by invests.id order by invests.create_time desc)
+     as t limit 20 offset 0  "
       path='.data'
       reqbody=httppost(@url,data1)
       jsondata1=jsonlist reqbody,path

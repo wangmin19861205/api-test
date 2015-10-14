@@ -17,6 +17,7 @@ class Testaccount_readUserMesssageByIds<Test::Unit::TestCase
     @url="http://rpc.wangmin.test.zrcaifu.com/account/message/readUserMesssageByIds"
   end
 
+
   def teardown
     @conn.close
     @html.finishReport(@report, @test_environment)

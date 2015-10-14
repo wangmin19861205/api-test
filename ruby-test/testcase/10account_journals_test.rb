@@ -8,7 +8,7 @@ class Testaccount_journals<Test::Unit::TestCase
     @html = HTMLReport.new()
     @report = @html.createReport1('account_journals')
     url="http://rpc.wangmin.test.zrcaifu.com/login"
-    data={"name"=>"13500000069","password"=>"123456"}
+    data={"name"=>"13500000091","password"=>"123456"}
     reqbody=httppost(url,data)
     @token=jsonlist reqbody,'.token'
     @user_id=jsonlist reqbody,'.user.id'

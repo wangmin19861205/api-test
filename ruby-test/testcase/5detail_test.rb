@@ -8,11 +8,12 @@ class Testdetail<Test::Unit::TestCase
     @test_environment = 'QA'
     @html = HTMLReport.new()
     @report = @html.createReport1('detail')
-    url1="http://rpc.wangmin.test.zrcaifu.com/home"
-    data={"token"=>""}
-    reqbody=httppost(url1,data)
-    path='.loans[].id'
-    loansid=jsonlist reqbody,path
+    projectdatas=Resultdiy.new(@conn.sqlquery("select * from loans where disabled = 0 and status='INVEST' and special_loan is null and special_user_id is null and loan_type = 'RECOMMEND_PROJECT' and invest_open_time < now() order by case loan_period when 'SHORT' then 1 when 'MIDDLE' then 2 when 'LONG' then 3 else 4 end asc , invest_open_time asc")).result_to_list
+    loansid=[]
+    projectdatas.each do |data|
+      loansid.push(data[:id])
+    end
+    puts loansid
     @id=loansid.sample
     @url="http://rpc.wangmin.test.zrcaifu.com/loan/detail"
   end
@@ -30,7 +31,7 @@ class Testdetail<Test::Unit::TestCase
     begin
       @html.newTestName('项目详情-id随机')
       data={"id"=>@id}
-      sql="select id,title,annualized_rate,annualized_rate0,annualized_rate1,annualized_rate1,days_of_loan,min_invest_amount,uninvest_amount,loanproposal_id from loans  where disabled = 0 and id = #{@id}"
+      sql="select id,title,annualized_rate,annualized_rate0,annualized_rate1,annualized_rate1,amount,days_of_loan,min_invest_amount,uninvest_amount,loanproposal_id,loan_type from loans  where disabled = 0 and id = #{@id}"
       path='.loan'
       reqbody=httppost(@url,data)
       sqldata=Resultdiy.new(@conn.sqlquery(sql)).result_to_list

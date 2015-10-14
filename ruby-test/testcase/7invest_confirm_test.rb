@@ -7,6 +7,12 @@ class Testinvest_confirm<Test::Unit::TestCase
     @test_environment = 'QA'
     @html = HTMLReport.new()
     @report = @html.createReport1('invest_confirm')
+    projectdatas=Resultdiy.new(@conn.sqlquery("select * from loans where disabled = 0 and status='INVEST' and special_loan is null and special_user_id is null and loan_type = 'RECOMMEND_PROJECT' and invest_open_time < now() order by case loan_period when 'SHORT' then 1 when 'MIDDLE' then 2 when 'LONG' then 3 else 4 end asc , invest_open_time asc")).result_to_list
+    loansid=[]
+    projectdatas.each do |data|
+      loansid.push(data[:id])
+    end
+    @id=loansid.sample
     url="http://rpc.wangmin.test.zrcaifu.com/login"
     data={"name"=>"13500000069","password"=>"123456"}
     reqbody= httppost(url,data)
@@ -27,7 +33,7 @@ class Testinvest_confirm<Test::Unit::TestCase
   def test_right
     begin
       @html.newTestName('投资确认-正常')
-      data={"token"=>@token,"loan_id"=>"700000835"}
+      data={"token"=>@token,"loan_id"=>@id}
       rewards_sql="select count(*) as rewards  from account_rewards
                                 where user_id = '#{@user_id}' and status = 'ACTIVE'
                                 and begin_date <= current_date() and end_date >= current_date()

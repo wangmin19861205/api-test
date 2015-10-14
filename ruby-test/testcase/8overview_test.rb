@@ -30,7 +30,7 @@ class Testoverview<Test::Unit::TestCase
     begin
       @html.newTestName('用户概览-正常')
       data={"token"=>@token}
-      sql="select balance_total,receivable_interest,receivable_principal,accumulate_interest,available_reward,available_money,frozen_money_withdraw from `accounts` where user_id ='#{@user_id}'"
+      sql="select available_money,available_reward,frozen_money_withdraw,receivable_principal,receivable_interest,accumulate_interest,balance_available,balance_total from `accounts` where user_id ='#{@user_id}'"
       path='.account'
       reqbody=httppost(@url,data)
       sqldata=Resultdiy.new(@conn.sqlquery(sql)).result_to_list

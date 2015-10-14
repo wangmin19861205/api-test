@@ -1,24 +1,18 @@
 
 
-class Testinvest_create<Test::Unit::TestCase
+class Testinvest_cancel<Test::Unit::TestCase
   include Httpmethod
   def setup
     @conn=MyDB.new "rui_site"
     @test_environment = 'QA'
     @html = HTMLReport.new()
-    @report = @html.createReport1('invest_create')
-    projectdatas=Resultdiy.new(@conn.sqlquery("select * from loans where disabled = 0 and status='INVEST' and special_loan is null and special_user_id is null and loan_type = 'RECOMMEND_PROJECT' and invest_open_time < now() order by case loan_period when 'SHORT' then 1 when 'MIDDLE' then 2 when 'LONG' then 3 else 4 end asc , invest_open_time asc")).result_to_list
-    loansid=[]
-    projectdatas.each do |data|
-      loansid.push(data[:id])
-    end
-    @id=loansid.sample
+    @report = @html.createReport1('invest_cancel')
     url="http://rpc.wangmin.test.zrcaifu.com/login"
     data={"name"=>"13500000069","password"=>"123456"}
     reqbody= httppost(url,data)
     @token=jsonlist reqbody,'.token'
     @user_id=jsonlist reqbody,'.user.id'
-    @url="http://rpc.wangmin.test.zrcaifu.com/invest/create"
+    @url="http://rpc.wangmin.test.zrcaifu.com/invest/cancel"
   end
 
   def teardown
@@ -32,8 +26,8 @@ class Testinvest_create<Test::Unit::TestCase
 
   def test_right
     begin
-      @html.newTestName('创建投资-正常')
-      data={"token"=>@token,"loan_id"=>@id,"amount"=>"1000","reward_id"=>"","copopn_id"=>""}
+      @html.newTestName('取消投资-正常')
+      data={"token"=>@token,"id"=>"700000835"}
       rewards_sql="select count(*) as rewards  from account_rewards
                                 where user_id = '#{@user_id}' and status = 'ACTIVE'
                                 and begin_date <= current_date() and end_date >= current_date()
@@ -62,7 +56,7 @@ class Testinvest_create<Test::Unit::TestCase
   #未完成,没有处理，直接返回的0，0
   def test_wrong
     begin
-      @html.newTestName('投资确认-参数为空')
+      @html.newTestName('取消投资-参数为空')
       data={"token"=>'',"loan_id"=>""}
       path='.rewards_count'
       path1='.coupons_count'
