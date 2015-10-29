@@ -1,22 +1,11 @@
 require '../libs/iframe/mysqldiy'
+require '../libs/iframe/resultdiy'
 
 
-conn=MyDB.new("rui_site")
-list=["700000891","700000890","700000889"]
-a=0
-str=''
-while a<list.length
-  list.each do |i|
-    if a+1 == list.length
-      str=str+i
-    else
-      str=str+i+','
-    end
-    a=a+1
-  end
-  end
-str="("+str+")"
-p str
+@conn=MyDB.new("rui_site")
+phone="13600000021"
+while Resultdiy.new(@conn.sqlquery("select * from users where secure_phone ='#{phone}'")).result_to_list
+
+end
 
 
-conn.update("update loans set status='repay' where id in #{str}")

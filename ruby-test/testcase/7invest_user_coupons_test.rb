@@ -52,7 +52,7 @@ class Testinvest_user_coupons<Test::Unit::TestCase
       path='.error.msg'
       reqbody=httppost(@url,data)
       jsondata=jsonlist reqbody,path
-      result="token 失效".eql?(jsondata)
+      result="参数错误".eql?(jsondata)
     rescue Exception=>e
       result=[false,e.message]
     ensure
@@ -70,7 +70,7 @@ class Testinvest_user_coupons<Test::Unit::TestCase
       path='.error.msg'
       reqbody=httppost(@url,data)
       jsondata=jsonlist reqbody,path
-      result="token 失效".eql?(jsondata)
+      result="参数错误".eql?(jsondata)
     rescue Exception=>e
       result=[false,e.message]
     ensure

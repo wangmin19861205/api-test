@@ -23,9 +23,10 @@ class Testregister_send_phone_code<Test::Unit::TestCase
   def test_right
     begin
       @html.newTestName('注册验证码-正常')
-      data={"phone"=>"13500000098","token"=>""}
+      data={"phone"=>"13500000197","token"=>""}
       path='.error'
       reqbody=httppost(@url,data)
+      puts reqbody
       jsondata=jsonlist reqbody,path
       result=(nil.eql?jsondata)
     rescue Exception=>e
@@ -45,7 +46,7 @@ class Testregister_send_phone_code<Test::Unit::TestCase
       path='.error.msg'
       reqbody=httppost(@url,data)
       jsondata=jsonlist reqbody,path
-      result=("手机号码不合法".eql?jsondata)
+      result=("参数错误".eql?jsondata)
     rescue Exception=>e
       result=[false,e.message]
     ensure
@@ -63,7 +64,7 @@ class Testregister_send_phone_code<Test::Unit::TestCase
       path='.error.msg'
       reqbody=httppost(@url,data)
       jsondata=jsonlist reqbody,path
-      result=("手机号码不合法".eql?jsondata)
+      result=("参数错误".eql?jsondata)
     rescue Exception=>e
       result=[false,e.message]
     ensure

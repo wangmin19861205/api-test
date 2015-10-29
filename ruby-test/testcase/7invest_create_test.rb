@@ -18,7 +18,7 @@ class Testinvest_create<Test::Unit::TestCase
     reqbody= httppost(url,data)
     @token=jsonlist reqbody,'.token'
     @user_id=jsonlist reqbody,'.user.id'
-    @url="http://rpc.wangmin.test.zrcaifu.com/invest/create"
+    @url="http://rpc.wangmin.test.zrcaifu.com/mobileapi/invest/create"
   end
 
   def teardown
@@ -34,26 +34,15 @@ class Testinvest_create<Test::Unit::TestCase
     begin
       @html.newTestName('创建投资-正常')
       data={"token"=>@token,"loan_id"=>@id,"amount"=>"1000","reward_id"=>"","copopn_id"=>""}
-      rewards_sql="select count(*) as rewards  from account_rewards
-                                where user_id = '#{@user_id}' and status = 'ACTIVE'
-                                and begin_date <= current_date() and end_date >= current_date()
-                                and account_lender_pay_id is null and category in ('NO_LIMIT', 'RECOMMEND', 'NEWUSER_AND_RECOMMEND', 'RECOMMEND_AND_VIP') "
-      coupons_sql="select count(*) as coupons from account_interest_coupons
-                      where user_id = '#{@user_id}' and status ='ACTIVE'
-                      and begin_date <= current_date() and end_date >= current_date() and (loan_type = 'RECOMMEND_PROJECT' or loan_type is null) and category is null  "
-      path=''
+      path='.error'
       reqbody=httppost(@url,data)
+      puts reqbody
       jsondata=jsonlist reqbody,path
-      sqldata=Resultdiy.new(@conn.sqlquery(rewards_sql)).result_to_list
-      sqldata1=Resultdiy.new(@conn.sqlquery(coupons_sql)).result_to_list
-      result=asskey(jsondata,sqldata,["rewards_count",:rewards])
-      result=asskey(jsondata,sqldata1,["coupons_count",:coupons])
+      result=nil.equal?jsondata
     rescue Exception=>e
       result=[false,e.message]
     ensure
-      test = '检查关键字reward'
-      @html.add_to_report(result,test)
-      test = '检查关键字coupons'
+      test = '检查关键字error为空'
       @html.add_to_report(result,test)
     end
   end
@@ -62,22 +51,34 @@ class Testinvest_create<Test::Unit::TestCase
   #未完成,没有处理，直接返回的0，0
   def test_wrong
     begin
-      @html.newTestName('投资确认-参数为空')
-      data={"token"=>'',"loan_id"=>""}
-      path='.rewards_count'
-      path1='.coupons_count'
+      @html.newTestName('创建投资-参数为空')
+      data={}
+      path='.error.msg'
       reqbody=httppost(@url,data)
       jsondata=jsonlist reqbody,path
-      jsondata1=jsonlist reqbody,path1
-      result= 0.eql?jsondata
-      result1= 0.eql?jsondata1
+      result='参数错误'.equal?jsondata
     rescue Exception=>e
       result=[false,e.message]
     ensure
-      test = '检查关键字reward'
+      test = '检查关键字error'
       @html.add_to_report(result,test)
-      test = '检查关键字coupons'
-      @html.add_to_report(result1,test)
+    end
+  end
+
+
+  def test_wrong1
+    begin
+      @html.newTestName('创建投资-参数值为空')
+      data={"token"=>'',"loan_id"=>'',"amount"=>"","reward_id"=>"","copopn_id"=>""}
+      path='.error.msg'
+      reqbody=httppost(@url,data)
+      jsondata=jsonlist reqbody,path
+      result='参数错误'.equal?jsondata
+    rescue Exception=>e
+      result=[false,e.message]
+    ensure
+      test = '检查关键字error'
+      @html.add_to_report(result,test)
     end
   end
 

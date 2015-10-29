@@ -37,7 +37,11 @@ class Testaccount_investlist<Test::Unit::TestCase
         where invests.user_id = '#{@user_id}'
           and invests.loan_id = loans.id and invests.id = invest_receives.invest_id
           and case invests.loan_repay_status when 'ALL' then 1 else 0 end = 0
-        group by invests.id order by invests.create_time desc)
+        group by invests.id order by
+
+               case when 0 = 1 then invests.last_repay_date end desc,
+               case when 0 = 0 then invests.create_time end desc
+     )
      as t limit 20 offset 0  "
       path='.data'
       reqbody=httppost(@url,data1)
@@ -71,8 +75,12 @@ class Testaccount_investlist<Test::Unit::TestCase
         where invests.user_id = '#{@user_id}'
           and invests.loan_id = loans.id and invests.id = invest_receives.invest_id
           and case invests.loan_repay_status when 'ALL' then 1 else 0 end = 1
-        group by invests.id order by invests.create_time desc)
-     as t limit 20 offset 0  "
+        group by invests.id order by
+
+               case when 1 = 1 then invests.last_repay_date end desc,
+               case when 1 = 0 then invests.create_time end desc
+     )
+     as t limit 20 offset 0 "
       path='.data'
       reqbody=httppost(@url,data1)
       jsondata1=jsonlist reqbody,path

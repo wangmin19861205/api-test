@@ -185,11 +185,11 @@ class Testaccount_message_category<Test::Unit::TestCase
       path='.error.msg'
       reqbody=httppost(@url,data1)
       jsondata1=jsonlist reqbody,path
-      result= "token 失效".eql?jsondata1
+      result= "参数错误".eql?jsondata1
     rescue Exception=>e
       result=[false,e.message]
     ensure
-      test = '检查error=token 失效'
+      test = '检查error=参数错误'
       @html.add_to_report(result,test)
     end
   end
@@ -203,11 +203,11 @@ class Testaccount_message_category<Test::Unit::TestCase
       path='.error.msg'
       reqbody=httppost(@url,data1)
       jsondata1=jsonlist reqbody,path
-      result= "token 失效".eql?jsondata1
+      result= "参数错误".eql?jsondata1
     rescue Exception=>e
       result=[false,e.message]
     ensure
-      test = '检查error=token 失效'
+      test = '检查error=参数错误'
       @html.add_to_report(result,test)
     end
   end

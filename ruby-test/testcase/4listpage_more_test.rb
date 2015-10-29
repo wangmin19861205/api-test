@@ -115,7 +115,7 @@ class Testlistpage_more<Test::Unit::TestCase
       @html.newTestName('加载更多-VIP项目')
       data={"type"=>"vip","page"=>"1"}
       path='.loans[]'
-      sql="select * from loans where disabled = 0 and special_loan is null and loan_type = 'VIP_PROJECT' order by case status when 'INVEST' then 1 when 'REPAY' then 2 when 'FINISH' then 3 end asc ,case status when 'INVEST' then invest_open_time end asc , case when status <> 'INVEST' then invest_open_time end desc limit 1 offset 0"
+      sql="select * from loans where disabled = 0 and special_loan is null and loan_type = 'VIP_PROJECT' order by case status when 'INVEST' then 1 when 'REPAY' then 2 when 'FINISH' then 3 end asc ,case status when 'INVEST' then invest_open_time end asc , case when status <> 'INVEST' then invest_open_time end desc limit 10 offset 0"
       reqbody=httppost(@url,data)
       jsondata=jsonlist reqbody,path
       sqldata=Resultdiy.new(@conn.sqlquery(sql)).result_to_list

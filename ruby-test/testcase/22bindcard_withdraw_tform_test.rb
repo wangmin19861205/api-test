@@ -1,21 +1,20 @@
 
 
 
-class Testrecharge_deduct_form<Test::Unit::TestCase
+class Testbindcard_withdraw_tform<Test::Unit::TestCase
   include Httpmethod
   def setup
     @conn=MyDB.new "rui_site"
     @test_environment = 'QA'
     @html = HTMLReport.new()
-    @report = @html.createReport1('recharge-deduct-form')
-    MySSH.sshconn('echo "FLUSHALL" | redis-cli')
-    @conn.update("update users set idcard_number = '43042119861205001' where idcard_number ='430421198612050018'")
-    phone="13500000069"
+    @report = @html.createReport1('bindcard-withdraw-tform')
+    #MySSH.sshconn('echo "FLUSHALL" | redis-cli')
+    phone="13600000013"
     url="http://rpc.wangmin.test.zrcaifu.com/login"
     data={"name"=>"#{phone}","password"=>"123456"}
     reqbody= httppost(url,data)
     @token=jsonlist reqbody,'.token'
-    @url="http://rpc.wangmin.test.zrcaifu.com/mobileapitest/recharge/deduct"
+    @url="http://rpc.wangmin.test.zrcaifu.com/mobileapitest/bindcardwithdraw"
   end
 
   def teardown
@@ -29,8 +28,8 @@ class Testrecharge_deduct_form<Test::Unit::TestCase
 
   def test_right
     begin
-      @html.newTestName('代扣充值-正常')
-      data={"token"=>"#{@token}","amount"=>"2000"}
+      @html.newTestName('绑卡提现-正常')
+      data={"token"=>"#{@token}","amount"=>"100","cardno"=>"6222020200040016236","province"=>"北京","city"=>"北京"}
       path='.error'
       reqbody=httppost(@url,data)
       p reqbody
