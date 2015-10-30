@@ -21,7 +21,7 @@ def creatloan (loan_type,is_dynamic_days,amount=50000,annualized_rate0=10,annual
   driver=Watir::Browser.new :firefox
   #driver.driver.manage.timeouts.implicit_wait=30
   driver.window.maximize
-  driver.goto "http://admin.wangmin.test.zrcaifu.com"
+  driver.goto "http://site19.test.zrcaifu.com"
   driver.text_field(:id=>"input-username").set("admin")
   driver.text_field(:id=>"input-password").set("000000")
   driver.button(:text=>"登录").when_present.click
@@ -70,6 +70,7 @@ def creatloan (loan_type,is_dynamic_days,amount=50000,annualized_rate0=10,annual
   driver.select_list(:xpath=>"//*[@id=\"rui\"]/body/div[1]/form/div[1]/div[19]/div/select").when_present.select(guarantee_type.to_s)
   driver.text_field(:id=>"memo_id").when_present.set("备注。。。。。。。。".to_s)
   driver.text_field(:name=>"fee_guarantee").when_present.set("5000".to_s)
+  driver.text_field(:name=>"fee_platform").when_present.set("111".to_s)
   driver.text_field(:id=>"laon_desc").when_present.set("项目描述.........................项目描述".to_s)
   #driver.select_list(:xpath=>'//*[@id="rui"]/body/div[1]/form/div[1]/div[25]/div/select').when_present.select("正常项目".to_s)
   driver.radio(:xpath=>'//*[@id="rui"]/body/div[1]/form/div[7]/div/div/input[4]').set

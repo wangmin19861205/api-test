@@ -9,7 +9,7 @@ class Testwithdraw_tform<Test::Unit::TestCase
     @html = HTMLReport.new()
     @report = @html.createReport1('withdraw-tform')
     #MySSH.sshconn('echo "FLUSHALL" | redis-cli')
-    phone="13600000017"
+    phone="13500000069"
     url="http://rpc.wangmin.test.zrcaifu.com/login"
     data={"name"=>"#{phone}","password"=>"123456"}
     reqbody= httppost(url,data)
@@ -31,7 +31,12 @@ class Testwithdraw_tform<Test::Unit::TestCase
   def test_right
     begin
       @html.newTestName('提现-正常')
-      data={"token"=>"#{@token}","amount"=>"199"}
+      phone="13500000069"
+      url="http://rpc.wangmin.test.zrcaifu.com/login"
+      data={"name"=>"#{phone}","password"=>"123456"}
+      reqbody= httppost(url,data)
+      token=jsonlist reqbody,'.token'
+      data={"token"=>"#{token}","amount"=>"100"}
       path='.error'
       reqbody=httppost(@url,data)
       p reqbody
@@ -45,17 +50,20 @@ class Testwithdraw_tform<Test::Unit::TestCase
     end
   end
 
-
-=begin
   def test_right1
     begin
       @html.newTestName('提现-余额为0')
-      data={"token"=>"#{@token}","amount"=>"1000"}
+      phone="13600000026"
+      url="http://rpc.wangmin.test.zrcaifu.com/login"
+      data={"name"=>"#{phone}","password"=>"123456"}
+      reqbody= httppost(url,data)
+      token=jsonlist reqbody,'.token'
+      data={"token"=>"#{token}","amount"=>"1000"}
       path='.error'
       reqbody=httppost(@url,data)
       p reqbody
       jsondata=jsonlist reqbody,path
-      result=nil.eql?jsondata
+      result='余额为0'.eql?jsondata
     rescue Exception=>e
       result=[false,e.message]
     ensure
@@ -63,17 +71,21 @@ class Testwithdraw_tform<Test::Unit::TestCase
       @html.add_to_report(result,test)
     end
   end
-
 
   def test_right2
     begin
       @html.newTestName('提现-提现金额大于余额')
-      data={"token"=>"#{@token}","amount"=>"2000"}
+      phone="13600000023"
+      url="http://rpc.wangmin.test.zrcaifu.com/login"
+      data={"name"=>"#{phone}","password"=>"123456"}
+      reqbody= httppost(url,data)
+      token=jsonlist reqbody,'.token'
+      data={"token"=>"#{token}","amount"=>"12000"}
       path='.error'
       reqbody=httppost(@url,data)
       p reqbody
       jsondata=jsonlist reqbody,path
-      result=nil.eql?jsondata
+      result='提现金额大于余额'.eql?jsondata
     rescue Exception=>e
       result=[false,e.message]
     ensure
@@ -85,7 +97,12 @@ class Testwithdraw_tform<Test::Unit::TestCase
   def test_right3
     begin
       @html.newTestName('提现-提现金额大于限额')
-      data={"token"=>"#{@token}","amount"=>"10000"}
+      phone="13600000023"
+      url="http://rpc.wangmin.test.zrcaifu.com/login"
+      data={"name"=>"#{phone}","password"=>"123456"}
+      reqbody= httppost(url,data)
+      token=jsonlist reqbody,'.token'
+      data={"token"=>"#{token}","amount"=>"12000"}
       path='.error'
       reqbody=httppost(@url,data)
       p reqbody
@@ -102,7 +119,12 @@ class Testwithdraw_tform<Test::Unit::TestCase
   def test_right4
     begin
       @html.newTestName('提现-amount为非数字')
-      data={"token"=>"#{@token}","amount"=>"ssss"}
+      phone="13600000023"
+      url="http://rpc.wangmin.test.zrcaifu.com/login"
+      data={"name"=>"#{phone}","password"=>"123456"}
+      reqbody= httppost(url,data)
+      token=jsonlist reqbody,'.token'
+      data={"token"=>"#{token}","amount"=>"ssss"}
       path='.error'
       reqbody=httppost(@url,data)
       p reqbody
@@ -119,7 +141,12 @@ class Testwithdraw_tform<Test::Unit::TestCase
   def test_right5
     begin
       @html.newTestName('提现-amount为空')
-      data={"token"=>"#{@token}","amount"=>""}
+      phone="13600000023"
+      url="http://rpc.wangmin.test.zrcaifu.com/login"
+      data={"name"=>"#{phone}","password"=>"123456"}
+      reqbody= httppost(url,data)
+      token=jsonlist reqbody,'.token'
+      data={"token"=>"#{token}","amount"=>""}
       path='.error'
       reqbody=httppost(@url,data)
       p reqbody
@@ -136,7 +163,12 @@ class Testwithdraw_tform<Test::Unit::TestCase
   def test_right6
     begin
       @html.newTestName('提现-amount<0.01')
-      data={"token"=>"#{@token}","amount"=>"0.004"}
+      phone="13600000023"
+      url="http://rpc.wangmin.test.zrcaifu.com/login"
+      data={"name"=>"#{phone}","password"=>"123456"}
+      reqbody= httppost(url,data)
+      token=jsonlist reqbody,'.token'
+      data={"token"=>"#{token}","amount"=>"0.004"}
       path='.error'
       reqbody=httppost(@url,data)
       p reqbody
@@ -153,7 +185,12 @@ class Testwithdraw_tform<Test::Unit::TestCase
   def test_right7
     begin
       @html.newTestName('提现-amount最长16位')
-      data={"token"=>"#{@token}","amount"=>"1234567890123456"}
+      phone="13600000023"
+      url="http://rpc.wangmin.test.zrcaifu.com/login"
+      data={"name"=>"#{phone}","password"=>"123456"}
+      reqbody= httppost(url,data)
+      token=jsonlist reqbody,'.token'
+      data={"token"=>"#{token}","amount"=>"12345678901234561"}
       path='.error'
       reqbody=httppost(@url,data)
       p reqbody
@@ -166,7 +203,6 @@ class Testwithdraw_tform<Test::Unit::TestCase
       @html.add_to_report(result,test)
     end
   end
-=end
 
 
 

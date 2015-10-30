@@ -9,7 +9,7 @@ class Testrecharge_fast_tform<Test::Unit::TestCase
     @html = HTMLReport.new()
     @report = @html.createReport1('recharge-fast-tform')
     #MySSH.sshconn('echo "FLUSHALL" | redis-cli')
-    @phone="13600000013"
+    @phone="13600000004"
     url="http://rpc.wangmin.test.zrcaifu.com/login"
     data={"name"=>"#{@phone}","password"=>"123456"}
     reqbody= httppost(url,data)
@@ -29,7 +29,7 @@ class Testrecharge_fast_tform<Test::Unit::TestCase
   def test_right
     begin
       @html.newTestName('快捷充值-正常')
-      data={"token"=>"#{@token}","amount"=>"20.00","phone"=>"#{@phone}"}
+      data={"token"=>"#{@token}","amount"=>"100.00","phone"=>"#{@phone}"}
       path='.error'
       reqbody=httppost(@url,data)
       p reqbody
@@ -43,6 +43,7 @@ class Testrecharge_fast_tform<Test::Unit::TestCase
     end
   end
 
+=begin
   def test_right1
     begin
       @html.newTestName('快捷充值-单笔超过限额')
@@ -181,5 +182,7 @@ class Testrecharge_fast_tform<Test::Unit::TestCase
       @html.add_to_report(result,test)
     end
   end
+=end
+
 
 end

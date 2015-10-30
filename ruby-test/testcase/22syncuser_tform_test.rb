@@ -26,7 +26,7 @@ class Syncuser_tform<Test::Unit::TestCase
   def test_right
     begin
       @html.newTestName('开户-注册后，正常开户')
-      phone="13600000018"
+      phone="13600000021"
       #删除已存在的用户
       result=(Resultdiy.new(@conn.sqlquery("select * from users where secure_phone ='#{phone}'")).result_to_list)
       if result[0]
@@ -73,7 +73,7 @@ class Syncuser_tform<Test::Unit::TestCase
   end
 
 
-
+=begin
   def test_wrong1
     begin
       @html.newTestName('开户-用户不存在')
@@ -181,6 +181,6 @@ class Syncuser_tform<Test::Unit::TestCase
       @html.add_to_report(result,test)
     end
   end
-
+=end
 
 end
