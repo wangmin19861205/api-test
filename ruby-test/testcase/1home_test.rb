@@ -10,11 +10,14 @@ class Testhome<Test::Unit::TestCase
     @html = HTMLReport.new()
     @report = @html.createReport1('home')
     #初始化数据部分，如:获取token
-    url="http://rpc.wangmin.test.zrcaifu.com/login"
-    data={"name"=>"13500000069","password"=>"123456"}
-    @token=jsonlist httppost(url,data),'.token'
+    phone="13500000069"
+    url=ENV["rpc"]+"login"
+    data={"name"=>phone,"password"=>"123456"}
+    path='.token'
+    reqbody=httppost(url,data)
+    @token=jsonlist reqbody,path
     #api请求的url
-    @url="http://rpc.wangmin.test.zrcaifu.com/home"
+    @url=ENV["rpc"]+"home"
   end
 
   def teardown

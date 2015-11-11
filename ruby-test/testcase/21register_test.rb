@@ -8,7 +8,7 @@ class Testregister<Test::Unit::TestCase
     @test_environment = 'QA'
     @html = HTMLReport.new()
     @report = @html.createReport1('register')
-    @phone='13600000020'
+    @phone='13600000030'
     MySSH.sshconn('echo "FLUSHALL" | redis-cli')
     result=(Resultdiy.new(@conn.sqlquery("select * from users where secure_phone ='#{@phone}'")).result_to_list)
     if result[0]
@@ -20,7 +20,7 @@ class Testregister<Test::Unit::TestCase
       @conn.update(sql2)
       @conn.update(sql3)
     end
-    url="http://rpc.wangmin.test.zrcaifu.com/register-send-phone-code"
+    url=ENV["rpc"]+"register-send-phone-code"
     data={"phone"=>"#{@phone}","token"=>""}
     path=".token"
     reqbody=httppost(url,data)
@@ -28,7 +28,7 @@ class Testregister<Test::Unit::TestCase
     sql="select content from sms_records where numbers = '#{@phone}' order by id desc limit 1"
     codetext=(Resultdiy.new(@conn.sqlquery(sql)).result_to_list[0])[:content]
     @code=/您的手机注册验证码为：(.*)，验证码10分钟内有效/.match(codetext).to_a[1]
-    @url="http://rpc.wangmin.test.zrcaifu.com/register"
+    @url=ENV["rpc"]+"register"
   end
 
   def teardown
@@ -57,7 +57,6 @@ class Testregister<Test::Unit::TestCase
     end
   end
 
-=begin
   #未完成
   def test_wrong
     begin
@@ -92,7 +91,6 @@ class Testregister<Test::Unit::TestCase
       @html.add_to_report(result,test)
     end
   end
-=end
 
 
 

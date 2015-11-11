@@ -9,12 +9,14 @@ class Testaccount_deleteUserMesssageByTypes<Test::Unit::TestCase
     @test_environment = 'QA'
     @html = HTMLReport.new()
     @report = @html.createReport1('deleteUserMesssageByTypes')
-    url="http://rpc.wangmin.test.zrcaifu.com/login"
-    data={"name"=>"13500000069","password"=>"123456"}
-    reqbody= httppost(url,data)
-    @token=jsonlist reqbody,'.token'
+    phone="13500000069"
+    url=ENV["rpc"]+"login"
+    data={"name"=>phone,"password"=>"123456"}
+    path='.token'
+    reqbody=httppost(url,data)
+    @token=jsonlist reqbody,path
     @user_id=jsonlist reqbody,'.user.id'
-    @url="http://rpc.wangmin.test.zrcaifu.com/account/message/deleteUserMesssageByTypes"
+    @url=ENV["rpc"]+"account/message/deleteUserMesssageByTypes"
   end
 
   def teardown

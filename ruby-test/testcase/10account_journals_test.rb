@@ -7,12 +7,14 @@ class Testaccount_journals<Test::Unit::TestCase
     @test_environment = 'QA'
     @html = HTMLReport.new()
     @report = @html.createReport1('account_journals')
-    url="http://rpc.wangmin.test.zrcaifu.com/login"
-    data={"name"=>"13500000091","password"=>"123456"}
+    phone="13500000069"
+    url=ENV["rpc"]+"login"
+    data={"name"=>phone,"password"=>"123456"}
+    path='.token'
     reqbody=httppost(url,data)
-    @token=jsonlist reqbody,'.token'
+    @token=jsonlist reqbody,path
     @user_id=jsonlist reqbody,'.user.id'
-    @url="http://rpc.wangmin.test.zrcaifu.com/account/journals"
+    @url=ENV["rpc"]+"account/journals"
   end
 
   def teardown

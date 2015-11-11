@@ -9,18 +9,18 @@ class Testaccount_verify_pwd_auth_code<Test::Unit::TestCase
     @html = HTMLReport.new()
     @report = @html.createReport1('account_change-password')
     @phone="13500000069"
-    url="http://rpc.wangmin.test.zrcaifu.com/login"
+    url=ENV["rpc"]+"login"
     data={"name"=>@phone,"password"=>"123456"}
     reqbody= httppost(url,data)
     @token=jsonlist reqbody,'.token'
     @user_id=jsonlist reqbody,'.user.id'
-    url1="http://rpc.wangmin.test.zrcaifu.com/account/change-pwd-auth-code"
+    url1=ENV["rpc"]+"account/change-pwd-auth-code"
     data1={"token"=>@token,"phone"=>@phone}
     httppost(url1,data1)
     sql="select content from sms_records where numbers = '#{@phone}' order by id desc limit 1"
     codetext=(Resultdiy.new(@conn.sqlquery(sql)).result_to_list[0])[:content]
     @code=/您正在更改登录密码，请输入验证码(.*)，10分钟内有效/.match(codetext).to_a[1]
-    @url="http://rpc.wangmin.test.zrcaifu.com/account/verify-pwd-auth-code"
+    @url=ENV["rpc"]+"account/verify-pwd-auth-code"
   end
 
 

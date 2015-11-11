@@ -9,7 +9,7 @@ class Testtrusteeship_deduct_usercard<Test::Unit::TestCase
     @test_environment = 'QA'
     @html = HTMLReport.new()
     @report = @html.createReport1('trusteeship_deduct_usercard')
-    @url="http://rpc.wangmin.test.zrcaifu.com/trusteeship/deduct/user-card"
+    @url=ENV["rpc"]+"trusteeship/deduct/user-card"
   end
 
   def teardown
@@ -24,7 +24,7 @@ class Testtrusteeship_deduct_usercard<Test::Unit::TestCase
   def test_right
     begin
       @html.newTestName('用户代扣卡信息-已绑卡')
-      url="http://rpc.wangmin.test.zrcaifu.com/login"
+      url=ENV["rpc"]+"login"
       data={"name"=>"13500000069","password"=>"123456"}
       token=jsonlist httppost(url,data),'.token'
       data1={"token"=>token}
@@ -46,7 +46,7 @@ class Testtrusteeship_deduct_usercard<Test::Unit::TestCase
   def test_right1
     begin
       @html.newTestName('用户代扣卡信息-未绑卡')
-      url="http://rpc.wangmin.test.zrcaifu.com/login"
+      url=ENV["rpc"]+"login"
       data={"name"=>"13500000050","password"=>"123456"}
       token=jsonlist httppost(url,data),'.token'
       data1={"token"=>token}
@@ -68,7 +68,7 @@ class Testtrusteeship_deduct_usercard<Test::Unit::TestCase
   def test_wrong
     begin
       @html.newTestName('用户代扣卡信息-参数为空')
-      url="http://rpc.wangmin.test.zrcaifu.com/login"
+      url=ENV["rpc"]+"login"
       data={}
       token=jsonlist httppost(url,data),'.token'
       data1={"token"=>token}
@@ -89,7 +89,7 @@ class Testtrusteeship_deduct_usercard<Test::Unit::TestCase
   def test_wrong1
     begin
       @html.newTestName('用户代扣卡信息-参数值为空')
-      url="http://rpc.wangmin.test.zrcaifu.com/login"
+      url=ENV["rpc"]+"login"
       data={"name"=>"","password"=>""}
       token=jsonlist httppost(url,data),'.token'
       data1={"token"=>token}

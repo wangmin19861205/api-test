@@ -1,20 +1,22 @@
 
 
-class Testlogout<Test::Unit::TestCase
+
+class Testregister_loan_notify<Test::Unit::TestCase
   include Httpmethod
   def setup
     @conn=MyDB.new "rui_site"
     @test_environment = 'QA'
     @html = HTMLReport.new()
-    @report = @html.createReport1('logout')
+    @report = @html.createReport1('register-loan-notify')
     phone="13500000069"
     url=ENV["rpc"]+"login"
     data={"name"=>phone,"password"=>"123456"}
     path='.token'
     reqbody=httppost(url,data)
     @token=jsonlist reqbody,path
-    @url=ENV["rpc"]+"logout"
+    @url=ENV["rpc"]+"user/register-loan-notify"
   end
+
 
   def teardown
     @conn.close
@@ -25,55 +27,56 @@ class Testlogout<Test::Unit::TestCase
     @html.finishReport(@report, @test_environment)
   end
 
+
   def test_right
     begin
-      @html.newTestName('注销-正常')
-      data={"token"=>@token}
+      @html.newTestName('推送-指定项目推送:正常')
+      data={"token"=>@token,"id"=>"700000913"}
       path='.success'
       reqbody=httppost(@url,data)
       jsondata=jsonlist reqbody,path
-      result= true.equal?jsondata
+      result=true.equal?jsondata
     rescue Exception=>e
       result=[false,e.message]
     ensure
-      test = '检查json中的success=true'
+      test = '检查关键字success=true'
       @html.add_to_report(result,test)
-    end
-    end
+      end
+  end
 
 
-  #未完成
-  def test_wrong
+  def test_right1
     begin
-      @html.newTestName('注销-参数为空')
+      @html.newTestName('推送-指定项目推送:参数为空')
       data={}
-      path='.msg'
+      path='.error.msg'
       reqbody=httppost(@url,data)
       jsondata=jsonlist reqbody,path
-      result= "缺少token".eql?jsondata
+      result='token 失效'.equal?jsondata
     rescue Exception=>e
       result=[false,e.message]
     ensure
-      test = '检查json中的error=缺少token'
+      test = '检查关键字msg=token 失效'
       @html.add_to_report(result,test)
     end
-    end
+  end
 
-  #未完成
-  def test_wrong1
+  def test_right2
     begin
-      @html.newTestName('注销-参数值为空')
-      data={"token"=>''}
-      path='.msg'
+      @html.newTestName('推送-指定项目推送:参数值为空')
+      data={"token"=>'',"id"=>""}
+      path='.error.msg'
       reqbody=httppost(@url,data)
       jsondata=jsonlist reqbody,path
-      result="缺少token".eql?jsondata
+      result='token 失效'.equal?jsondata
     rescue Exception=>e
       result=[false,e.message]
     ensure
-      test = '检查json中的error=缺少token'
+      test = '检查关键字msg=token 失效'
       @html.add_to_report(result,test)
     end
-    end
+  end
 
+
+  #未完成，需添加新手项目为空，只有还款状态的case
 end

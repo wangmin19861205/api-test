@@ -10,11 +10,11 @@ class Testwithdraw_tform<Test::Unit::TestCase
     @report = @html.createReport1('withdraw-tform')
     #MySSH.sshconn('echo "FLUSHALL" | redis-cli')
     phone="13500000069"
-    url="http://rpc.wangmin.test.zrcaifu.com/login"
+    url=ENV["rpc"]+"login"
     data={"name"=>"#{phone}","password"=>"123456"}
     reqbody= httppost(url,data)
     @token=jsonlist reqbody,'.token'
-    @url="http://rpc.wangmin.test.zrcaifu.com/mobileapitest/withdraw"
+    @url=ENV["rpc"]+"mobileapitest/withdraw"
   end
 
   def teardown
@@ -32,7 +32,7 @@ class Testwithdraw_tform<Test::Unit::TestCase
     begin
       @html.newTestName('提现-正常')
       phone="13500000069"
-      url="http://rpc.wangmin.test.zrcaifu.com/login"
+      url=ENV["rpc"]+"login"
       data={"name"=>"#{phone}","password"=>"123456"}
       reqbody= httppost(url,data)
       token=jsonlist reqbody,'.token'
@@ -53,8 +53,8 @@ class Testwithdraw_tform<Test::Unit::TestCase
   def test_right1
     begin
       @html.newTestName('提现-余额为0')
-      phone="13600000026"
-      url="http://rpc.wangmin.test.zrcaifu.com/login"
+      phone="13600000017"
+      url=ENV["rpc"]+"login"
       data={"name"=>"#{phone}","password"=>"123456"}
       reqbody= httppost(url,data)
       token=jsonlist reqbody,'.token'
@@ -76,11 +76,11 @@ class Testwithdraw_tform<Test::Unit::TestCase
     begin
       @html.newTestName('提现-提现金额大于余额')
       phone="13600000023"
-      url="http://rpc.wangmin.test.zrcaifu.com/login"
+      url=ENV["rpc"]+"login"
       data={"name"=>"#{phone}","password"=>"123456"}
       reqbody= httppost(url,data)
       token=jsonlist reqbody,'.token'
-      data={"token"=>"#{token}","amount"=>"12000"}
+      data={"token"=>"#{token}","amount"=>"5000"}
       path='.error'
       reqbody=httppost(@url,data)
       p reqbody
@@ -98,7 +98,7 @@ class Testwithdraw_tform<Test::Unit::TestCase
     begin
       @html.newTestName('提现-提现金额大于限额')
       phone="13600000023"
-      url="http://rpc.wangmin.test.zrcaifu.com/login"
+      url=ENV["rpc"]+"login"
       data={"name"=>"#{phone}","password"=>"123456"}
       reqbody= httppost(url,data)
       token=jsonlist reqbody,'.token'
@@ -120,7 +120,7 @@ class Testwithdraw_tform<Test::Unit::TestCase
     begin
       @html.newTestName('提现-amount为非数字')
       phone="13600000023"
-      url="http://rpc.wangmin.test.zrcaifu.com/login"
+      url=ENV["rpc"]+"login"
       data={"name"=>"#{phone}","password"=>"123456"}
       reqbody= httppost(url,data)
       token=jsonlist reqbody,'.token'
@@ -142,7 +142,7 @@ class Testwithdraw_tform<Test::Unit::TestCase
     begin
       @html.newTestName('提现-amount为空')
       phone="13600000023"
-      url="http://rpc.wangmin.test.zrcaifu.com/login"
+      url=ENV["rpc"]+"login"
       data={"name"=>"#{phone}","password"=>"123456"}
       reqbody= httppost(url,data)
       token=jsonlist reqbody,'.token'
@@ -164,7 +164,7 @@ class Testwithdraw_tform<Test::Unit::TestCase
     begin
       @html.newTestName('提现-amount<0.01')
       phone="13600000023"
-      url="http://rpc.wangmin.test.zrcaifu.com/login"
+      url=ENV["rpc"]+"login"
       data={"name"=>"#{phone}","password"=>"123456"}
       reqbody= httppost(url,data)
       token=jsonlist reqbody,'.token'
@@ -186,11 +186,34 @@ class Testwithdraw_tform<Test::Unit::TestCase
     begin
       @html.newTestName('提现-amount最长16位')
       phone="13600000023"
-      url="http://rpc.wangmin.test.zrcaifu.com/login"
+      url=ENV["rpc"]+"login"
       data={"name"=>"#{phone}","password"=>"123456"}
       reqbody= httppost(url,data)
       token=jsonlist reqbody,'.token'
       data={"token"=>"#{token}","amount"=>"12345678901234561"}
+      path='.error'
+      reqbody=httppost(@url,data)
+      p reqbody
+      jsondata=jsonlist reqbody,path
+      result=nil.eql?jsondata
+    rescue Exception=>e
+      result=[false,e.message]
+    ensure
+      test="检查json中的error值"
+      @html.add_to_report(result,test)
+    end
+  end
+
+
+  def test_right8
+    begin
+      @html.newTestName('提现-未绑卡')
+      phone="13600000025"
+      url=ENV["rpc"]+"login"
+      data={"name"=>"#{phone}","password"=>"123456"}
+      reqbody= httppost(url,data)
+      token=jsonlist reqbody,'.token'
+      data={"token"=>"#{token}","amount"=>"1000"}
       path='.error'
       reqbody=httppost(@url,data)
       p reqbody

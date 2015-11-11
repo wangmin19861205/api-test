@@ -8,7 +8,7 @@ class Testtrusteeship_deduct_allbankinfos<Test::Unit::TestCase
     @test_environment = 'QA'
     @html = HTMLReport.new()
     @report = @html.createReport1('trusteeship_deduct_allbankinfos')
-    @url="http://rpc.wangmin.test.zrcaifu.com/trusteeship/deduct/allbankinfos"
+    @url=ENV["rpc"]+"trusteeship/deduct/allbankinfos"
   end
 
   def teardown

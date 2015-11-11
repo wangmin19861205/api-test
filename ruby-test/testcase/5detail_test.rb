@@ -16,7 +16,7 @@ class Testdetail<Test::Unit::TestCase
     end
     #随机抽取项目ID
     @id=loansid.sample
-    @url="http://rpc.wangmin.test.zrcaifu.com/loan/detail"
+    @url=ENV["rpc"]+"loan/detail"
   end
 
   def teardown

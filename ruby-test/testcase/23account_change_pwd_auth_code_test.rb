@@ -9,13 +9,12 @@ class Testaccount_change_pwd_auth_code<Test::Unit::TestCase
     @html = HTMLReport.new()
     @report = @html.createReport1('account_change-password')
     @phone="13500000069"
-    url="http://rpc.wangmin.test.zrcaifu.com/login"
+    url=ENV["rpc"]+"login"
     data={"name"=>@phone,"password"=>"123456"}
     reqbody= httppost(url,data)
-    p reqbody
     @token=jsonlist reqbody,'.token'
     @user_id=jsonlist reqbody,'.user.id'
-    @url="http://rpc.wangmin.test.zrcaifu.com/account/change-pwd-auth-code"
+    @url=ENV["rpc"]+"account/change-pwd-auth-code"
   end
 
 

@@ -1,22 +1,20 @@
 
 
-
-
-class Testoverview<Test::Unit::TestCase
+class Testuser_check_idcard_number<Test::Unit::TestCase
   include Httpmethod
   def setup
     @conn=MyDB.new "rui_site"
     @test_environment = 'QA'
     @html = HTMLReport.new()
-    @report = @html.createReport1('overview')
+    @report = @html.createReport1('user-check-idcard-number')
+    MySSH.sshconn('echo "FLUSHALL" | redis-cli')
     phone="13500000069"
     url=ENV["rpc"]+"login"
     data={"name"=>phone,"password"=>"123456"}
     path='.token'
     reqbody=httppost(url,data)
     @token=jsonlist reqbody,path
-    @user_id=jsonlist reqbody,'.user.id'
-    @url=ENV["rpc"]+"account/overview"
+    @url=ENV["rpc"]+"user/check-idcard-number"
   end
 
   def teardown
@@ -30,71 +28,72 @@ class Testoverview<Test::Unit::TestCase
 
   def test_right
     begin
-      @html.newTestName('用户概览-正常')
-      data={"token"=>@token}
-      sql="select available_money,available_reward,frozen_money_withdraw,receivable_principal,receivable_interest,accumulate_interest,balance_available,balance_total from `accounts` where user_id ='#{@user_id}'"
-      path='.account'
+      @html.newTestName('校验身份证号码有效-不存在')
+      data={"token"=>@token,"idcard_number"=>"210502198412020944"}
+      path='.has_existed'
       reqbody=httppost(@url,data)
-      sqldata=Resultdiy.new(@conn.sqlquery(sql)).result_to_list
-      result=ass_with_sqlkey reqbody,sqldata,path
+      puts reqbody
+      jsondata=jsonlist reqbody,path
+      result=(false.eql?jsondata)
     rescue Exception=>e
       result=[false,e.message]
     ensure
-      test = '检查json与数据库data交集key的值对比'
+      test="检查json的has_existed为false"
       @html.add_to_report(result,test)
     end
   end
 
 
+  def test_right1
+    begin
+      @html.newTestName('校验身份证号码有效-已存在')
+      data={"token"=>@token,"idcard_number"=>"43042119861205001"}
+      path='.has_existed'
+      reqbody=httppost(@url,data)
+      puts reqbody
+      jsondata=jsonlist reqbody,path
+      result=(true.eql?jsondata)
+    rescue Exception=>e
+      result=[false,e.message]
+    ensure
+      test="检查json的has_existed为false"
+      @html.add_to_report(result,test)
+    end
+  end
+
+
+  #未完成
   def test_wrong
     begin
-      @html.newTestName('用户概览-错误token')
-      data={"token"=>"rui-session:5d28737b-ce8c1-43d0-b20c-799b54ffe12f"}
-      path='.error.msg'
-      reqbody=httppost(@url,data)
-      jsondata=jsonlist reqbody,path
-      result=  "token 失效".eql?(jsondata)
-    rescue Exception=>e
-      result=[false,e.message]
-    ensure
-      test = '检查json中的error：token 失效'
-      @html.add_to_report(result,test)
-    end
-  end
-
-
-
-  #外完成
-  def test_wrong1
-    begin
-      @html.newTestName('用户概览-参数为空')
+      @html.newTestName('校验身份证号码有效-参数为空')
       data={}
       path='.error.msg'
       reqbody=httppost(@url,data)
       jsondata=jsonlist reqbody,path
-      result="token 失效".eql?(jsondata)
+      result=('token 失效'.eql?jsondata)
     rescue Exception=>e
       result=[false,e.message]
     ensure
-      test = '检查json中的error：token 失效'
+      test="检查json的error为token 失效"
       @html.add_to_report(result,test)
     end
   end
 
 
-  #外完成
-  def test_wrong2
+  #未完成
+  def test_wrong1
     begin
-      @html.newTestName('用户概览-参数值为空')
-      data={"token"=>""}
+      @html.newTestName('校验身份证号码有效-参数值为空')
+      data={"token"=>@token,"idcard_number"=>""}
       path='.error.msg'
       reqbody=httppost(@url,data)
+      p reqbody
       jsondata=jsonlist reqbody,path
-      result="token 失效".eql?(jsondata)
+      result=('身份证信息错误'.eql?jsondata)
     rescue Exception=>e
       result=[false,e.message]
     ensure
-      test = '检查json中的error：token 失效'
+      test="检查json的error为token 失效"
       @html.add_to_report(result,test)
     end
   end

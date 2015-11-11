@@ -7,7 +7,7 @@ class Testlistpage_ios<Test::Unit::TestCase
     @test_environment = 'QA'
     @html = HTMLReport.new()
     @report = @html.createReport1('listpage_ios')
-    @url="http://rpc.wangmin.test.zrcaifu.com/listpage"
+    @url=ENV["rpc"]+"listpage"
   end
 
   def teardown

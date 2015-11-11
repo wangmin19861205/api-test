@@ -7,7 +7,7 @@ class Testlogin<Test::Unit::TestCase
     @test_environment = 'QA'
     @html = HTMLReport.new()
     @report = @html.createReport1('login')
-    @url="http://rpc.wangmin.test.zrcaifu.com/login"
+    @url=ENV["rpc"]+"login"
   end
 
   def teardown
@@ -45,7 +45,7 @@ class Testlogin<Test::Unit::TestCase
     begin
       reqbody=httppost(@url,data)
       jsondata=jsonlist reqbody,path
-      result = "密码错误".eql?jsondata
+      result = "账号或密码错误，请重新输入".eql?jsondata
     rescue Exception=>e
         result=[false,e.message]
     ensure
@@ -62,7 +62,7 @@ class Testlogin<Test::Unit::TestCase
       path='.error.msg'
       reqbody=httppost(@url,data)
       jsondata=jsonlist reqbody,path
-      result= "用户名错误".eql?jsondata
+      result= "账号或密码错误，请重新输入".eql?jsondata
     rescue Exception=>e
       result=[false,e.message]
     ensure

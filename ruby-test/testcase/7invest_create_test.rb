@@ -13,12 +13,14 @@ class Testinvest_create<Test::Unit::TestCase
       loansid.push(data[:id])
     end
     @id=loansid.sample
-    url="http://rpc.wangmin.test.zrcaifu.com/login"
-    data={"name"=>"13600000023","password"=>"123456"}
-    reqbody= httppost(url,data)
-    @token=jsonlist reqbody,'.token'
+    phone="13500000069"
+    url=ENV["rpc"]+"login"
+    data={"name"=>phone,"password"=>"123456"}
+    path='.token'
+    reqbody=httppost(url,data)
+    @token=jsonlist reqbody,path
     @user_id=jsonlist reqbody,'.user.id'
-    @url="http://rpc.wangmin.test.zrcaifu.com/mobileapitest/pay-deduct"
+    @url=ENV["rpc"]+"mobileapitest/pay-deduct"
   end
 
   def teardown
@@ -33,7 +35,7 @@ class Testinvest_create<Test::Unit::TestCase
   def test_right
     begin
       @html.newTestName('创建投资-正常')
-      data={"token"=>@token,"loan_id"=>'700000909',"amount"=>"1000","reward_id"=>"65000627","copopn_id"=>""}
+      data={"token"=>@token,"loan_id"=>@id,"amount"=>"1000","reward_id"=>"","copopn_id"=>""}
       path='.error'
       reqbody=httppost(@url,data)
       puts reqbody

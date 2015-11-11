@@ -9,12 +9,12 @@ class Testresetpass_tform<Test::Unit::TestCase
     @html = HTMLReport.new()
     @report = @html.createReport1('resetpass-tform')
     MySSH.sshconn('echo "FLUSHALL" | redis-cli')
-    phone="13500000069"
-    url="http://rpc.wangmin.test.zrcaifu.com/login"
+    phone="13700000001"
+    url=ENV["rpc"]+"login"
     data={"name"=>"#{phone}","password"=>"123456"}
     reqbody= httppost(url,data)
     @token=jsonlist reqbody,'.token'
-    @url="http://rpc.wangmin.test.zrcaifu.com/mobileapitest/resetpass"
+    @url=ENV["rpc"]+"mobileapitest/resetpass"
   end
 
   def teardown
@@ -31,15 +31,20 @@ class Testresetpass_tform<Test::Unit::TestCase
       @html.newTestName('修改密码-正常')
       data={"token"=>"#{@token}"}
       path='.error'
+      path1='.msg'
       reqbody=httppost(@url,data)
       p reqbody
       jsondata=jsonlist reqbody,path
+      jsondata1=jsonlist reqbody,path1
       result=nil.eql?jsondata
+      result1=nil.eql?jsondata1
     rescue Exception=>e
       result=[false,e.message]
     ensure
-      test="检查json中的error值"
+      test="检查json中的error值=nil"
       @html.add_to_report(result,test)
+      test1="检查json中的msg值=nil"
+      @html.add_to_report(result1,test1)
     end
   end
 

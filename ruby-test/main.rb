@@ -1,3 +1,7 @@
+require_relative '../libs/config/settings'
+@setting=Settings.new.URL
+ENV["rpc"]=@setting.rpc
+
 base_dir = File.dirname(__FILE__)               #工作目录
 lib_dir  = File.join(File.dirname(base_dir), "libs/iframe")        #lib包目录
 test_dir = File.join(base_dir, "testcase")      #case目录

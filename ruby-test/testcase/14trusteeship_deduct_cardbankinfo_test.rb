@@ -9,14 +9,14 @@ class Testtrusteeship_deduct_cardbankinfo<Test::Unit::TestCase
     @test_environment = 'QA'
     @html = HTMLReport.new()
     @report = @html.createReport1('trusteeship_deduct_cardbankinfo')
-    url="http://rpc.wangmin.test.zrcaifu.com/trusteeship/deduct/allbankinfos"
-    @url="http://rpc.wangmin.test.zrcaifu.com/trusteeship/deduct/cardbankinfo"
+    url=ENV["rpc"]+"trusteeship/deduct/allbankinfos"
     banklist=jsonlist httpget(url),'.bankinfos'
     list=[]
     banklist.each do |row|
       list.push(row["bankname"])
     end
     @bankname=list.sample
+    @url=ENV["rpc"]+"trusteeship/deduct/cardbankinfo"
   end
 
   def teardown

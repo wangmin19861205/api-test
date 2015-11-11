@@ -12,9 +12,9 @@ class Testdetail_loan_summary<Test::Unit::TestCase
     projectdatas.each do |data|
       loansid.push(data[:id])
     end
-    puts loansid
     @id=loansid.sample
-    @url="http://rpc.wangmin.test.zrcaifu.com/loan/detail/introduction"
+    p @id
+    @url=ENV["rpc"]+"loan/detail/introduction"
   end
 
   def teardown
@@ -25,6 +25,7 @@ class Testdetail_loan_summary<Test::Unit::TestCase
     puts e.backtrace
     @html.finishReport(@report, @test_environment)
   end
+
 
   def test_right
     begin
@@ -62,6 +63,7 @@ class Testdetail_loan_summary<Test::Unit::TestCase
       path='.loan_summary_json[].title'
       path1='.loan_summary_json'
       reqbody=httppost(@url,data)
+      p reqbody
       jsondata=jsonlist reqbody,path1
       if jsondata == nil
         sqldata=Resultdiy.new(@conn.sqlquery(sql)).result_to_list
@@ -90,6 +92,7 @@ class Testdetail_loan_summary<Test::Unit::TestCase
       path='.loan_summary_json[].title'
       path1='.loan_summary_json'
       reqbody=httppost(@url,data)
+      p reqbody
       jsondata=jsonlist reqbody,path1
       if jsondata == nil
         sqldata=Resultdiy.new(@conn.sqlquery(sql)).result_to_list

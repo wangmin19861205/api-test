@@ -15,7 +15,7 @@ class Testdetail_loan_detail<Test::Unit::TestCase
     end
     puts loansid
     @id=loansid.sample
-    @url="http://rpc.wangmin.test.zrcaifu.com/loan/detail-more"
+    @url=ENV["rpc"]+"loan/detail-more"
   end
 
   def teardown

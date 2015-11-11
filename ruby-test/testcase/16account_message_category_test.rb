@@ -8,12 +8,14 @@ class Testaccount_message_category<Test::Unit::TestCase
     @test_environment = 'QA'
     @html = HTMLReport.new()
     @report = @html.createReport1('account_message_category')
-    url="http://rpc.wangmin.test.zrcaifu.com/login"
-    data={"name"=>"13500000069","password"=>"123456"}
-    reqbody= httppost(url,data)
-    @token=jsonlist reqbody,'.token'
+    phone="13500000069"
+    url=ENV["rpc"]+"login"
+    data={"name"=>phone,"password"=>"123456"}
+    path='.token'
+    reqbody=httppost(url,data)
+    @token=jsonlist reqbody,path
     @user_id=jsonlist reqbody,'.user.id'
-    @url="http://rpc.wangmin.test.zrcaifu.com/account/message/category"
+    @url=ENV["rpc"]+"account/message/category"
   end
 
   def teardown
@@ -25,6 +27,8 @@ class Testaccount_message_category<Test::Unit::TestCase
     @html.finishReport(@report, @test_environment)
   end
 
+
+=begin
   def test_right
     begin
       @html.newTestName('获取全部消息-系统')
@@ -156,7 +160,7 @@ class Testaccount_message_category<Test::Unit::TestCase
       @html.add_to_report(result,test)
     end
   end
-
+=end
 
   def test_right7
     begin
@@ -176,7 +180,7 @@ class Testaccount_message_category<Test::Unit::TestCase
     end
   end
 
-
+=begin
   #未完成
   def test_wrong
     begin
@@ -211,7 +215,7 @@ class Testaccount_message_category<Test::Unit::TestCase
       @html.add_to_report(result,test)
     end
   end
-
+=end
 
 
 end

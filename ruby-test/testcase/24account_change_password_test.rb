@@ -8,25 +8,7 @@ class Testaccount_change_password<Test::Unit::TestCase
     @test_environment = 'QA'
     @html = HTMLReport.new()
     @report = @html.createReport1('account_change_password')
-    #获取用户token与user_id
-    @phone="13500000069"
-    url="http://rpc.wangmin.test.zrcaifu.com/login"
-    data={"name"=>@phone,"password"=>"123456"}
-    reqbody= httppost(url,data)
-    @token=jsonlist reqbody,'.token'
-    @user_id=jsonlist reqbody,'.user.id'
-    #获取用户修改密码验证码code
-    url1="http://rpc.wangmin.test.zrcaifu.com/account/change-pwd-auth-code"
-    data1={"token"=>@token,"phone"=>@phone}
-    httppost(url1,data1)
-    sql="select content from sms_records where numbers = '#{@phone}' order by id desc limit 1"
-    codetext=(Resultdiy.new(@conn.sqlquery(sql)).result_to_list[0])[:content]
-    @code=/您正在更改登录密码，请输入验证码(.*)，10分钟内有效/.match(codetext).to_a[1]
-    #校验用户修改密码验证码code
-    url2="http://rpc.wangmin.test.zrcaifu.com/account/verify-pwd-auth-code"
-    data2={"token"=>@token,"phone"=>@phone,"idcard_number"=>"43042119861205001","code"=>@code}
-    httppost(url2,data2)
-    @url="http://rpc.wangmin.test.zrcaifu.com/account/change-password"
+    @url=ENV["rpc"]+"account/change-password"
   end
 
 
@@ -42,10 +24,30 @@ class Testaccount_change_password<Test::Unit::TestCase
 
   def test_right
     begin
-      @html.newTestName('设置新密码-正常')
-      data1={"token"=>@token,"phone"=>@phone,"password"=>"1234567"}
+      @html.newTestName('设置新密码-已开户')
+      #获取用户token与user_id
+      phone="13500000069"
+      url=ENV["rpc"]+"login"
+      data={"name"=>phone,"password"=>"123456"}
+      reqbody= httppost(url,data)
+      p  reqbody
+      token=jsonlist reqbody,'.token'
+      @user_id=jsonlist reqbody,'.user.id'
+      #获取用户修改密码验证码code
+      url1=ENV["rpc"]+"account/change-pwd-auth-code"
+      data1={"token"=>token,"phone"=>phone}
+      p httppost(url1,data1)
+      sql="select content from sms_records where numbers = '#{phone}' order by id desc limit 1"
+      codetext=(Resultdiy.new(@conn.sqlquery(sql)).result_to_list[0])[:content]
+      code=/您正在更改登录密码，请输入验证码(.*)，10分钟内有效/.match(codetext).to_a[1]
+      #校验用户修改密码验证码code
+      url2=ENV["rpc"]+"account/verify-pwd-auth-code"
+      data2={"token"=>token,"phone"=>phone,"idcard_number"=>"43042119861205001","code"=>code}
+      p httppost(url2,data2)
+      data1={"token"=>token,"phone"=>phone,"password"=>"1234567"}
       path='.success'
       reqbody=httppost(@url,data1)
+      p reqbody
       jsondata1=jsonlist reqbody,path
       result = TRUE == jsondata1
     rescue Exception=>e
@@ -57,6 +59,45 @@ class Testaccount_change_password<Test::Unit::TestCase
   end
 
 
+  def test_right1
+    begin
+      @html.newTestName('设置新密码-未开户')
+      #获取用户token与user_id
+      phone="13600000038"
+      url=ENV["rpc"]+"login"
+      data={"name"=>phone,"password"=>"123456"}
+      reqbody= httppost(url,data)
+      p  reqbody
+      token=jsonlist reqbody,'.token'
+      @user_id=jsonlist reqbody,'.user.id'
+      #获取用户修改密码验证码code
+      url1=ENV["rpc"]+"account/change-pwd-auth-code"
+      data1={"token"=>token,"phone"=>phone}
+      p httppost(url1,data1)
+      sql="select content from sms_records where numbers = '#{phone}' order by id desc limit 1"
+      codetext=(Resultdiy.new(@conn.sqlquery(sql)).result_to_list[0])[:content]
+      code=/您正在更改登录密码，请输入验证码(.*)，10分钟内有效/.match(codetext).to_a[1]
+      #校验用户修改密码验证码code
+      url2=ENV["rpc"]+"account/verify-pwd-auth-code"
+      data2={"token"=>token,"phone"=>phone,"idcard_number"=>"43042119861205001","code"=>code}
+      p httppost(url2,data2)
+      data1={"token"=>token,"phone"=>phone,"password"=>"1234567"}
+      path='.success'
+      reqbody=httppost(@url,data1)
+      p reqbody
+      jsondata1=jsonlist reqbody,path
+      result = TRUE == jsondata1
+    rescue Exception=>e
+      result=[false,e.message]
+    ensure
+      test = '检查关键字success=true'
+      @html.add_to_report(result,test)
+    end
+  end
+
+
+
+
   #未完成
   def test_wrong
     begin
@@ -64,6 +105,7 @@ class Testaccount_change_password<Test::Unit::TestCase
       data1={}
       path='.error.msg'
       reqbody=httppost(@url,data1)
+      p reqbody
       jsondata1=jsonlist reqbody,path
       result= "token 失效".eql?jsondata1
     rescue Exception=>e
@@ -82,6 +124,7 @@ class Testaccount_change_password<Test::Unit::TestCase
       data1={"token"=>'',"phone"=>'',"password"=>""}
       path='.error.msg'
       reqbody=httppost(@url,data1)
+      p reqbody
       jsondata1=jsonlist reqbody,path
       result= "token 失效".eql?jsondata1
     rescue Exception=>e
@@ -91,6 +134,5 @@ class Testaccount_change_password<Test::Unit::TestCase
       @html.add_to_report(result,test)
     end
   end
-
 
 end
