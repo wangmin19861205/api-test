@@ -1,22 +1,23 @@
 
 
 
-class Testaccount_change_pwd_auth_code<Test::Unit::TestCase
+class Testaccount_deleteUserMesssageByIds<Test::Unit::TestCase
   include Httpmethod
   def setup
     @conn=MyDB.new "rui_site"
+    @conn.update("update user_messages set disable = 0,is_read = 0")
     @test_environment = 'QA'
     @html = HTMLReport.new()
-    @report = @html.createReport1('account_change-password')
-    @phone="13500000069"
+    @report = @html.createReport1('deleteUserMesssageByIds')
+    phone="13500000069"
     url=ENV["rpc"]+"login"
-    data={"name"=>@phone,"password"=>"123456"}
-    reqbody= httppost(url,data)
-    @token=jsonlist reqbody,'.token'
+    data={"name"=>phone,"password"=>"123456"}
+    path='.token'
+    reqbody=httppost(url,data)
+    @token=jsonlist reqbody,path
     @user_id=jsonlist reqbody,'.user.id'
-    @url=ENV["rpc"]+"account/change-pwd-auth-code"
+    @url=ENV["rpc"]+"account/message/deleteUserMesssageByIds"
   end
-
 
   def teardown
     @conn.close
@@ -29,18 +30,22 @@ class Testaccount_change_pwd_auth_code<Test::Unit::TestCase
 
   def test_right
     begin
-      @html.newTestName('获取修改密码验证码-正常')
-      data1={"token"=>@token,"phone"=>@phone}
+      @html.newTestName('ID删除消息-单个ID')
+      data1={"token"=>@token,"ids"=>"834"}
+      sql1="select disable from user_messages where id ='834'"
       path='.success'
       reqbody=httppost(@url,data1)
-      p reqbody
       jsondata1=jsonlist reqbody,path
-      result = TRUE == jsondata1
+      result= true.eql?jsondata1
+      sqldata1=Resultdiy.new(@conn.sqlquery(sql1)).result_to_list
+      result1= asssqllist(sqldata1,:disable,true)
     rescue Exception=>e
       result=[false,e.message]
     ensure
       test = '检查关键字success=true'
       @html.add_to_report(result,test)
+      test = '验证数据库sqldata中关键字disable=true'
+      @html.add_to_report(result1,test)
     end
   end
 
@@ -48,11 +53,10 @@ class Testaccount_change_pwd_auth_code<Test::Unit::TestCase
   #未完成
   def test_wrong
     begin
-      @html.newTestName('获取修改密码验证码-参数为空')
+      @html.newTestName('ID删除消息-参数为空')
       data1={}
       path='.error.msg'
       reqbody=httppost(@url,data1)
-      p reqbody
       jsondata1=jsonlist reqbody,path
       result= "token 失效".eql?jsondata1
     rescue Exception=>e
@@ -67,11 +71,10 @@ class Testaccount_change_pwd_auth_code<Test::Unit::TestCase
   #未完成
   def test_wrong1
     begin
-      @html.newTestName('获取修改密码验证码-参数值为空')
+      @html.newTestName('ID删除消息-参数值为空')
       data1={"token"=>"","ids"=>""}
       path='.error.msg'
       reqbody=httppost(@url,data1)
-      p reqbody
       jsondata1=jsonlist reqbody,path
       result= "token 失效".eql?jsondata1
     rescue Exception=>e

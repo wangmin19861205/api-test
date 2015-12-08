@@ -44,6 +44,8 @@ class Testrecharge_bindcard_fast<Test::Unit::TestCase
     end
   end
 
+
+=begin
   def test_right2
     begin
       @html.newTestName('绑卡快捷充值-非快捷')

@@ -60,20 +60,10 @@ class Testdetail_loan_summary<Test::Unit::TestCase
     begin
       @html.newTestName('项目简介-参数为空')
       data={}
-      path='.loan_summary_json[].title'
-      path1='.loan_summary_json'
       reqbody=httppost(@url,data)
-      p reqbody
-      jsondata=jsonlist reqbody,path1
-      if jsondata == nil
-        sqldata=Resultdiy.new(@conn.sqlquery(sql)).result_to_list
-        result= jsondata == sqldata.empty?
-      else
-        jsondata=jsonlist reqbody,path
-        sqldata=Resultdiy.new(@conn.sqlquery(sql)).result_to_list
-        jsondata1=JSON.parse(sqldata[0][:loan_summary_json])
-        result=(jsondata == (jsonlist jsondata1,'.[].title'))
-      end
+      path='.error.msg'
+      jsondata=jsonlist reqbody,path
+      result='参数为空'.eql?jsondata
     rescue Exception=>e
       result=[false,e.message]
     ensure
@@ -86,23 +76,12 @@ class Testdetail_loan_summary<Test::Unit::TestCase
   #未完成
   def test_wrong2
     begin
-      @html.newTestName('项目简介-参数值为空')
-      data={"id"=>""}
-      sql="select loan_summary_json from loandetails where loanproposal_id = (select loanproposal_id from loans where id='#{@id}')"
-      path='.loan_summary_json[].title'
-      path1='.loan_summary_json'
+      @html.newTestName('项目简介-参数为空')
+      data={"id"=>''}
       reqbody=httppost(@url,data)
-      p reqbody
-      jsondata=jsonlist reqbody,path1
-      if jsondata == nil
-        sqldata=Resultdiy.new(@conn.sqlquery(sql)).result_to_list
-        result= jsondata == sqldata.empty?
-      else
-        jsondata=jsonlist reqbody,path
-        sqldata=Resultdiy.new(@conn.sqlquery(sql)).result_to_list
-        jsondata1=JSON.parse(sqldata[0][:loan_summary_json])
-        result=(jsondata == (jsonlist jsondata1,'.[].title'))
-      end
+      path='.error.msg'
+      jsondata=jsonlist reqbody,path
+      result='参数为空'.eql?jsondata
     rescue Exception=>e
       result=[false,e.message]
     ensure

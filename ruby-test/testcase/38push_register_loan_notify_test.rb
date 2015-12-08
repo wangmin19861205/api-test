@@ -1,21 +1,22 @@
 
 
 
-class Testbind_app_notify<Test::Unit::TestCase
+class Testregister_loan_notify<Test::Unit::TestCase
   include Httpmethod
   def setup
     @conn=MyDB.new "rui_site"
     @test_environment = 'QA'
     @html = HTMLReport.new()
-    @report = @html.createReport1('bind_app_notify')
+    @report = @html.createReport1('register-loan-notify')
     phone="13500000069"
     url=ENV["rpc"]+"login"
     data={"name"=>phone,"password"=>"123456"}
     path='.token'
     reqbody=httppost(url,data)
     @token=jsonlist reqbody,path
-    @url=ENV["rpc"]+"user/bind-app-notify"
+    @url=ENV["rpc"]+"user/register-loan-notify"
   end
+
 
   def teardown
     @conn.close
@@ -26,12 +27,14 @@ class Testbind_app_notify<Test::Unit::TestCase
     @html.finishReport(@report, @test_environment)
   end
 
+
   def test_right
     begin
-      @html.newTestName('推送-绑定设备:正常')
-      data={"token"=>@token,"register_id"=>"0907e7015ef"}
+      @html.newTestName('推送-指定项目推送:正常')
+      data={"token"=>@token,"id"=>"700000920"}
       path='.success'
       reqbody=httppost(@url,data)
+      p reqbody
       jsondata=jsonlist reqbody,path
       result=true.equal?jsondata
     rescue Exception=>e
@@ -45,12 +48,12 @@ class Testbind_app_notify<Test::Unit::TestCase
 
   def test_right1
     begin
-      @html.newTestName('推送-绑定设备:参数为空')
+      @html.newTestName('推送-指定项目推送:参数为空')
       data={}
       path='.error.msg'
       reqbody=httppost(@url,data)
       jsondata=jsonlist reqbody,path
-      result='token 失效'.equal?jsondata
+      result='token 失效'.eql?jsondata
     rescue Exception=>e
       result=[false,e.message]
     ensure
@@ -61,12 +64,12 @@ class Testbind_app_notify<Test::Unit::TestCase
 
   def test_right2
     begin
-      @html.newTestName('推送-绑定设备:参数值为空')
-      data={"token"=>'',"register_id"=>""}
+      @html.newTestName('推送-指定项目推送:参数值为空')
+      data={"token"=>'',"id"=>""}
       path='.error.msg'
       reqbody=httppost(@url,data)
       jsondata=jsonlist reqbody,path
-      result='token 失效'.equal?jsondata
+      result='token 失效'.eql?jsondata
     rescue Exception=>e
       result=[false,e.message]
     ensure
@@ -76,5 +79,4 @@ class Testbind_app_notify<Test::Unit::TestCase
   end
 
 
-  #未完成，需添加新手项目为空，只有还款状态的case
 end

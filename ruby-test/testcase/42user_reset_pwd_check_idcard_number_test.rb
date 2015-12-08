@@ -1,26 +1,29 @@
 
 
 
-class Testaccount_verify_pwd_auth_code<Test::Unit::TestCase
+class Testuser_reset_pwd_check_idcard_number<Test::Unit::TestCase
   include Httpmethod
   def setup
     @conn=MyDB.new "rui_site"
     @test_environment = 'QA'
     @html = HTMLReport.new()
-    @report = @html.createReport1('account_change-password')
+    @report = @html.createReport1('user_reset_pwd_check_idcard_number')
+    MySSH.sshconn('echo "FLUSHALL" | redis-cli')
     @phone="13500000069"
-    url=ENV["rpc"]+"login"
-    data={"name"=>@phone,"password"=>"123456"}
-    reqbody= httppost(url,data)
-    @token=jsonlist reqbody,'.token'
-    @user_id=jsonlist reqbody,'.user.id'
-    url1=ENV["rpc"]+"account/change-pwd-auth-code"
-    data1={"token"=>@token,"phone"=>@phone}
-    httppost(url1,data1)
+    sql="select * from users where secure_phone = '13500000069' limit 1"
+    @idcard_number=(Resultdiy.new(@conn.sqlquery(sql)).result_to_list[0])[:idcard_number]
+    url1=ENV["rpc"]+"user/reset-password-send-auth-code"
+    data1={"phone"=>@phone}
+    reqbody=httppost(url1,data1)
+    path=".token"
+    @token=jsonlist reqbody,path
     sql="select content from sms_records where numbers = '#{@phone}' order by id desc limit 1"
     codetext=(Resultdiy.new(@conn.sqlquery(sql)).result_to_list[0])[:content]
     @code=/您正在更改登录密码，请输入验证码(.*)，10分钟内有效/.match(codetext).to_a[1]
-    @url=ENV["rpc"]+"account/verify-pwd-auth-code"
+    url2=ENV["rpc"]+"user/verify-reset-pwd-auth-code"
+    data2={"token"=>@token,"code"=>@code}
+    httppost(url2,data2)
+    @url=ENV["rpc"]+"user/reset-pwd-check-idcard-number"
   end
 
 
@@ -35,13 +38,13 @@ class Testaccount_verify_pwd_auth_code<Test::Unit::TestCase
 
   def test_right
     begin
-      @html.newTestName('校验短信验证码-正常')
-      data1={"token"=>@token,"phone"=>@phone,"idcard_number"=>"43042119861205001","code"=>@code}
-      path='.success'
+      @html.newTestName('校验用户身份证-正常')
+      data1={"token"=>@token,"idcard_number"=>@idcard_number}
+      path='.error'
       reqbody=httppost(@url,data1)
       p reqbody
       jsondata1=jsonlist reqbody,path
-      result = TRUE == jsondata1
+      result = nil == jsondata1
     rescue Exception=>e
       result=[false,e.message]
     ensure
@@ -50,11 +53,11 @@ class Testaccount_verify_pwd_auth_code<Test::Unit::TestCase
     end
   end
 
-
+=begin
   #未完成
   def test_wrong
     begin
-      @html.newTestName('校验短信验证码-参数为空')
+      @html.newTestName('校验用户身份证-参数为空')
       data1={}
       path='.error.msg'
       reqbody=httppost(@url,data1)
@@ -72,8 +75,8 @@ class Testaccount_verify_pwd_auth_code<Test::Unit::TestCase
   #未完成
   def test_wrong1
     begin
-      @html.newTestName('校验短信验证码-参数值为空')
-      data1={"token"=>'',"phone"=>'',"idcard_number"=>"","code"=>''}
+      @html.newTestName('校验用户身份证-参数值为空')
+      data1={"token"=>'',"idcard_number"=>''}
       path='.error.msg'
       reqbody=httppost(@url,data1)
       jsondata1=jsonlist reqbody,path
@@ -85,6 +88,6 @@ class Testaccount_verify_pwd_auth_code<Test::Unit::TestCase
       @html.add_to_report(result,test)
     end
   end
-
+=end
 
 end

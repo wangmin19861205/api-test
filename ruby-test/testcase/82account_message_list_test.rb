@@ -45,7 +45,6 @@ class Testaccount_message_list<Test::Unit::TestCase
       jsondata1=jsonlist reqbody,path1
       sqldata=Resultdiy.new(@conn.sqlquery(investmessagesql1)).result_to_list
       result=asskey(jsondata1,sqldata,["id",:id])
-
       path2='.messages[3].new_message_count'
       path3='.messages[3].newest_message'
       jsondata=jsonlist reqbody,path2
@@ -54,7 +53,6 @@ class Testaccount_message_list<Test::Unit::TestCase
       jsondata1=jsonlist reqbody,path3
       sqldata1=Resultdiy.new(@conn.sqlquery(rechargemessagesql1)).result_to_list
       result3=asskey(jsondata1,sqldata1,["id",:id])
-
     rescue Exception=>e
       result=[false,e.message]
     ensure

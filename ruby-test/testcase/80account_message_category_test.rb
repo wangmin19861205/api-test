@@ -28,7 +28,6 @@ class Testaccount_message_category<Test::Unit::TestCase
   end
 
 
-=begin
   def test_right
     begin
       @html.newTestName('获取全部消息-系统')
@@ -160,7 +159,6 @@ class Testaccount_message_category<Test::Unit::TestCase
       @html.add_to_report(result,test)
     end
   end
-=end
 
   def test_right7
     begin
@@ -180,7 +178,6 @@ class Testaccount_message_category<Test::Unit::TestCase
     end
   end
 
-=begin
   #未完成
   def test_wrong
     begin
@@ -215,7 +212,6 @@ class Testaccount_message_category<Test::Unit::TestCase
       @html.add_to_report(result,test)
     end
   end
-=end
 
 
 end

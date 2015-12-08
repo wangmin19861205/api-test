@@ -47,7 +47,6 @@ class Testtrusteeship_deduct_cardbankinfo<Test::Unit::TestCase
   end
 
 
-
   #未完成
   def test_wrong
     begin
@@ -82,7 +81,6 @@ class Testtrusteeship_deduct_cardbankinfo<Test::Unit::TestCase
       @html.add_to_report(result,test)
     end
   end
-
 
 
 end

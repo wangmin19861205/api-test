@@ -8,7 +8,7 @@ class Testregister<Test::Unit::TestCase
     @test_environment = 'QA'
     @html = HTMLReport.new()
     @report = @html.createReport1('register')
-    @phone='13600000030'
+    @phone='13522228410'
     MySSH.sshconn('echo "FLUSHALL" | redis-cli')
     result=(Resultdiy.new(@conn.sqlquery("select * from users where secure_phone ='#{@phone}'")).result_to_list)
     if result[0]
@@ -24,6 +24,7 @@ class Testregister<Test::Unit::TestCase
     data={"phone"=>"#{@phone}","token"=>""}
     path=".token"
     reqbody=httppost(url,data)
+    p reqbody
     @token=jsonlist reqbody,path
     sql="select content from sms_records where numbers = '#{@phone}' order by id desc limit 1"
     codetext=(Resultdiy.new(@conn.sqlquery(sql)).result_to_list[0])[:content]
@@ -57,6 +58,7 @@ class Testregister<Test::Unit::TestCase
     end
   end
 
+=begin
   #未完成
   def test_wrong
     begin
@@ -64,6 +66,7 @@ class Testregister<Test::Unit::TestCase
       data={}
       path='.data.user.secure_phone'
       reqbody=httppost(@url,data)
+      p reqbody
       jsondata=jsonlist reqbody,path
       result="".eql?jsondata
     rescue Exception=>e
@@ -82,6 +85,7 @@ class Testregister<Test::Unit::TestCase
       data={"phone"=>"","token"=>"#{@token}","code"=>"","password"=>"","refer_phone"=>""}
       path='.data.user.secure_phone'
       reqbody=httppost(@url,data)
+      p reqbody
       jsondata=jsonlist reqbody,path
       result="".eql?jsondata
     rescue Exception=>e
@@ -92,6 +96,6 @@ class Testregister<Test::Unit::TestCase
     end
   end
 
-
+=end
 
 end

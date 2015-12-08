@@ -61,8 +61,9 @@ class Testlogin<Test::Unit::TestCase
       data={"name"=>"#{user_phone}","password"=>"123456"}
       path='.error.msg'
       reqbody=httppost(@url,data)
+      p reqbody
       jsondata=jsonlist reqbody,path
-      result= "账号或密码错误，请重新输入".eql?jsondata
+      result= "请输入正确的手机号码".eql?jsondata
     rescue Exception=>e
       result=[false,e.message]
     ensure

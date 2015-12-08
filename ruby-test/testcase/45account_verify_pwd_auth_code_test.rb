@@ -1,22 +1,26 @@
 
 
 
-class Testaccount_readUserMesssageByIds<Test::Unit::TestCase
+class Testaccount_verify_pwd_auth_code<Test::Unit::TestCase
   include Httpmethod
   def setup
     @conn=MyDB.new "rui_site"
-    @conn.update("update user_messages set disable = 0,is_read = 0")
     @test_environment = 'QA'
     @html = HTMLReport.new()
-    @report = @html.createReport1('readUserMesssageByIds')
-    phone="13500000069"
+    @report = @html.createReport1('account_verify_pwd_auth_code')
+    @phone="13500000069"
     url=ENV["rpc"]+"login"
-    data={"name"=>phone,"password"=>"123456"}
-    path='.token'
-    reqbody=httppost(url,data)
-    @token=jsonlist reqbody,path
+    data={"name"=>@phone,"password"=>"123456"}
+    reqbody= httppost(url,data)
+    @token=jsonlist reqbody,'.token'
     @user_id=jsonlist reqbody,'.user.id'
-    @url=ENV["rpc"]+"account/message/readUserMesssageByIds"
+    url1=ENV["rpc"]+"account/change-pwd-auth-code"
+    data1={"token"=>@token,"phone"=>@phone}
+    httppost(url1,data1)
+    sql="select content from sms_records where numbers = '#{@phone}' order by id desc limit 1"
+    codetext=(Resultdiy.new(@conn.sqlquery(sql)).result_to_list[0])[:content]
+    @code=/您正在更改登录密码，请输入验证码(.*)，10分钟内有效/.match(codetext).to_a[1]
+    @url=ENV["rpc"]+"account/verify-pwd-auth-code"
   end
 
 
@@ -31,22 +35,18 @@ class Testaccount_readUserMesssageByIds<Test::Unit::TestCase
 
   def test_right
     begin
-      @html.newTestName('ID读取消息-单个id')
-      data1={"token"=>@token,"ids"=>"481"}
-      sql1="select is_read from user_messages where disable =0  and user_id = '#{@user_id}' and id in (481)"
+      @html.newTestName('校验短信验证码-正常')
+      data1={"token"=>@token,"phone"=>@phone,"idcard_number"=>"43042119861205001","code"=>@code}
       path='.success'
       reqbody=httppost(@url,data1)
+      p reqbody
       jsondata1=jsonlist reqbody,path
-      sqldata1=Resultdiy.new(@conn.sqlquery(sql1)).result_to_list
       result = TRUE == jsondata1
-      result1= asssqllist(sqldata1,:is_read,true)
     rescue Exception=>e
       result=[false,e.message]
     ensure
       test = '检查关键字success=true'
       @html.add_to_report(result,test)
-      test = '验证数据库sqldata中关键字is_read=true'
-      @html.add_to_report(result1,test)
     end
   end
 
@@ -54,7 +54,7 @@ class Testaccount_readUserMesssageByIds<Test::Unit::TestCase
   #未完成
   def test_wrong
     begin
-      @html.newTestName('ID读取消息-参数为空')
+      @html.newTestName('校验短信验证码-参数为空')
       data1={}
       path='.error.msg'
       reqbody=httppost(@url,data1)
@@ -72,8 +72,8 @@ class Testaccount_readUserMesssageByIds<Test::Unit::TestCase
   #未完成
   def test_wrong1
     begin
-      @html.newTestName('ID读取消息-参数值为空')
-      data1={"token"=>"","ids"=>""}
+      @html.newTestName('校验短信验证码-参数值为空')
+      data1={"token"=>'',"phone"=>'',"idcard_number"=>"","code"=>''}
       path='.error.msg'
       reqbody=httppost(@url,data1)
       jsondata1=jsonlist reqbody,path

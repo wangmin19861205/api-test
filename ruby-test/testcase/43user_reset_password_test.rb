@@ -1,19 +1,18 @@
 
 
 
-class Testaccount_change_password<Test::Unit::TestCase
+class Testuser_reset_password<Test::Unit::TestCase
   include Httpmethod
   def setup
     @conn=MyDB.new "rui_site"
     @test_environment = 'QA'
     @html = HTMLReport.new()
-    @report = @html.createReport1('account_change_password')
-    @url=ENV["rpc"]+"account/change-password"
+    @report = @html.createReport1('user_reset_pwd_check_idcard_number')
+    MySSH.sshconn('echo "FLUSHALL" | redis-cli')
   end
 
 
   def teardown
-    @conn.update("update users set password = '$2a$10$Ltxt/FYOj7ZD5kTr0XqqBeMYtn7qeiF44svgfBKD1863R4x8JvcmC' where id = '#{@user_id}'  ")
     @conn.close
     @html.finishReport(@report, @test_environment)
   rescue => e
@@ -24,29 +23,28 @@ class Testaccount_change_password<Test::Unit::TestCase
 
   def test_right
     begin
-      @html.newTestName('设置新密码-已开户')
-      #获取用户token与user_id
+      @html.newTestName('修改密码-已开户')
       phone="13500000069"
-      url=ENV["rpc"]+"login"
-      data={"name"=>phone,"password"=>"123456"}
-      reqbody= httppost(url,data)
-      p  reqbody
-      token=jsonlist reqbody,'.token'
-      @user_id=jsonlist reqbody,'.user.id'
-      #获取用户修改密码验证码code
-      url1=ENV["rpc"]+"account/change-pwd-auth-code"
-      data1={"token"=>token,"phone"=>phone}
-      p httppost(url1,data1)
+      sql="select * from users where secure_phone = '13500000069' limit 1"
+      idcard_number=(Resultdiy.new(@conn.sqlquery(sql)).result_to_list[0])[:idcard_number]
+      url1=ENV["rpc"]+"user/reset-password-send-auth-code"
+      data1={"phone"=>phone}
+      reqbody=httppost(url1,data1)
+      path=".token"
+      token=jsonlist reqbody,path
       sql="select content from sms_records where numbers = '#{phone}' order by id desc limit 1"
       codetext=(Resultdiy.new(@conn.sqlquery(sql)).result_to_list[0])[:content]
       code=/您正在更改登录密码，请输入验证码(.*)，10分钟内有效/.match(codetext).to_a[1]
-      #校验用户修改密码验证码code
-      url2=ENV["rpc"]+"account/verify-pwd-auth-code"
-      data2={"token"=>token,"phone"=>phone,"idcard_number"=>"43042119861205001","code"=>code}
-      p httppost(url2,data2)
-      data1={"token"=>token,"phone"=>phone,"password"=>"1234567"}
+      url2=ENV["rpc"]+"user/verify-reset-pwd-auth-code"
+      data2={"token"=>token,"code"=>code}
+      httppost(url2,data2)
+      url3=ENV["rpc"]+"user/reset-pwd-check-idcard-number"
+      data3={"token"=>token,"idcard_number"=>idcard_number}
+      httppost(url3,data3)
+      url4=ENV["rpc"]+"user/reset-password"
+      data4={"token"=>token,"password"=>'123456'}
       path='.success'
-      reqbody=httppost(@url,data1)
+      reqbody=httppost(url4,data4)
       p reqbody
       jsondata1=jsonlist reqbody,path
       result = TRUE == jsondata1
@@ -61,29 +59,23 @@ class Testaccount_change_password<Test::Unit::TestCase
 
   def test_right1
     begin
-      @html.newTestName('设置新密码-未开户')
-      #获取用户token与user_id
-      phone="13600000038"
-      url=ENV["rpc"]+"login"
-      data={"name"=>phone,"password"=>"123456"}
-      reqbody= httppost(url,data)
-      p  reqbody
-      token=jsonlist reqbody,'.token'
-      @user_id=jsonlist reqbody,'.user.id'
-      #获取用户修改密码验证码code
-      url1=ENV["rpc"]+"account/change-pwd-auth-code"
-      data1={"token"=>token,"phone"=>phone}
-      p httppost(url1,data1)
+      @html.newTestName('修改密码-未开户')
+      phone="13500000111"
+      url1=ENV["rpc"]+"user/reset-password-send-auth-code"
+      data1={"phone"=>phone}
+      reqbody=httppost(url1,data1)
+      path=".token"
+      token=jsonlist reqbody,path
       sql="select content from sms_records where numbers = '#{phone}' order by id desc limit 1"
       codetext=(Resultdiy.new(@conn.sqlquery(sql)).result_to_list[0])[:content]
       code=/您正在更改登录密码，请输入验证码(.*)，10分钟内有效/.match(codetext).to_a[1]
-      #校验用户修改密码验证码code
-      url2=ENV["rpc"]+"account/verify-pwd-auth-code"
-      data2={"token"=>token,"phone"=>phone,"idcard_number"=>"43042119861205001","code"=>code}
-      p httppost(url2,data2)
-      data1={"token"=>token,"phone"=>phone,"password"=>"1234567"}
+      url2=ENV["rpc"]+"user/verify-reset-pwd-auth-code"
+      data2={"token"=>token,"code"=>code}
+      httppost(url2,data2)
+      url4=ENV["rpc"]+"user/reset-password"
+      data4={"token"=>token,"password"=>'123456'}
       path='.success'
-      reqbody=httppost(@url,data1)
+      reqbody=httppost(url4,data4)
       p reqbody
       jsondata1=jsonlist reqbody,path
       result = TRUE == jsondata1
@@ -96,12 +88,10 @@ class Testaccount_change_password<Test::Unit::TestCase
   end
 
 
-
-
   #未完成
   def test_wrong
     begin
-      @html.newTestName('设置新密码-参数为空')
+      @html.newTestName('修改密码-参数为空')
       data1={}
       path='.error.msg'
       reqbody=httppost(@url,data1)
@@ -120,8 +110,8 @@ class Testaccount_change_password<Test::Unit::TestCase
   #未完成
   def test_wrong1
     begin
-      @html.newTestName('设置新密码-参数值为空')
-      data1={"token"=>'',"phone"=>'',"password"=>""}
+      @html.newTestName('修改密码-参数值为空')
+      data1={"token"=>'',"password"=>''}
       path='.error.msg'
       reqbody=httppost(@url,data1)
       p reqbody
@@ -134,5 +124,6 @@ class Testaccount_change_password<Test::Unit::TestCase
       @html.add_to_report(result,test)
     end
   end
+
 
 end

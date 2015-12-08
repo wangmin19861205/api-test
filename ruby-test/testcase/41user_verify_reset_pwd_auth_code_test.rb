@@ -1,23 +1,26 @@
 
 
 
-class Testaccount_deleteUserMesssageByIds<Test::Unit::TestCase
+class Testuser_verify_reset_pwd_auth_code<Test::Unit::TestCase
   include Httpmethod
   def setup
     @conn=MyDB.new "rui_site"
-    @conn.update("update user_messages set disable = 0,is_read = 0")
     @test_environment = 'QA'
     @html = HTMLReport.new()
-    @report = @html.createReport1('deleteUserMesssageByIds')
-    phone="13500000069"
-    url=ENV["rpc"]+"login"
-    data={"name"=>phone,"password"=>"123456"}
-    path='.token'
-    reqbody=httppost(url,data)
+    @report = @html.createReport1('user_verify_reset_pwd_auth_code')
+    MySSH.sshconn('echo "FLUSHALL" | redis-cli')
+    @phone="13500000069"
+    url1=ENV["rpc"]+"user/reset-password-send-auth-code"
+    data1={"phone"=>@phone}
+    reqbody=httppost(url1,data1)
+    path=".token"
     @token=jsonlist reqbody,path
-    @user_id=jsonlist reqbody,'.user.id'
-    @url=ENV["rpc"]+"account/message/deleteUserMesssageByIds"
+    sql="select content from sms_records where numbers = '#{@phone}' order by id desc limit 1"
+    codetext=(Resultdiy.new(@conn.sqlquery(sql)).result_to_list[0])[:content]
+    @code=/您正在更改登录密码，请输入验证码(.*)，10分钟内有效/.match(codetext).to_a[1]
+    @url=ENV["rpc"]+"user/verify-reset-pwd-auth-code"
   end
+
 
   def teardown
     @conn.close
@@ -30,30 +33,26 @@ class Testaccount_deleteUserMesssageByIds<Test::Unit::TestCase
 
   def test_right
     begin
-      @html.newTestName('ID删除消息-单个ID')
-      data1={"token"=>@token,"ids"=>"480"}
-      sql1="select disable from user_messages where id ='480'"
-      path='.success'
+      @html.newTestName('校验短信验证码-正常')
+      data1={"token"=>@token,"code"=>@code}
+      path='.error'
       reqbody=httppost(@url,data1)
+      p reqbody
       jsondata1=jsonlist reqbody,path
-      result= true.eql?jsondata1
-      sqldata1=Resultdiy.new(@conn.sqlquery(sql1)).result_to_list
-      result1= asssqllist(sqldata1,:disable,true)
+      result = nil == jsondata1
     rescue Exception=>e
       result=[false,e.message]
     ensure
       test = '检查关键字success=true'
       @html.add_to_report(result,test)
-      test = '验证数据库sqldata中关键字disable=true'
-      @html.add_to_report(result1,test)
     end
   end
 
-
+=begin
   #未完成
   def test_wrong
     begin
-      @html.newTestName('ID删除消息-参数为空')
+      @html.newTestName('校验短信验证码-参数为空')
       data1={}
       path='.error.msg'
       reqbody=httppost(@url,data1)
@@ -71,8 +70,8 @@ class Testaccount_deleteUserMesssageByIds<Test::Unit::TestCase
   #未完成
   def test_wrong1
     begin
-      @html.newTestName('ID删除消息-参数值为空')
-      data1={"token"=>"","ids"=>""}
+      @html.newTestName('校验短信验证码-参数值为空')
+      data1={"token"=>'',"code"=>''}
       path='.error.msg'
       reqbody=httppost(@url,data1)
       jsondata1=jsonlist reqbody,path
@@ -84,6 +83,6 @@ class Testaccount_deleteUserMesssageByIds<Test::Unit::TestCase
       @html.add_to_report(result,test)
     end
   end
-
+=end
 
 end

@@ -23,9 +23,9 @@ class Syncuser_tform<Test::Unit::TestCase
   end
 
   def test_right
-    begin
+      begin
       @html.newTestName('开户-注册后开户')
-      phone="13700000004"
+      phone="13522228410"
       #删除已存在的用户
       result=(Resultdiy.new(@conn.sqlquery("select * from users where secure_phone ='#{phone}'")).result_to_list)
       if result[0]
@@ -73,6 +73,7 @@ class Syncuser_tform<Test::Unit::TestCase
     end
   end
 
+
 =begin
   def test_wrong1
     begin
@@ -81,6 +82,7 @@ class Syncuser_tform<Test::Unit::TestCase
       data={"name"=>"13600000030","password"=>"123456"}
       reqbody= httppost(url,data)
       token=jsonlist reqbody,'.token'
+      p token
       data={"token"=>"#{token}","idcard_name"=>"王敏","idcard_number"=>"430421198612050018"}
       path='.error'
       reqbody=httppost(@url,data)
@@ -94,7 +96,6 @@ class Syncuser_tform<Test::Unit::TestCase
       @html.add_to_report(result,test)
     end
   end
-
 
   def test_wrong2
     begin
@@ -134,8 +135,6 @@ class Syncuser_tform<Test::Unit::TestCase
       @html.add_to_report(result,test)
     end
   end
-
-
 
   def test_wrong4
     begin
@@ -181,6 +180,4 @@ class Syncuser_tform<Test::Unit::TestCase
     end
   end
 =end
-
-
 end

@@ -1,14 +1,20 @@
 
 
-class Testregister_send_phone_code<Test::Unit::TestCase
+class Testcheck_bindcard_phone_error_info<Test::Unit::TestCase
   include Httpmethod
   def setup
     @conn=MyDB.new "rui_site"
     @test_environment = 'QA'
     @html = HTMLReport.new()
-    @report = @html.createReport1('register-send-phone-code')
-    @url=ENV["rpc"]+"register-send-phone-code"
+    @report = @html.createReport1('check-bindcard-phone-error')
     MySSH.sshconn('echo "FLUSHALL" | redis-cli')
+    phone="13500000069"
+    url=ENV["rpc"]+"login"
+    data={"name"=>phone,"password"=>"123456"}
+    path='.token'
+    reqbody=httppost(url,data)
+    @token=jsonlist reqbody,path
+    @url=ENV["rpc"]+"mobileapi/check-bindcard-phone-error-info"
   end
 
   def teardown
@@ -22,36 +28,35 @@ class Testregister_send_phone_code<Test::Unit::TestCase
 
   def test_right
     begin
-      @html.newTestName('注册验证码-正常')
-      data={"phone"=>"13500000197","token"=>""}
+      @html.newTestName('校验绑卡手机号-正常')
+      data={"token"=>@token,"phone"=>"13512345678"}
       path='.error'
       reqbody=httppost(@url,data)
-      puts reqbody
+      p reqbody
       jsondata=jsonlist reqbody,path
       result=(nil.eql?jsondata)
     rescue Exception=>e
       result=[false,e.message]
     ensure
-      test="检查json的error为null"
+      test="检查json的has_valid为false"
       @html.add_to_report(result,test)
     end
   end
 
-
+=begin
   #未完成
   def test_wrong
     begin
-      @html.newTestName('注册验证码-参数为空')
+      @html.newTestName('校验绑卡手机号-参数为空')
       data={}
       path='.error.msg'
       reqbody=httppost(@url,data)
-      p reqbody
       jsondata=jsonlist reqbody,path
-      result=("输入正确的手机号码".eql?jsondata)
+      result=(''.eql?jsondata)
     rescue Exception=>e
       result=[false,e.message]
     ensure
-      test="检查json的error为手机号码不合法"
+      test="检查json的error为身份证信息错误"
       @html.add_to_report(result,test)
     end
   end
@@ -60,20 +65,20 @@ class Testregister_send_phone_code<Test::Unit::TestCase
   #未完成
   def test_wrong1
     begin
-      @html.newTestName('注册验证码-参数值为空')
-      data={"phone"=>"","token"=>""}
+      @html.newTestName('校验绑卡手机号-参数值为空')
+      data={"token"=>@token,"idcard_number"=>""}
       path='.error.msg'
       reqbody=httppost(@url,data)
       p reqbody
       jsondata=jsonlist reqbody,path
-      result=("输入正确的手机号码".eql?jsondata)
+      result=(''.eql?jsondata)
     rescue Exception=>e
       result=[false,e.message]
     ensure
-      test="检查json的error为手机号码不合法"
+      test="检查json的error为身份证信息错误"
       @html.add_to_report(result,test)
     end
   end
-
+=end
 
 end

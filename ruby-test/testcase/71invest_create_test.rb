@@ -13,15 +13,17 @@ class Testinvest_create<Test::Unit::TestCase
       loansid.push(data[:id])
     end
     @id=loansid.sample
-    phone="13500000069"
+    p @id
+    phone="13522228410"
     url=ENV["rpc"]+"login"
     data={"name"=>phone,"password"=>"123456"}
     path='.token'
     reqbody=httppost(url,data)
     @token=jsonlist reqbody,path
     @user_id=jsonlist reqbody,'.user.id'
-    @url=ENV["rpc"]+"mobileapitest/pay-deduct"
+    @url=ENV["rpc"]+"mobileapi/invest/create"
   end
+
 
   def teardown
     @conn.close
@@ -32,13 +34,14 @@ class Testinvest_create<Test::Unit::TestCase
     @html.finishReport(@report, @test_environment)
   end
 
+
   def test_right
     begin
       @html.newTestName('创建投资-正常')
-      data={"token"=>@token,"loan_id"=>@id,"amount"=>"1000","reward_id"=>"","copopn_id"=>""}
+      data={"token"=>@token,"loan_id"=>'700000980',"amount"=>"1000","reward_id"=>"","copopn_id"=>"17287"}
       path='.error'
       reqbody=httppost(@url,data)
-      puts reqbody
+      p reqbody
       jsondata=jsonlist reqbody,path
       result=nil.equal?jsondata
     rescue Exception=>e
@@ -48,7 +51,6 @@ class Testinvest_create<Test::Unit::TestCase
       @html.add_to_report(result,test)
     end
   end
-
 
 
 =begin

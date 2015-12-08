@@ -24,7 +24,7 @@ class Testbindcard_withdraw_tform<Test::Unit::TestCase
   def test_right
     begin
       @html.newTestName('绑卡提现-正常')
-      phone="13700000002"
+      phone="13500000068"
       @conn.update("delete from account_cards where user_id =(select id from users where secure_phone = '#{phone}') ")
       url=ENV["rpc"]+"login"
       data={"name"=>"#{phone}","password"=>"123456"}
@@ -46,5 +46,31 @@ class Testbindcard_withdraw_tform<Test::Unit::TestCase
     end
   end
 
+=begin
+  def test_right1
+    begin
+      @html.newTestName('绑卡提现-正常')
+      phone="13700000002"
+      @conn.update("delete from account_cards where user_id =(select id from users where secure_phone = '#{phone}') ")
+      url=ENV["rpc"]+"login"
+      data={"name"=>"#{phone}","password"=>"123456"}
+      path='.token'
+      reqbody= httppost(url,data)
+      token=jsonlist reqbody,path
+      #======================================
+      data={"token"=>"#{token}","amount"=>"100","cardno"=>"6222020200040016236","province"=>"北京","city"=>"北京"}
+      path='.error'
+      reqbody=httppost(@url,data)
+      p reqbody
+      jsondata=jsonlist reqbody,path
+      result=nil.eql?jsondata
+    rescue Exception=>e
+      result=[false,e.message]
+    ensure
+      test="检查json中的error值"
+      @html.add_to_report(result,test)
+    end
+  end
+=end
 
 end
